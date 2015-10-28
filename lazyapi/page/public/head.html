@@ -1,0 +1,34 @@
+<div id="div_head_info">
+	<div>
+		<a href="/logout">
+			<span>退出 </span>
+		</a>
+	</div>
+	<div>
+		<a href="/logout">
+			<img src="/static/img/public/logout.png" />
+		</a>
+	</div>
+	<div>
+		<a href="/environment">
+			<span>环境 </span>
+		</a>
+	</div>
+	<div>
+		<a href="/environment">
+			<img src="/static/img/public/environment.png" />
+		</a>
+	</div>
+	<div>
+		<a href="/home">
+			<span>
+				<?php echo Util_Server_Request::get_cookie ( 'username' ); ?>
+			</span>
+		</a>
+	</div>
+	<div>
+		<a href="/user">
+			<img src="/static/img/public/userinfo.png" />
+		</a>
+	</div>
+</div>

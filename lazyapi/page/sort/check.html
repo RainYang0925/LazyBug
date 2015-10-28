@@ -1,0 +1,64 @@
+<div id="div_check" class="global_board">
+	<div class="global_board_head">
+		<div>
+			<img src="/static/img/board/edit.jpg" />
+		</div>
+		<div>
+			<span>编辑检查点</span>
+		</div>
+		<div class="global_board_option">
+			<a href="javascript:void(0);">
+				<img class="edit_check_close" title="关闭窗口"
+					src="/static/img/icon/close.jpg" />
+			</a>
+		</div>
+	</div>
+	<div class="global_board_content">
+		<div class="global_content_level">
+			<div>
+				<input id="input_checkname" name="checkname"
+					class="global_form_input input_check" type="text" value=""
+					placeholder="步骤名称，如：检查用户状态" maxlength="25" />
+				<input id="input_check_step_id" type="hidden" value="" />
+				<input id="input_add_check_flag" type="hidden" value="0" />
+				<input id="input_checkcommand" type="hidden" value="" />
+			</div>
+		</div>
+		<div class="global_content_level">
+			<div>
+				<input id="checkbox_checkall" name="checkall" class="checkbox_check"
+					type="checkbox">
+				<span>完整匹配</span>
+			</div>
+			<div>
+				<input id="checkbox_checkbegin" name="checkbegin"
+					class="checkbox_check" type="checkbox">
+				<span>前段匹配</span>
+			</div>
+			<div>
+				<input id="checkbox_checkend" name="checkend" class="checkbox_check"
+					type="checkbox">
+				<span>后段匹配</span>
+			</div>
+			<div>
+				<input id="checkbox_checkreg" name="checkreg" class="checkbox_check"
+					type="checkbox">
+				<span>正则表达式</span>
+			</div>
+		</div>
+		<div class="global_content_area">
+			<textarea id="input_checkvalue" name="checkvalue"
+				class="global_form_input text_check"
+				placeholder="校验内容，如：&quot;status&quot;:1"></textarea>
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img id="img_edit_check_ok" src="/static/img/board/edit_ok.jpg" />
+			</a>
+			<a href="javascript:void(0);">
+				<img class="edit_check_cancel"
+					src="/static/img/board/edit_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+</div>

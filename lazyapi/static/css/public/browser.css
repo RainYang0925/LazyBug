@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #000000;
+	background-image: url('/static/img/public/bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-align: center;
+}
+
+#div_browser {
+	width: 800px;
+	height: 400px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin: -200px 0px 0px -400px;
+}

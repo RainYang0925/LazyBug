@@ -1,0 +1,49 @@
+<div id="div_store" class="global_board">
+	<div class="global_board_head">
+		<div>
+			<img src="/static/img/board/edit.jpg" />
+		</div>
+		<div>
+			<span>编辑存储查询</span>
+		</div>
+		<div class="global_board_option">
+			<a href="javascript:void(0);">
+				<img class="edit_store_close" title="关闭窗口"
+					src="/static/img/icon/close.jpg" />
+			</a>
+		</div>
+	</div>
+	<div class="global_board_content">
+		<div class="global_content_level">
+			<div>
+				<input id="input_storename" name="storename"
+					class="global_form_input input_store" type="text" value=""
+					placeholder="步骤名称，如：查询用户信息" maxlength="25" />
+				<input id="input_store_step_id" type="hidden" value="" />
+				<input id="input_add_store_flag" type="hidden" value="0" />
+				<input id="input_storecommand" type="hidden" value="" />
+			</div>
+		</div>
+		<div class="global_content_level">
+			<div>
+				<input id="input_storeconfig" name="storeconfig"
+					class="global_form_input input_store" type="text" value=""
+					placeholder="数据配置，如：localdb" maxlength="25" />
+			</div>
+		</div>
+		<div class="global_content_area">
+			<textarea id="input_storevalue" name="storevalue"
+				class="global_form_input text_store"
+				placeholder="查询内容，如：select * from user where userid=1"></textarea>
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img id="img_edit_store_ok" src="/static/img/board/edit_ok.jpg" />
+			</a>
+			<a href="javascript:void(0);">
+				<img class="edit_store_cancel"
+					src="/static/img/board/edit_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+</div>

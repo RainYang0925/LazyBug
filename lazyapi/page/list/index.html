@@ -1,0 +1,218 @@
+<?php $this->load('List.Module'); ?>
+<?php $this->load('List.Item'); ?>
+<?php $this->load('List.Case'); ?>
+<?php $this->load('List.Level'); ?>
+<div class="global_content_div">
+	<div class="global_content_area">
+		<div id="div_list_left">
+			<div class="module_head">
+				<span>模块</span>
+			</div>
+			<div class="module_tmp module_line">
+				<div class="module_tag"></div>
+				<div class="module_detail">
+					<div class="module_name">
+						<span></span>
+						<input name="moduleid" type="hidden" value="" />
+						<input name="itemnum" type="hidden" value="" />
+					</div>
+					<div class="module_count">
+						<span>共有</span>
+						<span class="count_num_item"> </span>
+						<span>个接口，包含</span>
+						<span class="count_num_case"> </span>
+						<span>个用例</span>
+					</div>
+					<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+					<div class="module_option">
+						<div class="module_edit">
+							<img title="编辑" src="/static/img/list/module_edit_disable.png" />
+						</div>
+						<div class="module_remove">
+							<img title="移除" src="/static/img/list/module_remove_disable.png" />
+						</div>
+					</div>
+					<?php } ?>
+				</div>
+			</div>
+			<div class="module_fixed module_line">
+				<div
+					class="module_tag module_tag_1 module_tag_open module_tag_selected"></div>
+				<div class="module_detail module_selected">
+					<div class="module_name">
+						<span>全部模块</span>
+						<input name="moduleid" type="hidden" value="0" />
+						<input name="itemnum" type="hidden"
+							value="<?php echo $this->get_data('item_num'); ?>" />
+						<input name="modulename" type="hidden" value="" />
+					</div>
+					<div class="module_count">
+						<span>共有</span>
+						<span class="count_num_item count_num_on">
+							<?php echo $this->get_data('item_num'); ?>
+						</span>
+						<span>个接口，包含</span>
+						<span class="count_num_case count_num_on">
+							<?php echo $this->get_data('case_num'); ?>
+						</span>
+						<span>个用例</span>
+					</div>
+					<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+					<div class="module_option">
+						<div class="module_add">
+							<img title="添加" src="/static/img/list/module_add_disable.png" />
+						</div>
+					</div>
+					<?php } ?>
+				</div>
+			</div>
+			<div id="div_module_loading">
+				<div>
+					<img src="/static/img/icon/loading.gif" />
+				</div>
+				<div>
+					<span>正在载入模块数据</span>
+				</div>
+			</div>
+		</div>
+		<div id="div_list_right">
+			<div>
+				<table>
+					<tr class="table_head">
+						<td class="td_item_name">
+							<span>名称</span>
+						</td>
+						<td class="td_item_opt">
+							<span>操作</span>
+						</td>
+					</tr>
+					<tr class="item_tmp item_line">
+						<td class="td_item_name">
+							<div class="item_drag">
+								<div>
+									<img src="/static/img/list/fade_in.png" />
+								</div>
+								<div>
+									<span></span>
+									<input name="itemid" type="hidden" value="" />
+									<input name="moduleid" type="hidden" value="" />
+									<input name="itemurl" type="hidden" value="" />
+								</div>
+							</div>
+						</td>
+						<td class="td_item_opt">
+							<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+							<div class="item_edit">
+								<div>
+									<img src="/static/img/list/item_edit_disable.png" />
+								</div>
+								<div>
+									<span>编辑</span>
+								</div>
+							</div>
+							<div class="item_remove">
+								<div>
+									<img src="/static/img/list/item_remove_disable.png" />
+								</div>
+								<div>
+									<span>移除</span>
+								</div>
+							</div>
+							<?php } ?>
+						</td>
+					</tr>
+					<tr class="item_case_tmp item_case_line">
+						<td colspan="2">
+							<table>
+								<tr class="case_tmp case_line">
+									<td class="td_case_id">
+										<div>
+											<img class="level_icon" title="D"
+												src="/static/img/list/level_4.jpg" />
+											<input name="caselevel" type="hidden" value="4" />
+										</div>
+										<div>
+											<span></span>
+											<input name="caseid" type="hidden" value="" />
+											<input name="casename" type="hidden" value="" />
+											<input name="sendtype" type="hidden" value="" />
+											<input name="requestparam" type="hidden" value="" />
+											<textarea name="responseheader"></textarea>
+										</div>
+									</td>
+									<td class="td_case_opt">
+										<div class="icon_item">
+											<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+											<div class="case_level">
+												<img title="等级"
+													src="/static/img/list/case_level_disable.png" />
+											</div>
+											<div class="case_edit">
+												<img title="编辑" src="/static/img/list/case_edit_disable.png" />
+											</div>
+											<?php } ?>
+											<div class="case_load">
+												<img title="载入" src="/static/img/list/case_load_disable.png" />
+											</div>
+											<div class="case_sort">
+												<img title="序列" src="/static/img/list/case_sort_disable.png" />
+											</div>
+											<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+											<div class="case_remove">
+												<img title="移除"
+													src="/static/img/list/case_remove_disable.png" />
+											</div>
+											<?php } ?>
+										</div>
+									</td>
+								</tr>
+								<tr class="case_loading">
+									<td colspan="2">
+										<div>
+											<img src="/static/img/icon/loading.gif" />
+										</div>
+										<div>
+											<span>正在载入用例数据</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="case_add">
+									<td colspan="2">
+										<div>
+											<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+											<span class="span_case_add">+</span>
+											<?php } ?>
+											<input name="itemid" type="hidden" value="" />
+											<input name="moduleid" type="hidden" value="" />
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr id="tr_item_loading">
+						<td colspan="2">
+							<div>
+								<img src="/static/img/icon/loading.gif" />
+							</div>
+							<div>
+								<span>正在载入接口数据</span>
+							</div>
+						</td>
+					</tr>
+					<tr id="tr_item_add">
+						<td colspan="2">
+							<div>
+								<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+								<span id="span_item_add">+</span>
+								<?php } ?>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<?php $this->load('Public.Page'); ?>
+		</div>
+		<div style="clear: both"></div>
+	</div>
+</div>

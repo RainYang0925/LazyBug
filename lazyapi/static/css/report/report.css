@@ -1,0 +1,152 @@
+@CHARSET "UTF-8";
+
+.global_content_area {
+	margin-bottom: 30px;
+}
+
+.global_content_title span {
+	margin-right: 20px;
+	font-size: 16px;
+}
+
+#div_reload {
+	width: 380px;
+	height: 100px;
+	display: none;
+	margin: -50px 0px 0px -190px;
+}
+
+#div_reload .global_content_level>div {
+	float: left;
+	margin: 30px 30px 0px 0px;
+}
+
+#div_reload img {
+	margin-top: 10px;
+}
+
+#div_reload span {
+	font-size: 16px;
+}
+
+.result_tmp {
+	display: none;
+}
+
+.result_line {
+	width: 750px;
+}
+
+.result_item_line {
+	height: 40px;
+	border-bottom: solid 2px #c5c5c5;
+	line-height: 40px;
+	overflow: hidden;
+}
+
+.result_item_line>div {
+	float: left;
+}
+
+.item_name>span {
+	margin: 0px 15px 0px 15px;
+	font-weight: bold;
+}
+
+.item_pass {
+	margin-left: 20px;
+	color: #629731;
+}
+
+.item_fail {
+	margin-left: 20px;
+	color: #d0636e;
+}
+
+.result_case_tmp {
+	display: none;
+}
+
+.result_case_line {
+	height: 40px;
+	border-bottom: dashed 1px #c5c5c5;
+	line-height: 40px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.result_case_line>div {
+	float: left;
+}
+
+.result_case_line img {
+	margin: 5px 5px 0px 5px;
+}
+
+.case_pass {
+	margin-left: 20px;
+	color: #85be49;
+	font-size: 12px;
+}
+
+.case_fail {
+	margin-left: 20px;
+	color: #e28f97;
+	font-size: 12px;
+}
+
+.item_case_step_tmp {
+	display: none;
+}
+
+.item_case_step_line {
+	margin: 5px 10px 15px 10px;
+	border: solid 1px #c5c5c5;
+	cursor: pointer;
+}
+
+.result_step_tmp {
+	display: none;
+}
+
+.result_step_line {
+	height: 30px;
+	margin: 0px 15px 0px 15px;
+	line-height: 30px;
+	overflow: hidden;
+}
+
+.result_step_line>div {
+	float: left;
+}
+
+.result_step_line img {
+	margin: 7px 15px 0px 0px;
+}
+
+.item_case_detail_tmp {
+	display: none;
+}
+
+.item_case_detail_line {
+	min-height: 30px;
+	margin: 5px 15px 5px 15px;
+	background-color: #eff5eb;
+	border: #cecece;
+	line-height: 30px;
+}
+
+.item_case_detail_line span {
+	margin: 0px 10px 0px 10px;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.step_loading {
+	height: 80px;
+	text-align: center;
+}
+
+.step_loading img {
+	padding-top: 10px;
+}

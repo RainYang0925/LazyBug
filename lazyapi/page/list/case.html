@@ -1,0 +1,126 @@
+<div id="div_case" class="global_board">
+	<div class="global_board_head">
+		<div>
+			<img src="/static/img/board/edit.jpg" />
+		</div>
+		<div>
+			<span>编辑测试用例</span>
+		</div>
+		<div class="global_board_option">
+			<a href="javascript:void(0);">
+				<img class="edit_case_close" title="关闭窗口"
+					src="/static/img/icon/close.jpg" />
+			</a>
+		</div>
+	</div>
+	<div class="global_board_content">
+		<div class="global_content_level">
+			<div>
+				<input id="input_casename" name="casename"
+					class="global_form_input input_case" type="text" value=""
+					placeholder="用例名称，如：使用正确帐号登录" maxlength="25" />
+				<input id="input_add_case_flag" type="hidden" value="" />
+				<input id="input_edit_case_item_id" type="hidden" value="" />
+				<input id="input_edit_case_module_id" type="hidden" value="" />
+				<input id="input_edit_case_id" type="hidden" value="" />
+			</div>
+			<div>
+				<select id="select_sendtype" name="sendtype"
+					class="global_form_select select_type">
+					<option value="GET">GET</option>
+					<option value="POST">POST</option>
+					<option value="PUT">PUT</option>
+					<option value="DELETE">DELETE</option>
+				</select>
+			</div>
+		</div>
+		<div class="global_content_area">
+			<textarea id="input_requestparam" name="requestparam"
+				class="global_form_input text_case"
+				placeholder="接口参数，如：username=admin&password=123456"></textarea>
+		</div>
+		<div class="global_content_area">
+			<textarea id="input_responseheader" name="responseheader"
+				class="global_form_input text_case"
+				placeholder="请求头，如：{&quot;result&quot;:&quot;success&quot;}"></textarea>
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img id="img_edit_case_ok" src="/static/img/board/edit_ok.jpg" />
+			</a>
+			<a href="javascript:void(0);">
+				<img class="edit_case_cancel"
+					src="/static/img/board/edit_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+</div>
+<div id="div_case_notice" class="global_board">
+	<div class="global_board_head">
+		<div>
+			<img src="/static/img/board/edit.jpg" />
+		</div>
+		<div>
+			<span>编辑测试用例</span>
+		</div>
+		<div class="global_board_option">
+			<a href="javascript:void(0);">
+				<img class="edit_case_close" title="关闭窗口"
+					src="/static/img/icon/close.jpg" />
+			</a>
+		</div>
+	</div>
+	<div id="div_case_success" class="global_board_content">
+		<div class="global_content_level global_board_notice">
+			<span>测试用例数据更新成功</span>
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img class="edit_case_cancel"
+					src="/static/img/board/edit_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+	<div id="div_case_error" class="global_board_content">
+		<div class="global_content_level global_board_notice">
+			<span>测试用例数据更新失败</span>
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img class="edit_case_cancel"
+					src="/static/img/board/edit_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+</div>
+<div id="div_delete_case" class="global_board">
+	<div class="global_board_head">
+		<div>
+			<img src="/static/img/board/delete.jpg" />
+		</div>
+		<div>
+			<span>移除测试用例</span>
+		</div>
+		<div class="global_board_option">
+			<a href="javascript:void(0);">
+				<img id="img_delete_case_close" title="关闭窗口"
+					src="/static/img/icon/close.jpg" />
+			</a>
+		</div>
+	</div>
+	<div class="global_board_content">
+		<div class="global_content_level global_board_notice">
+			<span>用例移除后不能恢复，是否确认？</span>
+			<input id="input_delete_case_id" type="hidden" value="" />
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img id="img_delete_case_ok" src="/static/img/board/delete_ok.jpg" />
+			</a>
+			<a href="javascript:void(0);">
+				<img id="img_delete_case_cancel"
+					src="/static/img/board/delete_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+</div>

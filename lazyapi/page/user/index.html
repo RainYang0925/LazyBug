@@ -1,0 +1,66 @@
+<?php $this->load('User.User'); ?>
+<div class="global_content_div">
+	<div class="global_content_area">
+		<div>
+			<table>
+				<tr class="table_head">
+					<td class="td_user_name">
+						<span>用户名</span>
+					</td>
+					<td class="td_user_role">
+						<span>权限组</span>
+					</td>
+					<td class="td_user_opt">
+						<span>操作</span>
+					</td>
+				</tr>
+				<tr class="user_tmp user_line">
+					<td class="td_user_name">
+						<span></span>
+						<input name="userid" type="hidden" value="" />
+						<input name="userrole" type="hidden" value="" />
+					</td>
+					<td class="td_user_role">
+						<span></span>
+					</td>
+					<td class="td_user_opt">
+						<div class="user_edit">
+							<div>
+								<img src="/static/img/user/user_edit_disable.png" />
+							</div>
+							<div>
+								<span>编辑</span>
+							</div>
+						</div>
+						<div class="user_remove">
+							<div>
+								<img src="/static/img/user/user_remove_disable.png" />
+							</div>
+							<div>
+								<span>移除</span>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr id="tr_user_loading">
+					<td colspan="3">
+						<div>
+							<img src="/static/img/icon/loading.gif" />
+						</div>
+						<div>
+							<span>正在载入接口数据</span>
+						</div>
+					</td>
+				</tr>
+				<tr id="tr_user_add">
+					<td colspan="3">
+						<div>
+							<span id="span_user_add">+</span>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<?php $this->load('Public.Page'); ?>
+	</div>
+</div>

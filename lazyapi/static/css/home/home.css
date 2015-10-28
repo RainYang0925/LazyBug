@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+.global_content_level>div {
+	float: left;
+	margin-right: 30px;
+}
+
+.input_password {
+	width: 300px;
+}
+
+#div_password_update {
+	cursor: pointer;
+}

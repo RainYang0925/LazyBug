@@ -1,0 +1,234 @@
+@CHARSET "UTF-8";
+
+.global_content_level>div {
+	float: left;
+}
+
+#div_task {
+	width: 480px;
+	height: 480px;
+	display: none;
+	margin: -240px 0px 0px -240px;
+}
+
+.input_task {
+	width: 300px;
+}
+
+.select_package {
+	width: 320px;
+}
+
+.select_module {
+	width: 320px;
+}
+
+.select_level {
+	width: 320px;
+}
+
+.select_hour {
+	width: 140px;
+	margin-right: 40px;
+}
+
+.select_minute {
+	width: 140px;
+}
+
+#div_task_notice {
+	width: 400px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -200px;
+}
+
+#div_task_success {
+	display: none;
+}
+
+#div_task_error {
+	display: none;
+}
+
+#div_delete_task {
+	width: 440px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -220px;
+}
+
+.task_tmp {
+	display: none;
+}
+
+.task_line {
+	margin-bottom: 40px;
+	border: solid 1px #c5c5c5;
+	box-shadow: 0px 0px 3px 1px #e7e7e7;
+	cursor: pointer;
+}
+
+.task_selected {
+	border: solid 1px #55b3e3;
+	box-shadow: 0px 0px 3px 1px #55b3e3;
+}
+
+.task_running {
+	border: solid 1px #84c746;
+	box-shadow: 0px 0px 3px 1px #84c746;
+}
+
+.task_locked {
+	border: solid 1px #e48a94;
+	box-shadow: 0px 0px 3px 1px #e48a94;
+}
+
+.task_locked span {
+	color: #c3c3c3;
+}
+
+.task_header {
+	height: 60px;
+	border-bottom: solid 1px #c5c5c5;
+	background-color: #eff5eb;
+	line-height: 60px;
+	overflow: hidden;
+}
+
+.task_header span {
+	font-weight: bold;
+}
+
+.task_name {
+	float: left;
+}
+
+.task_name>div {
+	float: left;
+}
+
+.task_name img {
+	margin: 20px 15px 0px 25px;
+}
+
+.task_detail {
+	float: right;
+}
+
+.task_detail>div {
+	float: left;
+}
+
+.print_time {
+	color: #df5555;
+	margin-right: 30px;
+}
+
+.print_package {
+	color: #7bb648;
+	margin-right: 30px;
+}
+
+.task_detail_opt {
+	width: 280px;
+	height: 60px;
+	padding-left: 25px;
+	background-color: #ebf0ed;
+	border-left: solid 1px #c5c5c5;
+}
+
+.task_detail_opt>div {
+	float: left;
+}
+
+.task_detail_opt img {
+	margin: 23px 10px 0px 10px;
+}
+
+.task_process {
+	height: 15px;
+	display: none;
+	border-bottom: solid 1px #c5c5c5;
+	box-shadow: inset 0px 0px 3px 1px #e7e7e7;
+}
+
+.task_loading {
+	height: 5px;
+	padding: 5px;
+}
+
+.task_loading>div {
+	width: 1%;
+	height: 5px;
+	background-color: #87c1d1;
+	box-shadow: 0px 0px 2px 1px #87c1d1;
+}
+
+.task_report {
+	min-height: 40px;
+}
+
+.task_report_tmp {
+	display: none;
+}
+
+.task_report_line {
+	height: 40px;
+	border-bottom: solid 1px #e7e7e7;
+	line-height: 40px;
+	overflow: hidden;
+}
+
+.task_report_line span {
+	font-size: 12px;
+}
+
+.task_report_selected {
+	background-color: #f7faee;
+}
+
+.task_report_detail {
+	float: left;
+}
+
+.task_report_detail span {
+	margin: 0px 25px 0px 25px;
+}
+
+.task_report_opt {
+	width: 270px;
+	height: 40px;
+	float: right;
+	padding-left: 35px;
+	border-left: solid 1px #c5c5c5;
+}
+
+.no_report {
+	height: 40px;
+	display: none;
+	line-height: 40px;
+	text-align: center;
+}
+
+#div_task_loading {
+	height: 80px;
+	text-align: center;
+}
+
+#div_task_loading img {
+	padding-top: 10px;
+}
+
+#span_task_add {
+	display: none;
+	padding: 0px 30px 0px 30px;
+	border: solid 1px #c5c5c5;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.add_on {
+	background-color: #f6f9f0;
+}

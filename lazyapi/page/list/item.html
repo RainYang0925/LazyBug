@@ -1,0 +1,108 @@
+<div id="div_item" class="global_board">
+	<div class="global_board_head">
+		<div>
+			<img src="/static/img/board/edit.jpg" />
+		</div>
+		<div>
+			<span>编辑测试接口</span>
+		</div>
+		<div class="global_board_option">
+			<a href="javascript:void(0);">
+				<img class="edit_item_close" title="关闭窗口"
+					src="/static/img/icon/close.jpg" />
+			</a>
+		</div>
+	</div>
+	<div class="global_board_content">
+		<div class="global_content_level">
+			<input id="input_itemname" name="itemname"
+				class="global_form_input input_item" type="text" value=""
+				placeholder="接口名称，如：用户登录" maxlength="25" />
+			<input id="input_add_item_flag" type="hidden" value="" />
+			<input id="input_edit_item_id" type="hidden" value="" />
+		</div>
+		<div class="global_content_level">
+			<input id="input_itemurl" name="itemurl"
+				class="global_form_input input_item" type="text" value=""
+				placeholder="接口请求地址，如：http://www.lazybug.cn/api/demo" />
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img id="img_edit_item_ok" src="/static/img/board/edit_ok.jpg" />
+			</a>
+			<a href="javascript:void(0);">
+				<img class="edit_item_cancel"
+					src="/static/img/board/edit_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+</div>
+<div id="div_item_notice" class="global_board">
+	<div class="global_board_head">
+		<div>
+			<img src="/static/img/board/edit.jpg" />
+		</div>
+		<div>
+			<span>编辑测试接口</span>
+		</div>
+		<div class="global_board_option">
+			<a href="javascript:void(0);">
+				<img class="edit_item_close" title="关闭窗口"
+					src="/static/img/icon/close.jpg" />
+			</a>
+		</div>
+	</div>
+	<div id="div_item_success" class="global_board_content">
+		<div class="global_content_level global_board_notice">
+			<span>测试接口数据更新成功</span>
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img class="edit_item_cancel"
+					src="/static/img/board/edit_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+	<div id="div_item_error" class="global_board_content">
+		<div class="global_content_level global_board_notice">
+			<span>测试接口数据更新失败</span>
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img class="edit_item_cancel"
+					src="/static/img/board/edit_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+</div>
+<div id="div_delete_item" class="global_board">
+	<div class="global_board_head">
+		<div>
+			<img src="/static/img/board/delete.jpg" />
+		</div>
+		<div>
+			<span>移除测试接口</span>
+		</div>
+		<div class="global_board_option">
+			<a href="javascript:void(0);">
+				<img id="img_delete_item_close" title="关闭窗口"
+					src="/static/img/icon/close.jpg" />
+			</a>
+		</div>
+	</div>
+	<div class="global_board_content">
+		<div class="global_content_level global_board_notice">
+			<span>接口移除后不能恢复，是否确认？</span>
+			<input id="input_delete_item_id" type="hidden" value="" />
+		</div>
+		<div class="global_content_level global_board_button">
+			<a href="javascript:void(0);">
+				<img id="img_delete_item_ok" src="/static/img/board/delete_ok.jpg" />
+			</a>
+			<a href="javascript:void(0);">
+				<img id="img_delete_item_cancel"
+					src="/static/img/board/delete_cancel.jpg" />
+			</a>
+		</div>
+	</div>
+</div>

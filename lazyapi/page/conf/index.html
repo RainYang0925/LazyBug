@@ -1,0 +1,171 @@
+<?php $this->load('Conf.Package'); ?>
+<?php $this->load('Conf.Config'); ?>
+<div class="global_content_div">
+	<div class="global_content_area">
+		<div id="div_config_left">
+			<div class="package_head">
+				<span>配置包</span>
+			</div>
+			<div class="package_tmp package_line">
+				<div class="package_info_line">
+					<div class="package_img">
+						<img src="/static/img/conf/tree_close.png" />
+					</div>
+					<div class="package_name">
+						<span></span>
+						<input name="packageid" type="hidden" value="0" />
+					</div>
+					<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+					<div class="package_option">
+
+						<div class="package_edit">
+							<img title="编辑" src="/static/img/conf/package_edit_disable.png" />
+						</div>
+						<div class="package_remove">
+							<img title="移除" src="/static/img/conf/package_remove_disable.png" />
+						</div>
+					</div>
+					<?php } ?>
+				</div>
+				<div class="package_tree_line">
+					<div class="package_param package_branch">
+						<div>
+							<img src="/static/img/conf/config_param.png" />
+						</div>
+						<div>
+							<span>参数</span>
+							<input name="type" type="hidden" value="param" />
+							<input name="confignum" type="hidden" value="0" />
+						</div>
+					</div>
+					<div class="package_data package_branch">
+						<div>
+							<img src="/static/img/conf/config_data.png" />
+						</div>
+						<div>
+							<span>数据源</span>
+							<input name="type" type="hidden" value="data" />
+							<input name="confignum" type="hidden" value="0" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="package_fixed package_line">
+				<div class="package_info_line package_selected">
+					<div class="package_img">
+						<img src="/static/img/conf/tree_open.png" />
+					</div>
+					<div class="package_name">
+						<span>预设配置</span>
+						<input name="packageid" type="hidden" value="0" />
+					</div>
+					<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+					<div class="package_option">
+						<div class="package_add">
+							<img title="添加" src="/static/img/conf/package_add_disable.png" />
+						</div>
+					</div>
+					<?php } ?>
+				</div>
+				<div class="package_tree_line">
+					<div class="package_param package_branch package_tree_selected">
+						<div>
+							<img src="/static/img/conf/config_param.png" />
+						</div>
+						<div>
+							<span>参数</span>
+							<input name="type" type="hidden" value="param" />
+							<input name="confignum" type="hidden"
+								value="<?php echo  $this->get_data('param_num'); ?>" />
+						</div>
+					</div>
+					<div class="package_data package_branch">
+						<div>
+							<img src="/static/img/conf/config_data.png" />
+						</div>
+						<div>
+							<span>数据源</span>
+							<input name="type" type="hidden" value="data" />
+							<input name="confignum" type="hidden"
+								value="<?php echo  $this->get_data('data_num'); ?>" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="div_package_loading">
+				<div>
+					<img src="/static/img/icon/loading.gif" />
+				</div>
+				<div>
+					<span>正在载入配置包数据</span>
+				</div>
+			</div>
+		</div>
+		<div id="div_config_right">
+			<div>
+				<table>
+					<tr class="table_head">
+						<td class="td_config_keyword">
+							<span>关键字</span>
+						</td>
+						<td class="td_config_value">
+							<span>值</span>
+						</td>
+						<td class="td_config_opt">
+							<span>操作</span>
+						</td>
+					</tr>
+					<tr class="config_tmp config_line">
+						<td class="td_config_keyword">
+							<span></span>
+							<input name="configid" type="hidden" value="" />
+						</td>
+						<td class="td_config_value">
+							<span></span>
+						</td>
+						<td class="td_config_opt">
+							<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+							<div class="config_edit">
+								<div>
+									<img src="/static/img/conf/config_edit_disable.png" />
+								</div>
+								<div>
+									<span>编辑</span>
+								</div>
+							</div>
+							<div class="config_remove">
+								<div>
+									<img src="/static/img/conf/config_remove_disable.png" />
+								</div>
+								<div>
+									<span>移除</span>
+								</div>
+							</div>
+							<?php } ?>
+						</td>
+					</tr>
+					<tr id="tr_config_loading">
+						<td colspan="3">
+							<div>
+								<img src="/static/img/icon/loading.gif" />
+							</div>
+							<div>
+								<span>正在载入配置数据</span>
+							</div>
+						</td>
+					</tr>
+					<tr id="tr_config_add">
+						<td colspan="3">
+							<div>
+								<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+								<span id="span_config_add">+</span>
+								<?php } ?>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<?php $this->load('Public.Page'); ?>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,89 @@
+<?php $this->load('Run.Task'); ?>
+<div class="global_content_div">
+	<div class="global_content_area">
+		<div class="task_tmp task_line">
+			<div class="task_header">
+				<div class="task_name">
+					<div>
+						<img src="/static/img/run/clock.png" />
+					</div>
+					<div>
+						<span></span>
+						<input name="taskid" type="hidden" value="" />
+						<input name="packageid" type="hidden" value="" />
+						<input name="moduleid" type="hidden" value="" />
+						<input name="tasklevel" type="hidden" value="" />
+						<input name="taskruntime" type="hidden" value="" />
+						<input name="taskhang" type="hidden" value="" />
+					</div>
+				</div>
+				<div class="task_detail">
+					<div>
+						<span>执行时间：</span>
+						<span class="print_time"></span>
+					</div>
+					<div>
+						<span>配置包：</span>
+						<span class="print_package"></span>
+					</div>
+					<div class="task_detail_opt">
+						<div class="task_run">
+							<img title="运行测试" src="/static/img/run/task_run_disable.png" />
+						</div>
+						<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+						<div class="task_add">
+							<img title="添加" src="/static/img/run/task_add_disable.png" />
+						</div>
+						<div class="task_edit">
+							<img title="编辑" src="/static/img/run/task_edit_disable.png" />
+						</div>
+						<div class="task_hang">
+							<img title="禁用" src="/static/img/run/task_unlock_disable.png" />
+						</div>
+						<div class="task_remove">
+							<img title="移除" src="/static/img/run/task_remove_disable.png" />
+						</div>
+						<?php } ?>
+					</div>
+
+				</div>
+			</div>
+			<div class="task_process">
+				<div class="task_loading">
+					<div></div>
+				</div>
+			</div>
+			<div class="task_report">
+				<div class="task_report_line task_report_tmp">
+					<div class="task_report_detail">
+						<span></span>
+					</div>
+					<div class="task_report_opt">
+						<a href="javascript:void(0);">
+							<span>查看详细报告</span>
+						</a>
+					</div>
+				</div>
+				<div class="no_report">
+					<div>
+						<span>暂无任务历史数据</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="div_task_loading">
+			<div>
+				<img src="/static/img/icon/loading.gif" />
+			</div>
+			<div>
+				<span id="span_task_text">正在载入任务数据</span>
+			</div>
+			<div>
+				<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+				<span id="span_task_add">+</span>
+				<?php } ?>
+			</div>
+		</div>
+		<?php $this->load('Public.Page'); ?>
+	</div>
+</div>

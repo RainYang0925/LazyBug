@@ -1,0 +1,59 @@
+<?php $this->load('Report.Reload'); ?>
+<div class="global_content_div">
+	<div class="global_content_title">
+		<span>
+			任务:
+			<?php echo htmlspecialchars($this->get_data('task_name')); ?>
+		</span>
+		<span>
+			<?php echo htmlspecialchars($this->get_data('task_runtime')); ?>
+		</span>
+		<input id="input_reload_id" type="hidden"
+			value="<?php echo $this->get_data('history_id'); ?>" />
+	</div>
+	<div class="global_content_area result_tmp result_line">
+		<div class="result_item_line">
+			<div class="item_name">
+				<span></span>
+				<input name="itemid" type="hidden" value="" />
+			</div>
+			<div class="item_result"></div>
+		</div>
+		<div>
+			<div class="result_case_tmp result_case_line">
+				<div class="case_icon">
+					<img src="/static/img/report/fade_in.png" />
+				</div>
+				<div class="case_name">
+					<span></span>
+					<input name="caseid" type="hidden" value="" />
+				</div>
+				<div class="case_result"></div>
+			</div>
+		</div>
+	</div>
+	<div class="item_case_step_tmp item_case_step_line">
+		<div class="result_step_tmp result_step_line">
+			<div class="step_icon">
+				<img src="/static/img/report/step_call.png" />
+			</div>
+			<div class="step_name">
+				<span></span>
+				<input name="resultid" type="hidden" value="" />
+			</div>
+			<div class="step_result"></div>
+		</div>
+
+		<div class="step_loading">
+			<div>
+				<img src="/static/img/icon/loading.gif" />
+			</div>
+			<div>
+				<span>正在载入测试步骤记录</span>
+			</div>
+		</div>
+	</div>
+	<div class="item_case_detail_tmp item_case_detail_line">
+		<span></span>
+	</div>
+</div>

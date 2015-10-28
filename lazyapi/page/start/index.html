@@ -1,0 +1,137 @@
+<?php $this->load('Start.Case'); ?>
+<?php $this->load('Start.Reload'); ?>
+<div class="global_content_div">
+	<div class="global_content_title">
+		<span>1. 请求地址 :</span>
+	</div>
+	<div class="global_content_level">
+		<div>
+			<input id="input_itemurl" name="itemurl"
+				class="global_form_input input_url" type="text" value=""
+				placeholder="接口请求地址，如：http://www.lazybug.com/api/demo" />
+		</div>
+		<div>
+			<select id="select_sendtype" name="sendtype"
+				class="global_form_select select_send_type">
+				<option value="GET">GET</option>
+				<option value="POST">POST</option>
+				<option value="PUT">PUT</option>
+				<option value="DELETE">DELETE</option>
+			</select>
+		</div>
+		<div>
+			<img id="img_loading" src="/static/img/icon/loading.gif" />
+			<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+			<a id="a_save" title="存储" href="javascript:void(0);">
+				<img id="img_up" src="/static/img/start/up.jpg" />
+			</a>
+			<?php } ?>
+			<input id="input_reload_id" type="hidden"
+				value="<?php echo $this->get_data('reload_id'); ?>" />
+		</div>
+	</div>
+</div>
+<div class="global_content_div">
+	<div class="global_content_title">
+		<span>2. 测试参数 :</span>
+	</div>
+	<div class="global_content_level">
+		<div>
+			<input name="itemkey" class="global_form_input input_param"
+				type="text" value="" placeholder="参数名" />
+		</div>
+		<div>
+			<input name="itemvalue" class="global_form_input input_param"
+				type="text" value="" placeholder="参数值" />
+		</div>
+		<div class="icon">
+			<div class="icon_item">
+				<a class="icon_reset" title="重置" href="javascript:void(0);">
+					<img src="/static/img/icon/reset.jpg" />
+				</a>
+				<a class="icon_add" title="增加" href="javascript:void(0);">
+					<img src="/static/img/icon/add.jpg" />
+				</a>
+				<a class="icon_delete_itemkey" title="移除" href="javascript:void(0);">
+					<img src="/static/img/icon/delete.jpg" />
+				</a>
+			</div>
+		</div>
+	</div>
+	<hr class="split" />
+	<div class="global_content_level">
+		<div>
+			<input name="headerkey" class="global_form_input input_param"
+				type="text" value="" placeholder="请求头 " />
+		</div>
+		<div>
+			<input name="headervalue" class="global_form_input input_param"
+				type="text" value="" placeholder="头信息" />
+		</div>
+		<div>
+			<select name="headertype"
+				class="global_form_select select_param_type">
+				<option value="TEXT">TEXT</option>
+				<option value="NUM">NUM</option>
+			</select>
+		</div>
+		<div class="icon">
+			<div class="icon_item">
+				<a class="icon_reset" title="重置" href="javascript:void(0);">
+					<img src="/static/img/icon/reset.jpg" />
+				</a>
+				<a class="icon_add" title="增加" href="javascript:void(0);">
+					<img src="/static/img/icon/add.jpg" />
+				</a>
+				<a class="icon_delete_headerkey" title="移除"
+					href="javascript:void(0);">
+					<img src="/static/img/icon/delete.jpg" />
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="global_content_level">
+		<div class="button">
+			<div id="div_enable">
+				<a id="a_send" href="javascript:void(0);">
+					<img src="/static/img/start/send_enable.jpg" />
+				</a>
+			</div>
+			<div id="div_disable">
+				<img id="img_disable" src="/static/img/start/send_disable.jpg" />
+			</div>
+		</div>
+	</div>
+</div>
+<div class="global_content_div">
+	<div class="global_content_title">
+		<span>3. 响应输出 :</span>
+	</div>
+	<div class="global_content_area">
+		<div class="result_type">
+			<div id="div_data" class="result_enable">
+				<span>原始</span>
+			</div>
+			<div id="div_json">
+				<span>JSON</span>
+			</div>
+			<div id="div_xml">
+				<span>XML</span>
+			</div>
+			<div id="div_header">
+				<span>响应头</span>
+			</div>
+		</div>
+		<div style="clear: both"></div>
+		<div class="result_border">
+			<div class="result_data">
+				<input id="input_data" type="text" value="data">
+				<span id="span_data"></span>
+				<span id="span_header"></span>
+			</div>
+			<div class="result_content">
+				<span id="span_result"></span>
+			</div>
+		</div>
+	</div>
+</div>

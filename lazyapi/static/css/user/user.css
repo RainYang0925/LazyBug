@@ -1,0 +1,140 @@
+@CHARSET "UTF-8";
+
+.global_content_div {
+	padding: 0px;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+tr {
+	height: 50px;
+	border-bottom: solid 1px #c5c5c5;
+	line-height: 50px;
+}
+
+td {
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#div_user {
+	width: 480px;
+	height: 360px;
+	display: none;
+	margin: -180px 0px 0px -240px;
+}
+
+.input_user {
+	width: 300px;
+}
+
+.select_role {
+	width: 320px;
+}
+
+#div_user_notice {
+	width: 400px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -200px;
+}
+
+#div_user_success {
+	display: none;
+}
+
+#div_user_error {
+	display: none;
+}
+
+#div_delete_user {
+	width: 440px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -220px;
+}
+
+.table_head {
+	height: 60px;
+	background-color: #eff5eb;
+	border-top: solid 1px #c5c5c5;
+	line-height: 60px;
+}
+
+.table_head span {
+	font-size: 16px;
+}
+
+.user_tmp {
+	display: none;
+}
+
+.tr_selected {
+	background-color: #f7faee;
+}
+
+.td_user_name {
+	width: 35%;
+	border-right: solid 1px #c5c5c5;
+}
+
+.td_user_role {
+	width: 35%;
+	border-right: solid 1px #c5c5c5;
+}
+
+.td_user_opt {
+	width: 30%;
+}
+
+.td_user_opt div {
+	float: left;
+}
+
+.td_user_opt img {
+	margin: 18px 0px 0px 15px;
+}
+
+.user_opt_on {
+	color: #22aabe;
+}
+
+#tr_user_loading {
+	text-align: center;
+}
+
+#tr_user_loading img {
+	padding-top: 10px;
+}
+
+#tr_user_add {
+	height: 25px;
+	border: none;
+	line-height: 25px;
+}
+
+#tr_user_add td {
+	cursor: auto;
+}
+
+#tr_user_add td>div {
+	margin-top: -1px;
+	text-align: center;
+}
+
+#tr_user_add span {
+	padding: 0px 30px 0px 30px;
+	border: solid 1px #c5c5c5;
+	border-top: none;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.add_on {
+	background-color: #f6f9f0;
+}

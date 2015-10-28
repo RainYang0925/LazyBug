@@ -1,0 +1,474 @@
+@CHARSET "UTF-8";
+
+.global_content_div {
+	padding: 0px;
+	background-image: url('/static/img/list/split.jpg');
+	background-repeat: repeat-y;
+}
+
+.global_content_level>div {
+	float: left;
+	margin-right: 30px;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+tr {
+	height: 50px;
+	border-bottom: solid 1px #e7e7e7;
+	line-height: 50px;
+}
+
+td {
+	border-left: none;
+	border-right: solid 1px #e7e7e7;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#div_module {
+	width: 540px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -270px;
+}
+
+.input_module {
+	width: 360px;
+}
+
+#div_module_notice {
+	width: 400px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -200px;
+}
+
+#div_module_success {
+	display: none;
+}
+
+#div_module_error {
+	display: none;
+}
+
+#div_delete_module {
+	width: 440px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -220px;
+}
+
+#div_item {
+	width: 540px;
+	height: 300px;
+	display: none;
+	margin: -150px 0px 0px -270px;
+}
+
+.input_item {
+	width: 360px;
+}
+
+#div_item_notice {
+	width: 400px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -200px;
+}
+
+#div_item_success {
+	display: none;
+}
+
+#div_item_error {
+	display: none;
+}
+
+#div_delete_item {
+	width: 440px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -220px;
+}
+
+#div_case {
+	width: 700px;
+	height: 520px;
+	display: none;
+	margin: -260px 0px 0px -350px;
+}
+
+.input_case {
+	width: 300px;
+}
+
+.select_type {
+	width: 130px;
+}
+
+.text_case {
+	width: 520px;
+	height: 100px;
+}
+
+#div_case_notice {
+	width: 400px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -200px;
+}
+
+#div_case_success {
+	display: none;
+}
+
+#div_case_error {
+	display: none;
+}
+
+#div_case_level {
+	width: 380px;
+	height: 200px;
+	display: none;
+	margin: -100px 0px 0px -190px;
+}
+
+#div_case_level .global_content_level {
+	margin: 0px 20px 20px 20px;
+}
+
+#div_case_level .global_content_level div {
+	margin-right: 0px;
+}
+
+.level_item {
+	width: 75px;
+	float: left;
+	margin: 0px 5px 0px 5px;
+	cursor: pointer;
+}
+
+#div_delete_case {
+	width: 440px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -220px;
+}
+
+#div_list_left {
+	width: 300px;
+	min-height: 500px;
+	float: left;
+	margin: 0px;
+}
+
+.module_head {
+	width: 299px;
+	background-color: #eff5eb;
+	border-bottom: solid 1px #c5c5c5;
+	line-height: 60px;
+	cursor: pointer;
+}
+
+.module_head span {
+	padding: 10px;
+	font-size: 16px;
+}
+
+.module_tmp {
+	display: none;
+}
+
+.module_line {
+	height: 75px;
+	cursor: pointer;
+}
+
+.module_line>div {
+	height: 75px;
+	float: left;
+}
+
+.module_selected {
+	background-color: #ffffff;
+}
+
+.module_selected .module_name span {
+	color: #55b3e3;
+	font-weight: bold;
+}
+
+.module_tag {
+	width: 10px;
+}
+
+.module_tag_0 {
+	background-color: #e7e7e7;
+	border-bottom: solid 1px #e7e7e7;
+}
+
+.module_tag_1 {
+	background-color: #d25155;
+	border-bottom: solid 1px #d25155;
+}
+
+.module_tag_2 {
+	background-color: #e29f4e;
+	border-bottom: solid 1px #e29f4e;
+}
+
+.module_tag_3 {
+	background-color: #7ab243;
+	border-bottom: solid 1px #7ab243;
+}
+
+.module_tag_4 {
+	background-color: #84b69d;
+	border-bottom: solid 1px #84b69d;
+}
+
+.module_tag_selected {
+	background-color: #55b3e3;
+	border-bottom: solid 1px #55b3e3;
+}
+
+.module_tag_new {
+	background-color: #a5a5a5;
+	border-bottom: solid 1px #a5a5a5;
+}
+
+.module_tag_open {
+	background-color: #55b3e3;
+	border-bottom: solid 1px #55b3e3;
+}
+
+.module_detail {
+	width: 250px;
+	padding: 0px 20px 0px 20px;
+	border-bottom: solid 1px #c5c5c5;
+}
+
+.module_name {
+	line-height: 40px;
+}
+
+.module_name span {
+	font-size: 16px;
+}
+
+.module_count {
+	line-height: 25px;
+}
+
+.module_count img {
+	margin: 0px 5px 0px 5px;
+}
+
+.count_num_on {
+	color: #55b3e3;
+	font-weight: bold;
+}
+
+.module_option {
+	position: absolute;
+	display: none;
+	top: 5px;
+	right: 5px;
+}
+
+.module_option>div {
+	float: left;
+}
+
+#div_module_loading {
+	width: 300px;
+	height: 80px;
+}
+
+#div_module_loading>div {
+	float: left;
+}
+
+#div_module_loading img {
+	margin: 10px 10px 0px 10px;
+}
+
+#div_list_right {
+	min-height: 500px;
+	margin: 0px 0px 0px 300px;
+}
+
+.item_tmp {
+	display: none;
+}
+
+.table_head {
+	height: 60px;
+	background-color: #ebf0ed;
+	border-bottom: solid 1px #c5c5c5;
+	line-height: 60px;
+}
+
+.table_head span {
+	font-size: 16px;
+}
+
+.tr_selected {
+	background-color: #f6f9f0;
+}
+
+.tr_open {
+	background-color: #f6f9f0;
+}
+
+.td_item_name {
+	width: 65%;
+}
+
+.td_item_name>div>div {
+	float: left;
+}
+
+.td_item_name img {
+	margin: 10px -10px 0px 5px;
+	cursor: move;
+}
+
+.td_item_opt {
+	width: 35%;
+}
+
+.td_item_opt div {
+	float: left;
+}
+
+.td_item_opt img {
+	margin: 18px 0px 0px 15px;
+}
+
+.item_opt_on {
+	color: #22aabe;
+}
+
+#tr_item_loading {
+	text-align: center;
+}
+
+#tr_item_loading img {
+	padding-top: 10px;
+}
+
+#tr_item_add {
+	height: 25px;
+	border: none;
+	line-height: 25px;
+}
+
+#tr_item_add td {
+	cursor: auto;
+}
+
+#tr_item_add td>div {
+	margin-top: -1px;
+	text-align: center;
+}
+
+#tr_item_add span {
+	padding: 0px 30px 0px 30px;
+	border: solid 1px #e7e7e7;
+	border-top: none;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.add_on {
+	background-color: #f6f9f0;
+}
+
+.item_case_tmp {
+	display: none;
+}
+
+.case_tmp {
+	display: none;
+}
+
+.item_case_line {
+	display: none;
+}
+
+.item_case_line table {
+	width: 100%;
+	margin: 0px 1px 5px 1px;
+	border: none;
+}
+
+.item_case_line table tr {
+	height: 40px;
+	border: none;
+	border-bottom: dashed 1px #e7e7e7;
+	line-height: 40px;
+}
+
+.td_case_id {
+	width: 65%;
+}
+
+.td_case_id>div {
+	float: left;
+}
+
+.td_case_id textarea {
+	display: none;
+}
+
+.level_icon {
+	margin: 6px -5px 0px 10px;
+}
+
+.td_case_opt {
+	width: 35%;
+}
+
+.td_case_opt div {
+	float: left;
+	margin-left: 4px;
+}
+
+.icon_item {
+	display: none;
+}
+
+.case_loading {
+	text-align: center;
+}
+
+.case_loading img {
+	padding-top: 10px;
+}
+
+.case_add {
+	border: none;
+}
+
+.case_add td {
+	cursor: auto;
+}
+
+.case_add td>div {
+	text-align: center;
+}
+
+.case_add span {
+	padding: 0px 10px 0px 10px;
+	border: dashed 1px #e7e7e7;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+}

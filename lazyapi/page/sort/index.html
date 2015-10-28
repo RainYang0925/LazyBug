@@ -1,0 +1,202 @@
+<?php $this->load('Sort.Check'); ?>
+<?php $this->load('Sort.Call'); ?>
+<?php $this->load('Sort.Store'); ?>
+<?php $this->load('Sort.Reload'); ?>
+<div class="global_content_div">
+	<div class="global_content_title">
+		<span>
+			<?php echo htmlspecialchars($this->get_data('item_name')) . ' : ' . htmlspecialchars($this->get_data('case_name')); ?>
+		</span>
+		<input id="input_reload_id" type="hidden"
+			value="<?php echo $this->get_data('case_id'); ?>" />
+	</div>
+	<div id="div_sortable">
+		<div id="div_step_0" class="global_content_area step_line">
+			<div>
+				<div class="run_sign">
+					<img src="/static/img/sort/current.jpg" />
+				</div>
+				<div class="step_type">
+					<div>
+						<img src="/static/img/sort/step_call.png" />
+					</div>
+					<div>
+						<span>接口调用</span>
+					</div>
+				</div>
+				<div class="step_name step_self">
+					<span>
+						调用:
+						<?php echo $this->get_data('item_name') . ' '.$this->get_data('case_name'); ?>
+					</span>
+					<input name="stepcommand" type="hidden" value="self" />
+					<input name="stepvalue" type="hidden"
+						value="<?php echo $this->get_data('case_id'); ?>" />
+				</div>
+				<div class="step_option">
+					<div>
+						<a class="icon_up" title="上移" href="javascript:void(0);">
+							<img src="/static/img/icon/up.jpg" />
+						</a>
+					</div>
+					<div>
+						<a class="icon_down" title="下移" href="javascript:void(0);">
+							<img src="/static/img/icon/down.jpg" />
+						</a>
+					</div>
+					<div class="step_option_add">
+						<div>
+							<a class="icon_add" title="增加" href="javascript:void(0);">
+								<img src="/static/img/icon/add.jpg" />
+							</a>
+						</div>
+						<div class="step_option_more">
+							<div class="icon_add_check">
+								<div>
+									<a title="检查点" href="javascript:void(0);">
+										<img src="/static/img/sort/step_check.png" />
+									</a>
+								</div>
+								<div>
+									<span>检查点</span>
+								</div>
+							</div>
+							<div class="icon_add_call">
+								<div>
+									<a title="接口调用" href="javascript:void(0);">
+										<img src="/static/img/sort/step_call.png" />
+									</a>
+								</div>
+								<div>
+									<span>接口调用</span>
+								</div>
+							</div>
+							<div class="icon_add_store">
+								<div>
+									<a title="存储查询" href="javascript:void(0);">
+										<img src="/static/img/sort/step_store.png" />
+									</a>
+								</div>
+								<div>
+									<span>存储查询</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="clear: both"></div>
+		</div>
+		<div class="global_content_area step_line step_tmp">
+			<div>
+				<div class="run_sign">
+					<img src="/static/img/sort/current.jpg" />
+				</div>
+				<div class="step_type">
+					<div>
+						<img src="/static/img/sort/step_call.png" />
+					</div>
+					<div>
+						<span></span>
+						<input name="stepcommand" type="hidden" value="" />
+						<input name="stepvalue" type="hidden" value="" />
+					</div>
+				</div>
+				<div class="step_name">
+					<span></span>
+				</div>
+				<div class="step_option">
+					<div>
+						<a class="icon_up" title="上移" href="javascript:void(0);">
+							<img src="/static/img/icon/up.jpg" />
+						</a>
+					</div>
+					<div>
+						<a class="icon_down" title="下移" href="javascript:void(0);">
+							<img src="/static/img/icon/down.jpg" />
+						</a>
+					</div>
+					<div>
+						<a class="icon_edit" title="编辑" href="javascript:void(0);">
+							<img src="/static/img/icon/edit.jpg" />
+						</a>
+					</div>
+					<div class="step_option_add">
+						<div>
+							<a class="icon_add" title="增加" href="javascript:void(0);">
+								<img src="/static/img/icon/add.jpg" />
+							</a>
+						</div>
+						<div class="step_option_more">
+							<div class="icon_add_check">
+								<div>
+									<a title="检查点" href="javascript:void(0);">
+										<img src="/static/img/sort/step_check.png" />
+									</a>
+								</div>
+								<div>
+									<span>检查点</span>
+								</div>
+							</div>
+							<div class="icon_add_call">
+								<div>
+									<a title="接口调用" href="javascript:void(0);">
+										<img src="/static/img/sort/step_call.png" />
+									</a>
+								</div>
+								<div>
+									<span>接口调用</span>
+								</div>
+							</div>
+							<div class="icon_add_store">
+								<div>
+									<a title="存储查询" href="javascript:void(0);">
+										<img src="/static/img/sort/step_store.png" />
+									</a>
+								</div>
+								<div>
+									<span>存储查询</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<a class="icon_delete" title="移除" href="javascript:void(0);">
+							<img src="/static/img/icon/delete.jpg" />
+						</a>
+					</div>
+				</div>
+			</div>
+			<div style="clear: both"></div>
+		</div>
+	</div>
+	<div class="global_content_area result_line result_tmp">
+		<span></span>
+	</div>
+	<div class="global_content_level">
+		<div class="save_button">
+			<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+			<div id="div_save">
+				<a href="javascript:void(0);">
+					<img id="img_save" src="/static/img/sort/save.jpg" />
+				</a>
+			</div>
+			<div id="div_saved">
+				<a href="javascript:void(0);">
+					<img src="/static/img/sort/saved.jpg" />
+				</a>
+			</div>
+			<?php } ?>
+			<div id="div_run">
+				<a href="javascript:void(0);">
+					<img id="img_test" src="/static/img/sort/run.jpg" />
+				</a>
+			</div>
+			<div id="div_loading">
+				<a href="javascript:void(0);">
+					<img src="/static/img/icon/loading.gif" />
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
