@@ -33,6 +33,7 @@ class Model_Conf extends Mod_Model_Relation {
 
 	public function get_by_keyword($package_id, $type, $keyword) {
 		$where = array (
+				'package_id' => $package_id,
 				'type' => $type,
 				'keyword' => $keyword,
 				'status' => 1 

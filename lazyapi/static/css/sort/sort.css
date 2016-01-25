@@ -72,6 +72,17 @@
 	height: 100px;
 }
 
+#div_option {
+	width: 600px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -300px;
+}
+
+.select_package {
+	width: 440px;
+}
+
 .step_tmp {
 	display: none;
 }

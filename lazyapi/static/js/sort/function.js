@@ -71,6 +71,15 @@ form_store_items = {
 	}
 }
 
+form_option_items = {
+	icase : {
+		empty : 0,
+		type : "select",
+		name : "optionpackage",
+		def : ""
+	}
+}
+
 request_step_info = function(case_id) {
 	$.ajax({
 		url : "/api/step/info",
@@ -247,7 +256,29 @@ load_case_list = function(item_id) {
 	});
 }
 
-run_step = function(current, result) {
+load_package_list = function() {
+	$("#select_optionpackage").empty();
+	$("#select_optionpackage").append(get_option("0", "预设配置"));
+	$.ajax({
+		url : "/api/package/list",
+		type : "post",
+		dataType : "json",
+		data : {},
+		success : function(data) {
+			$.each(data, function(index, obj) {
+				if (!obj.id) {
+					return;
+				}
+				$("#select_optionpackage").append(get_option(obj.id, obj.name));
+			});
+		},
+		error : function(data) {
+
+		}
+	});
+}
+
+run_step = function(current, package_id, result) {
 	var $step_list = $(".step_line:not(.step_tmp)");
 	if (current >= $step_list.length) {
 		change_status(1);
@@ -272,13 +303,13 @@ run_step = function(current, result) {
 			success : function(data) {
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, result);
+					run_step(current + 1, package_id, result);
 				});
 			},
 			error : function(data) {
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, result);
+					run_step(current + 1, package_id, result);
 				});
 			}
 		});
@@ -290,19 +321,20 @@ run_step = function(current, result) {
 			data : {
 				temp : 1,
 				extend : result,
-				callid : step_value
+				callid : step_value,
+				packageid : package_id
 			},
 			success : function(data) {
 				result = data;
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, result);
+					run_step(current + 1, package_id, result);
 				});
 			},
 			error : function(data) {
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, result);
+					run_step(current + 1, package_id, result);
 				});
 			}
 		});
@@ -314,19 +346,20 @@ run_step = function(current, result) {
 			data : {
 				temp : 1,
 				command : step_command,
-				value : step_value
+				value : step_value,
+				packageid : package_id
 			},
 			success : function(data) {
 				result = data;
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, result);
+					run_step(current + 1, package_id, result);
 				});
 			},
 			error : function(data) {
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, result);
+					run_step(current + 1, package_id, result);
 				});
 			}
 		});
@@ -382,11 +415,13 @@ change_status = function(status) {
 		if (status == -1) {
 			$("#div_saved").hide();
 			$("#div_run").hide();
+			$("#div_clear").hide();
 			$("#div_loading").show();
 		} else {
 			$("#div_loading").delay(300).hide(0, function() {
 				$("#div_saved").show();
 				$("#div_run").show();
+				$("#div_clear").show();
 			});
 		}
 	} else {

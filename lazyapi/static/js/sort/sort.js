@@ -265,6 +265,22 @@ $(document).ready(function() {
 		}
 	});
 
+	$(".edit_option_close").click(function() {
+		global_board_show("option", 0, 0);
+	});
+
+	$(".edit_option_cancel").click(function() {
+		global_board_show("option", 0, 0);
+	});
+
+	$("#img_edit_option_ok").click(function() {
+		var package_id = parseInt($("#select_optionpackage").val());
+		$(".result_line:not(.result_tmp)").remove();
+		change_status(-1);
+		global_board_show("option", 0, 0);
+		run_step(0, package_id, "");
+	});
+
 	$(".icon_delete").click(function() {
 		var $parent = $(this).parent().parent().parent().parent();
 		$parent.remove();
@@ -278,8 +294,11 @@ $(document).ready(function() {
 	});
 
 	$("#img_test").click(function() {
+		global_board_show("option", 1, 0);
+		load_package_list();
+	});
+
+	$("#img_clear").click(function() {
 		$(".result_line:not(.result_tmp)").remove();
-		change_status(-1);
-		run_step(0, "");
 	});
 });
