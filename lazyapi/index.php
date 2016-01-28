@@ -1,3 +1,3 @@
 <?php
 ini_set ( 'date.timezone', 'Asia/Shanghai' );
-require '/framework/lazybug.php';
+require './framework/lazybug.php';
