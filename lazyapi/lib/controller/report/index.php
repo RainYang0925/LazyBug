@@ -6,21 +6,21 @@ class Controller_Report_Index extends Controller_Report_Base {
 		$id = ( int ) Util_Server_Request::get_param ( 'id' );
 		
 		if (! $id) {
-			Util_Server_Response::set_header_location ( '/run' );
+			Util_Server_Response::set_header_location ( '/index.php/run' );
 			exit ();
 		}
 		
 		$history = M ( 'History' )->get_by_id ( $id );
 		
 		if (! $history) {
-			Util_Server_Response::set_header_location ( '/run' );
+			Util_Server_Response::set_header_location ( '/index.php/run' );
 			exit ();
 		}
 		
 		$task = M ( 'Task' )->get_by_id ( ( int ) $history ['task_id'] );
 		
 		if (! $task) {
-			Util_Server_Response::set_header_location ( '/run' );
+			Util_Server_Response::set_header_location ( '/index.php/run' );
 			exit ();
 		}
 		

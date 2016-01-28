@@ -1,6 +1,6 @@
 request_result_info = function(history_id) {
 	$.ajax({
-		url : "/api/result/info",
+		url : "/index.php/api/result/info",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -44,7 +44,7 @@ request_result_info = function(history_id) {
 request_result_content = function($parent) {
 	var result_id = $parent.find("input[name=resultid]").val().trim();
 	$.ajax({
-		url : "/api/result/content",
+		url : "/index.php/api/result/content",
 		type : "post",
 		dataType : "text",
 		data : {
@@ -63,7 +63,7 @@ load_step_list = function($parent) {
 	var item_id = $parent.parent().parent().find("input[name=itemid]").val().trim();
 	var case_id = $parent.find("input[name=caseid]").val().trim();
 	$.ajax({
-		url : "/api/result/step",
+		url : "/index.php/api/result/step",
 		type : "post",
 		dataType : "json",
 		data : {

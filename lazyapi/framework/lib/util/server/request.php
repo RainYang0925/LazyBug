@@ -4,9 +4,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Util_Server_Request {
-	
+
 	/**
 	 * 获得REQUEST参数
 	 *
@@ -17,7 +16,7 @@ class Util_Server_Request {
 	public static function get_request($key = '') {
 		return $key === '' ? $_REQUEST : (isset ( $_REQUEST [$key] ) ? $_REQUEST [$key] : '');
 	}
-	
+
 	/**
 	 * 获得COOKIE参数
 	 *
@@ -28,7 +27,7 @@ class Util_Server_Request {
 	public static function get_cookie($key = '') {
 		return $key === '' ? $_COOKIE : (isset ( $_COOKIE [$key] ) ? $_COOKIE [$key] : '');
 	}
-	
+
 	/**
 	 * 获得GET/POST参数
 	 *

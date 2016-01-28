@@ -6,9 +6,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Mod_View_XML extends Lb_View {
-	
+
 	/**
 	 * 文档对象
 	 *
@@ -16,7 +15,7 @@ class Mod_View_XML extends Lb_View {
 	 * @var object $dom 文档对象
 	 */
 	private $dom = NULL;
-	
+
 	/**
 	 * 构造函数
 	 *
@@ -27,7 +26,7 @@ class Mod_View_XML extends Lb_View {
 		Util_Server_Response::set_header ( "Content-type", "text/xml" );
 		$this->dom = new DomDocument ( $version, $charset );
 	}
-	
+
 	/**
 	 * 获得文档对象
 	 *
@@ -37,7 +36,7 @@ class Mod_View_XML extends Lb_View {
 	public function get_dom() {
 		return $this->dom;
 	}
-	
+
 	/**
 	 * 输出文档数据
 	 *

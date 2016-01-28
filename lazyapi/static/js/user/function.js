@@ -21,7 +21,7 @@ form_user_items = {
 
 request_user_add = function(user_name, user_password, user_role) {
 	$.ajax({
-		url : "/api/user/add",
+		url : "/index.php/api/user/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -63,7 +63,7 @@ request_user_add = function(user_name, user_password, user_role) {
 
 request_user_update = function(user_id, user_name, user_password, user_role) {
 	$.ajax({
-		url : "/api/user/update",
+		url : "/index.php/api/user/update",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -94,7 +94,7 @@ request_user_update = function(user_id, user_name, user_password, user_role) {
 
 request_user_delete = function(user_id) {
 	$.ajax({
-		url : "/api/user/delete",
+		url : "/index.php/api/user/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -112,7 +112,7 @@ request_user_delete = function(user_id) {
 
 load_user_list = function(page, size) {
 	$.ajax({
-		url : "/api/user/list",
+		url : "/index.php/api/user/list",
 		type : "post",
 		dataType : "json",
 		data : {

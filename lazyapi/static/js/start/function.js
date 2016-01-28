@@ -27,7 +27,7 @@ form_case_items = {
 
 request_item_info = function(item_id, case_data) {
 	$.ajax({
-		url : "/api/item/info",
+		url : "/index.php/api/item/info",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -48,7 +48,7 @@ request_item_info = function(item_id, case_data) {
 
 request_case_info = function(case_id) {
 	$.ajax({
-		url : "/api/case/info",
+		url : "/index.php/api/case/info",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -69,7 +69,7 @@ request_case_info = function(case_id) {
 
 request_case_save = function(item_name, case_name, send_type, item_url) {
 	$.ajax({
-		url : "/api/case/save",
+		url : "/index.php/api/case/save",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -91,7 +91,7 @@ request_case_save = function(item_name, case_name, send_type, item_url) {
 
 request_case_request = function(send_type, item_url) {
 	$.ajax({
-		url : "/api/case/request",
+		url : "/index.php/api/case/request",
 		type : "post",
 		dataType : "json",
 		data : {

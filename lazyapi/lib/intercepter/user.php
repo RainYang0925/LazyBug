@@ -5,7 +5,7 @@ class Intercepter_User extends Intercepter_Base {
 		// 用户合法检查
 		if (! $this->check_cookie ()) {
 			$this->unset_cookie ();
-			Util_Server_Response::set_header_location ( '/login' );
+			Util_Server_Response::set_header_location ( '/index.php/login' );
 			exit ();
 		}
 	}

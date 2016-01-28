@@ -48,7 +48,7 @@ form_data_items = {
 
 request_package_add = function(package_name) {
 	$.ajax({
-		url : "/api/package/add",
+		url : "/index.php/api/package/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -83,7 +83,7 @@ request_package_add = function(package_name) {
 
 request_package_update = function(package_id, package_name) {
 	$.ajax({
-		url : "/api/package/update",
+		url : "/index.php/api/package/update",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -107,7 +107,7 @@ request_package_update = function(package_id, package_name) {
 
 request_package_delete = function(package_id) {
 	$.ajax({
-		url : "/api/package/delete",
+		url : "/index.php/api/package/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -125,7 +125,7 @@ request_package_delete = function(package_id) {
 
 request_config_add = function(package_id, config_type, config_keyword, config_value) {
 	$.ajax({
-		url : "/api/conf/add",
+		url : "/index.php/api/conf/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -167,7 +167,7 @@ request_config_add = function(package_id, config_type, config_keyword, config_va
 
 request_config_update = function(config_id, package_id, config_type, config_keyword, config_value) {
 	$.ajax({
-		url : "/api/conf/update",
+		url : "/index.php/api/conf/update",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -200,7 +200,7 @@ request_config_update = function(config_id, package_id, config_type, config_keyw
 
 request_config_delete = function(config_id) {
 	$.ajax({
-		url : "/api/conf/delete",
+		url : "/index.php/api/conf/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -218,7 +218,7 @@ request_config_delete = function(config_id) {
 
 load_package_list = function() {
 	$.ajax({
-		url : "/api/package/list",
+		url : "/index.php/api/package/list",
 		type : "post",
 		dataType : "json",
 		data : {},
@@ -245,7 +245,7 @@ load_package_list = function() {
 
 load_config_list = function(package_id, type, page, size) {
 	$.ajax({
-		url : "/api/conf/list",
+		url : "/index.php/api/conf/list",
 		type : "post",
 		dataType : "json",
 		data : {

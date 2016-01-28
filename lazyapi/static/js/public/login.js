@@ -53,13 +53,13 @@ $(document).ready(function() {
 		if (!global_form_check(form_user_items)) {
 			return;
 		}
-		$.post("/api/login", $("#form_login").serialize(), function(data, status) {
+		$.post("/index.php/api/login", $("#form_login").serialize(), function(data, status) {
 			if (status !== "success") {
 				return;
 			}
 			data = JSON.parse(data);
 			if (data.code === "000000") {
-				window.location.href = "/";
+				window.location.href = "/index.php";
 				return;
 			}
 			$("#input_password").attr("placeholder", "登录验证失败，请重新确认");

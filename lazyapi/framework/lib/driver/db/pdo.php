@@ -6,9 +6,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Driver_Db_Pdo extends PDO {
-	
+
 	/**
 	 * 构造函数
 	 *
@@ -29,7 +28,7 @@ class Driver_Db_Pdo extends PDO {
 				) 
 		) );
 	}
-	
+
 	/**
 	 * 查询预处理
 	 *
@@ -41,7 +40,7 @@ class Driver_Db_Pdo extends PDO {
 	public function prepare($statement, $driver_options = array()) {
 		return parent::prepare ( $statement, $driver_options );
 	}
-	
+
 	/**
 	 * 查询数据
 	 *
@@ -52,7 +51,7 @@ class Driver_Db_Pdo extends PDO {
 	public function query($statement) {
 		return parent::query ( $statement );
 	}
-	
+
 	/**
 	 * 执行更新
 	 *

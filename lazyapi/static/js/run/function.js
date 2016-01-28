@@ -40,7 +40,7 @@ form_task_items = {
 
 request_task_list = function(page, size, history_size) {
 	$.ajax({
-		url : "/api/task/list",
+		url : "/index.php/api/task/list",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -78,7 +78,7 @@ request_task_list = function(page, size, history_size) {
 
 request_task_add = function(task_name, task_package, task_module, task_level, task_runtime, print_time, print_package) {
 	$.ajax({
-		url : "/api/task/add",
+		url : "/index.php/api/task/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -122,7 +122,7 @@ request_task_add = function(task_name, task_package, task_module, task_level, ta
 
 request_task_hang = function(task_id, task_hang) {
 	$.ajax({
-		url : "/api/task/hang",
+		url : "/index.php/api/task/hang",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -148,7 +148,7 @@ request_task_hang = function(task_id, task_hang) {
 
 request_task_update = function(task_id, task_name, task_package, task_module, task_level, task_runtime, print_time, print_package) {
 	$.ajax({
-		url : "/api/task/update",
+		url : "/index.php/api/task/update",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -182,7 +182,7 @@ request_task_update = function(task_id, task_name, task_package, task_module, ta
 
 request_task_delete = function(task_id) {
 	$.ajax({
-		url : "/api/task/delete",
+		url : "/index.php/api/task/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -200,7 +200,7 @@ request_task_delete = function(task_id) {
 
 request_job_add = function(task_id) {
 	$.ajax({
-		url : "/api/job/add",
+		url : "/index.php/api/job/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -225,7 +225,7 @@ request_job_add = function(task_id) {
 
 request_job_delete = function(task_id) {
 	$.ajax({
-		url : "/api/job/delete",
+		url : "/index.php/api/job/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -249,7 +249,7 @@ request_job_delete = function(task_id) {
 
 load_task_list = function(page, size, history_size) {
 	$.ajax({
-		url : "/api/task/list",
+		url : "/index.php/api/task/list",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -305,7 +305,7 @@ load_task_list = function(page, size, history_size) {
 						var $new_report = $new_task.find(".task_report_tmp").clone(true);
 						$new_report.removeClass("task_report_tmp").attr("id", "div_task_report_" + obj.id);
 						$new_report.find(".task_report_detail").find("span").text(obj.runtime + " 检查点通过 : " + obj.pass + " 失败 : " + obj.fail);
-						$new_report.find(".task_report_opt").find("a").attr("href", "/report?id=" + obj.id);
+						$new_report.find(".task_report_opt").find("a").attr("href", "/index.php/report?id=" + obj.id);
 						$new_task.find(".no_report").before($new_report);
 					});
 				} else {
@@ -323,7 +323,7 @@ load_task_list = function(page, size, history_size) {
 
 load_package_list = function() {
 	$.ajax({
-		url : "/api/package/list",
+		url : "/index.php/api/package/list",
 		type : "post",
 		dataType : "json",
 		data : {},
@@ -343,7 +343,7 @@ load_package_list = function() {
 
 load_module_list = function() {
 	$.ajax({
-		url : "/api/module/list",
+		url : "/index.php/api/module/list",
 		type : "post",
 		dataType : "json",
 		data : {},

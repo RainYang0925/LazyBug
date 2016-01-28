@@ -6,21 +6,21 @@ class Controller_Sort_Index extends Controller_Sort_Base {
 		$id = ( int ) Util_Server_Request::get_param ( 'id' );
 		
 		if (! $id) {
-			Util_Server_Response::set_header_location ( '/list' );
+			Util_Server_Response::set_header_location ( '/index.php/list' );
 			exit ();
 		}
 		
 		$case = M ( 'Case' )->get_by_id ( $id );
 		
 		if (! $case) {
-			Util_Server_Response::set_header_location ( '/list' );
+			Util_Server_Response::set_header_location ( '/index.php/list' );
 			exit ();
 		}
 		
 		$item = M ( 'Item' )->get_by_id ( ( int ) $case ['item_id'] );
 		
 		if (! $item) {
-			Util_Server_Response::set_header_location ( '/list' );
+			Util_Server_Response::set_header_location ( '/index.php/list' );
 			exit ();
 		}
 		

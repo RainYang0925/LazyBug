@@ -82,7 +82,7 @@ form_option_items = {
 
 request_step_info = function(case_id) {
 	$.ajax({
-		url : "/api/step/info",
+		url : "/index.php/api/step/info",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -136,7 +136,7 @@ request_step_info = function(case_id) {
 
 request_step_save = function(case_id) {
 	$.ajax({
-		url : "/api/step/delete",
+		url : "/index.php/api/step/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -160,7 +160,7 @@ request_step_save = function(case_id) {
 
 request_step_add = function(case_id, step_name, step_type, step_command, step_value, step_sequence) {
 	$.ajax({
-		url : "/api/step/add",
+		url : "/index.php/api/step/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -187,7 +187,7 @@ load_module_list = function() {
 	$("#select_callmodule").append(get_option("", "请选择一个模块..."));
 	$("#select_callmodule").append(get_option("0", "全部模块"));
 	$.ajax({
-		url : "/api/module/list",
+		url : "/index.php/api/module/list",
 		type : "post",
 		dataType : "json",
 		data : {},
@@ -210,7 +210,7 @@ load_item_list = function(module_id) {
 	$("#select_callcase").empty();
 	$("#select_callitem").append(get_option("", "请选择一个接口..."));
 	$.ajax({
-		url : "/api/item/list",
+		url : "/index.php/api/item/list",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -236,7 +236,7 @@ load_case_list = function(item_id) {
 	$("#select_callcase").empty();
 	$("#select_callcase").append(get_option("", "请选择一个用例..."));
 	$.ajax({
-		url : "/api/case/list",
+		url : "/index.php/api/case/list",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -260,7 +260,7 @@ load_package_list = function() {
 	$("#select_optionpackage").empty();
 	$("#select_optionpackage").append(get_option("0", "预设配置"));
 	$.ajax({
-		url : "/api/package/list",
+		url : "/index.php/api/package/list",
 		type : "post",
 		dataType : "json",
 		data : {},
@@ -291,7 +291,7 @@ run_step = function(current, package_id, result) {
 	$step.find(".run_sign").show();
 	if (step_type === "检查点") {
 		$.ajax({
-			url : "/api/server/check",
+			url : "/index.php/api/server/check",
 			type : "post",
 			dataType : "text",
 			data : {
@@ -315,7 +315,7 @@ run_step = function(current, package_id, result) {
 		});
 	} else if (step_type === "接口调用") {
 		$.ajax({
-			url : "/api/server/call",
+			url : "/index.php/api/server/call",
 			type : "post",
 			dataType : "text",
 			data : {
@@ -340,7 +340,7 @@ run_step = function(current, package_id, result) {
 		});
 	} else if (step_type === "存储查询") {
 		$.ajax({
-			url : "/api/server/store",
+			url : "/index.php/api/server/store",
 			type : "post",
 			dataType : "text",
 			data : {

@@ -6,9 +6,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Driver_Db_Factory {
-	
+
 	/**
 	 * 对象列表
 	 *
@@ -16,7 +15,7 @@ class Driver_Db_Factory {
 	 * @static array $db_list 对象列表
 	 */
 	private static $db_list = array ();
-	
+
 	/**
 	 * 获得连接
 	 *
@@ -30,7 +29,7 @@ class Driver_Db_Factory {
 		}
 		return self::$db_list [$name];
 	}
-	
+
 	/**
 	 * 关闭连接
 	 *

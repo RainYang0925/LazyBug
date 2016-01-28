@@ -4,9 +4,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Util_Server_Response {
-	
+
 	/**
 	 * 设置请求头
 	 *
@@ -19,7 +18,7 @@ class Util_Server_Response {
 	public static function set_header($key, $value, $replace = TRUE, $code = NULL) {
 		header ( $key . ':' . $value, $replace ? TRUE : FALSE, $code );
 	}
-	
+
 	/**
 	 * 设置状态请求头
 	 *
@@ -29,7 +28,7 @@ class Util_Server_Response {
 	public static function set_header_status($status) {
 		self::set_header ( 'Status', $status );
 	}
-	
+
 	/**
 	 * 设置定向请求头
 	 *

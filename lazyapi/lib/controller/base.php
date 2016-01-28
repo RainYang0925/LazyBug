@@ -4,7 +4,7 @@ abstract class Controller_Base extends Lb_Controller {
 	public function check_page_auth() {
 		// 页面授权检查
 		if (! $this->check_auth ()) {
-			Util_Server_Response::set_header_location ( '/auth' );
+			Util_Server_Response::set_header_location ( '/index.php/auth' );
 			exit ();
 		}
 	}

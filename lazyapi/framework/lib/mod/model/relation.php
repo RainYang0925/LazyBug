@@ -6,9 +6,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Mod_Model_Relation extends Lb_Model {
-	
+
 	/**
 	 * 数据库连接
 	 *
@@ -16,7 +15,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @var object $db_connect 数据库连接
 	 */
 	private $db_connect = NULL;
-	
+
 	/**
 	 * 查询语句
 	 *
@@ -24,7 +23,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @var string $statement 查询语句
 	 */
 	public $statement = '';
-	
+
 	/**
 	 * 查询参数
 	 *
@@ -32,7 +31,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @var array $params 查询参数
 	 */
 	private $params = array ();
-	
+
 	/**
 	 * 选择标识
 	 *
@@ -40,7 +39,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @var bool $selected 是否已选择
 	 */
 	private $selected = FALSE;
-	
+
 	/**
 	 * 数据表名
 	 *
@@ -48,7 +47,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @var string $table_name 数据表名
 	 */
 	protected $table_name = '';
-	
+
 	/**
 	 * 表名前缀
 	 *
@@ -56,7 +55,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @var string $table_prefix 表名前缀
 	 */
 	protected $table_prefix = '';
-	
+
 	/**
 	 * 表名后缀
 	 *
@@ -64,7 +63,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @var string $table_subffix 表名后缀
 	 */
 	protected $table_suffix = '';
-	
+
 	/**
 	 * 映射字段
 	 *
@@ -72,7 +71,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @var array $fields 映射字段
 	 */
 	protected $fields = array ();
-	
+
 	/**
 	 * 构造函数
 	 *
@@ -86,7 +85,7 @@ class Mod_Model_Relation extends Lb_Model {
 		$this->table_suffix || $this->table_suffix = lb_read_system ( 'table_suffix' );
 		$this->table ( $this->table_name );
 	}
-	
+
 	/**
 	 * 字段映射
 	 *
@@ -100,7 +99,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return $fields;
 	}
-	
+
 	/**
 	 * 选择映射
 	 *
@@ -111,7 +110,7 @@ class Mod_Model_Relation extends Lb_Model {
 	private function select_mapping($params) {
 		return implode ( ',', $params );
 	}
-	
+
 	/**
 	 * 插入映射
 	 *
@@ -126,7 +125,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return implode ( ',', $exp );
 	}
-	
+
 	/**
 	 * 更新映射
 	 *
@@ -141,7 +140,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return implode ( ',', $exp );
 	}
-	
+
 	/**
 	 * 条件映射
 	 *
@@ -166,7 +165,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return implode ( ' ' . $logic . ' ', $exp );
 	}
-	
+
 	/**
 	 * 排序映射
 	 *
@@ -184,7 +183,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return implode ( ',', $exp );
 	}
-	
+
 	/**
 	 * 设置表名
 	 *
@@ -197,7 +196,7 @@ class Mod_Model_Relation extends Lb_Model {
 		$this->table_name = $this->table_prefix . $table_name . $this->table_suffix;
 		return $this;
 	}
-	
+
 	/**
 	 * Select 语句
 	 *
@@ -217,7 +216,7 @@ class Mod_Model_Relation extends Lb_Model {
 		$this->selected = TRUE;
 		return $this;
 	}
-	
+
 	/**
 	 * Insert 语句
 	 *
@@ -236,7 +235,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return $this->exec ();
 	}
-	
+
 	/**
 	 * Update 语句
 	 *
@@ -255,7 +254,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return $this->exec ();
 	}
-	
+
 	/**
 	 * Delete 语句
 	 *
@@ -266,7 +265,7 @@ class Mod_Model_Relation extends Lb_Model {
 		$this->statement = 'delete from ' . $this->table_name . $this->statement;
 		return $this->exec ();
 	}
-	
+
 	/**
 	 * Where 语句
 	 *
@@ -285,7 +284,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return $this;
 	}
-	
+
 	/**
 	 * Group By 语句
 	 *
@@ -304,7 +303,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return $this;
 	}
-	
+
 	/**
 	 * Having 语句
 	 *
@@ -323,7 +322,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return $this;
 	}
-	
+
 	/**
 	 * Order 语句
 	 *
@@ -342,7 +341,7 @@ class Mod_Model_Relation extends Lb_Model {
 		}
 		return $this;
 	}
-	
+
 	/**
 	 * Limit 语句
 	 *
@@ -354,7 +353,7 @@ class Mod_Model_Relation extends Lb_Model {
 		$params && $this->statement = $this->statement . ' limit ' . $params;
 		return $this;
 	}
-	
+
 	/**
 	 * 获取单行结果
 	 *
@@ -369,7 +368,7 @@ class Mod_Model_Relation extends Lb_Model {
 		$this->selected = FALSE;
 		return $return;
 	}
-	
+
 	/**
 	 * 获取全部结果
 	 *
@@ -384,7 +383,7 @@ class Mod_Model_Relation extends Lb_Model {
 		$this->selected = FALSE;
 		return $return;
 	}
-	
+
 	/**
 	 * 执行结果
 	 *

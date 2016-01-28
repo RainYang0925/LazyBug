@@ -6,18 +6,16 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Driver_Db_Pdostatement extends PDOStatement {
-	
+
 	/**
 	 * 构造函数
 	 *
 	 * @access private
 	 */
 	private function __construct() {
-	
 	}
-	
+
 	/**
 	 * 执行查询
 	 *
@@ -28,7 +26,7 @@ class Driver_Db_Pdostatement extends PDOStatement {
 	public function execute($params = array()) {
 		return parent::execute ( $params );
 	}
-	
+
 	/**
 	 * 获得错误码
 	 *
@@ -38,7 +36,7 @@ class Driver_Db_Pdostatement extends PDOStatement {
 	public function get_error_code() {
 		return parent::errorCode ();
 	}
-	
+
 	/**
 	 * 获得错误信息
 	 *
@@ -48,7 +46,7 @@ class Driver_Db_Pdostatement extends PDOStatement {
 	public function get_error_info() {
 		return parent::errorInfo ();
 	}
-	
+
 	/**
 	 * 获得行数
 	 *
@@ -58,7 +56,7 @@ class Driver_Db_Pdostatement extends PDOStatement {
 	public function get_row_count() {
 		return parent::rowCount ();
 	}
-	
+
 	/**
 	 * 获得列数
 	 *
@@ -68,7 +66,7 @@ class Driver_Db_Pdostatement extends PDOStatement {
 	public function get_column_count() {
 		return parent::columnCount ();
 	}
-	
+
 	/**
 	 * 获取所有返回
 	 *
@@ -78,7 +76,7 @@ class Driver_Db_Pdostatement extends PDOStatement {
 	public function fetch_all() {
 		return parent::fetchAll ();
 	}
-	
+
 	/**
 	 * 获取单行返回
 	 *
@@ -88,7 +86,7 @@ class Driver_Db_Pdostatement extends PDOStatement {
 	public function fetch_row() {
 		return parent::fetch ();
 	}
-	
+
 	/**
 	 * 获取单列返回
 	 *
@@ -99,7 +97,7 @@ class Driver_Db_Pdostatement extends PDOStatement {
 	public function fetch_column($column_num = 0) {
 		return parent::fetchColumn ( $column_num );
 	}
-	
+
 	/**
 	 * 获取对象返回
 	 *

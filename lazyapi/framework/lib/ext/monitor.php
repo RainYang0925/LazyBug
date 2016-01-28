@@ -6,9 +6,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Lb_Ext_Monitor {
-	
+
 	/**
 	 * 性能数据
 	 *
@@ -16,7 +15,7 @@ class Lb_Ext_Monitor {
 	 * @static array $performance_data 性能数据
 	 */
 	private static $performance_data = array ();
-	
+
 	/**
 	 * 开始监测
 	 *
@@ -26,7 +25,7 @@ class Lb_Ext_Monitor {
 	public static function start($key) {
 		self::$performance_data [$key] ['begin'] = microtime ( TRUE );
 	}
-	
+
 	/**
 	 * 结束监测
 	 *

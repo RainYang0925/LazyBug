@@ -321,7 +321,7 @@ $(document).ready(function() {
 	$(".case_load").click(function() {
 		var $parent = $(this).parent().parent().parent();
 		var case_id = $parent.find("input[name=caseid]").val().trim();
-		window.location.href = "/start?reload=" + case_id;
+		window.location.href = "/index.php/start?reload=" + case_id;
 	});
 
 	$(".case_sort").hover(function() {
@@ -333,7 +333,7 @@ $(document).ready(function() {
 	$(".case_sort").click(function() {
 		var $parent = $(this).parent().parent().parent()
 		var case_id = $parent.find("input[name=caseid]").val().trim();
-		window.location.href = "/sort?id=" + case_id;
+		window.location.href = "/index.php/sort?id=" + case_id;
 	});
 
 	$(".case_remove").hover(function() {

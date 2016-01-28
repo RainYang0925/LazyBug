@@ -24,7 +24,7 @@ form_password_items = {
 
 request_password_update = function(old_password, new_password) {
 	$.ajax({
-		url : "/api/user/password",
+		url : "/index.php/api/user/password",
 		type : "post",
 		dataType : "json",
 		data : {

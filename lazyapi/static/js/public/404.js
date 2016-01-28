@@ -8,6 +8,6 @@ public_404_change_time = function() {
 		$("#div_number>span").text(--time);
 	} else {
 		clearInterval(id);
-		window.location.href = "/";
+		window.location.href = "/index.php";
 	}
 }

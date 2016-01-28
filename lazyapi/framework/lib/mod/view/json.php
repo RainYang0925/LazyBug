@@ -6,9 +6,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Mod_View_Json extends Lb_View {
-	
+
 	/**
 	 * 对象数据
 	 *
@@ -16,7 +15,7 @@ class Mod_View_Json extends Lb_View {
 	 * @var string $data 对象数据
 	 */
 	private $data = array ();
-	
+
 	/**
 	 * 获得对象数据
 	 *
@@ -26,7 +25,7 @@ class Mod_View_Json extends Lb_View {
 	public function get_data() {
 		return $this->data;
 	}
-	
+
 	/**
 	 * 设置对象数据
 	 *
@@ -36,7 +35,7 @@ class Mod_View_Json extends Lb_View {
 	public function set_data($data) {
 		$this->data = $data;
 	}
-	
+
 	/**
 	 * 输出对象数据
 	 *

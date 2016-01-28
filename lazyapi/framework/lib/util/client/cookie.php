@@ -4,9 +4,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Util_Client_Cookie {
-	
+
 	/**
 	 * 设置Cookie
 	 *
@@ -24,7 +23,7 @@ class Util_Client_Cookie {
 		$domain || $domain = lb_read_system ( 'cookie_domain' );
 		return setcookie ( $key, $value, $time, $path, $domain );
 	}
-	
+
 	/**
 	 * 注销Cookie
 	 *

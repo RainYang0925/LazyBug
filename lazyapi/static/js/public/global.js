@@ -2,9 +2,9 @@
 	var path_name = window.document.location.pathname;
 	var user_agent = navigator.userAgent;
 	if (/MSIE ([^;]+)/.test(user_agent)) {
-		path_name === "/browser" || (window.location.href = "/browser");
+		path_name === "/index.php/browser" || (window.location.href = "/index.php/browser");
 	} else {
-		path_name === "/browser" && (window.location.href = "/");
+		path_name === "/index.php/browser" && (window.location.href = "/index.php");
 	}
 })();
 

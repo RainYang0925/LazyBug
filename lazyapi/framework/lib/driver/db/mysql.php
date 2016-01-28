@@ -6,9 +6,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Driver_Db_Mysql implements Driver_Db_Interface {
-	
+
 	/**
 	 * 数据库连接
 	 *
@@ -16,7 +15,7 @@ class Driver_Db_Mysql implements Driver_Db_Interface {
 	 * @var object $mysql_connect 数据库连接
 	 */
 	private $mysql_connect = NULL;
-	
+
 	/**
 	 * 连接数据库
 	 *
@@ -35,7 +34,7 @@ class Driver_Db_Mysql implements Driver_Db_Interface {
 		$this->mysql_connect->query ( 'set names ' . $charset );
 		return $this;
 	}
-	
+
 	/**
 	 * 查询数据库
 	 *
@@ -49,7 +48,7 @@ class Driver_Db_Mysql implements Driver_Db_Interface {
 		$stmt->execute ( ( array ) $params );
 		return $stmt;
 	}
-	
+
 	/**
 	 * 关闭数据库
 	 *

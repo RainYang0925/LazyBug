@@ -6,9 +6,8 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-
 class Lb_Ext_Logger {
-	
+
 	/**
 	 * 日志数据
 	 *
@@ -16,7 +15,7 @@ class Lb_Ext_Logger {
 	 * @static array $log_data 日志数据
 	 */
 	private static $log_data = array ();
-	
+
 	/**
 	 * 记录日志
 	 *

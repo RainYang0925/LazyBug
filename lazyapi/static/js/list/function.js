@@ -63,7 +63,7 @@ request_module_count = function(module_id) {
 	$parent.find(".count_num_item").html("<img src=\"/static/img/list/load.gif\" />");
 	$parent.find(".count_num_case").html("<img src=\"/static/img/list/load.gif\" />");
 	$.ajax({
-		url : "/api/module/count",
+		url : "/index.php/api/module/count",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -84,7 +84,7 @@ request_module_count = function(module_id) {
 
 request_module_add = function(module_name) {
 	$.ajax({
-		url : "/api/module/add",
+		url : "/index.php/api/module/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -125,7 +125,7 @@ request_module_add = function(module_name) {
 
 request_module_update = function(module_id, module_name) {
 	$.ajax({
-		url : "/api/module/update",
+		url : "/index.php/api/module/update",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -149,7 +149,7 @@ request_module_update = function(module_id, module_name) {
 
 request_module_delete = function(module_id) {
 	$.ajax({
-		url : "/api/module/delete",
+		url : "/index.php/api/module/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -167,7 +167,7 @@ request_module_delete = function(module_id) {
 
 request_item_switch = function(item_id, module_id, source_id) {
 	$.ajax({
-		url : "/api/item/switch",
+		url : "/index.php/api/item/switch",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -195,7 +195,7 @@ request_item_switch = function(item_id, module_id, source_id) {
 
 request_item_add = function(module_id, item_name, item_url) {
 	$.ajax({
-		url : "/api/item/add",
+		url : "/index.php/api/item/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -240,7 +240,7 @@ request_item_add = function(module_id, item_name, item_url) {
 
 request_item_update = function(item_id, item_name, item_url) {
 	$.ajax({
-		url : "/api/item/update",
+		url : "/index.php/api/item/update",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -266,7 +266,7 @@ request_item_update = function(item_id, item_name, item_url) {
 
 request_item_delete = function(item_id) {
 	$.ajax({
-		url : "/api/item/delete",
+		url : "/index.php/api/item/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -288,7 +288,7 @@ request_item_delete = function(item_id) {
 
 request_case_add = function(item_id, module_id, case_name, send_type, request_param, response_header) {
 	$.ajax({
-		url : "/api/case/add",
+		url : "/index.php/api/case/add",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -335,7 +335,7 @@ request_case_add = function(item_id, module_id, case_name, send_type, request_pa
 
 request_case_level = function(case_id, case_level) {
 	$.ajax({
-		url : "/api/case/level",
+		url : "/index.php/api/case/level",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -355,7 +355,7 @@ request_case_level = function(case_id, case_level) {
 
 request_case_update = function(case_id, case_name, send_type, request_param, response_header) {
 	$.ajax({
-		url : "/api/case/update",
+		url : "/index.php/api/case/update",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -386,7 +386,7 @@ request_case_update = function(case_id, case_name, send_type, request_param, res
 
 request_case_delete = function(case_id) {
 	$.ajax({
-		url : "/api/case/delete",
+		url : "/index.php/api/case/delete",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -408,7 +408,7 @@ request_case_delete = function(case_id) {
 
 load_module_list = function() {
 	$.ajax({
-		url : "/api/module/list",
+		url : "/index.php/api/module/list",
 		type : "post",
 		dataType : "json",
 		data : {},
@@ -441,7 +441,7 @@ load_module_list = function() {
 
 load_item_list = function(module_id, page, size) {
 	$.ajax({
-		url : "/api/item/list",
+		url : "/index.php/api/item/list",
 		type : "post",
 		dataType : "json",
 		data : {
@@ -484,7 +484,7 @@ load_item_list = function(module_id, page, size) {
 load_case_list = function($parent) {
 	var item_id = $parent.find("input[name=itemid]").val().trim();
 	$.ajax({
-		url : "/api/case/list",
+		url : "/index.php/api/case/list",
 		type : "post",
 		dataType : "json",
 		data : {
