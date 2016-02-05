@@ -11,15 +11,6 @@
 				placeholder="接口请求地址，如：http://www.lazybug.com/api/demo" />
 		</div>
 		<div>
-			<select id="select_sendtype" name="sendtype"
-				class="global_form_select select_send_type">
-				<option value="GET">GET</option>
-				<option value="POST">POST</option>
-				<option value="PUT">PUT</option>
-				<option value="DELETE">DELETE</option>
-			</select>
-		</div>
-		<div>
 			<img id="img_loading" src="/static/img/icon/loading.gif" />
 			<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
 			<a id="a_save" title="存储" href="javascript:void(0);">
@@ -30,32 +21,98 @@
 				value="<?php echo $this->get_data('reload_id'); ?>" />
 		</div>
 	</div>
+	<div class="global_content_level">
+		<div>
+			<select id="select_sendtype" name="sendtype"
+				class="global_form_select select_send_type">
+				<option value="GET">GET</option>
+				<option value="POST">POST</option>
+				<option value="PUT">PUT</option>
+				<option value="DELETE">DELETE</option>
+			</select>
+		</div>
+		<div>
+			<select id="select_contenttype" name="contenttype"
+				class="global_form_select select_content_type global_input_disable"
+				disabled="disabled">
+				<option value="application/x-www-form-urlencoded">x-www-form-urlencoded</option>
+				<option value="application/json">json</option>
+				<option value="application/xml">xml</option>
+				<option value="application/javascript">javascript</option>
+				<option value="multipart/form-data">form-data</option>
+				<option value="text/plain">text</option>
+				<option value="text/xml">xml (text)</option>
+				<option value="text/html">html (text)</option>
+			</select>
+		</div>
+	</div>
 </div>
 <div class="global_content_div">
 	<div class="global_content_title">
 		<span>2. 测试参数 :</span>
 	</div>
-	<div class="global_content_level">
-		<div>
-			<input name="itemkey" class="global_form_input input_param"
-				type="text" value="" placeholder="参数名" />
-		</div>
-		<div>
-			<input name="itemvalue" class="global_form_input input_param"
-				type="text" value="" placeholder="参数值" />
-		</div>
-		<div class="icon">
-			<div class="icon_item">
-				<a class="icon_reset" title="重置" href="javascript:void(0);">
-					<img src="/static/img/icon/reset.jpg" />
-				</a>
-				<a class="icon_add" title="增加" href="javascript:void(0);">
-					<img src="/static/img/icon/add.jpg" />
-				</a>
-				<a class="icon_delete_itemkey" title="移除" href="javascript:void(0);">
-					<img src="/static/img/icon/delete.jpg" />
-				</a>
+	<div id="div_form_encode">
+		<div class="global_content_level">
+			<div>
+				<input name="encodekey" class="global_form_input input_param"
+					type="text" value="" placeholder="参数名" />
 			</div>
+			<div>
+				<input name="encodevalue" class="global_form_input input_param"
+					type="text" value="" placeholder="参数值" />
+			</div>
+			<div class="icon">
+				<div class="icon_item">
+					<a class="icon_reset" title="重置" href="javascript:void(0);">
+						<img src="/static/img/icon/reset.jpg" />
+					</a>
+					<a class="icon_add" title="增加" href="javascript:void(0);">
+						<img src="/static/img/icon/add.jpg" />
+					</a>
+					<a class="icon_delete_encodekey" title="移除"
+						href="javascript:void(0);">
+						<img src="/static/img/icon/delete.jpg" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="div_form_data">
+		<div class="global_content_level">
+			<div>
+				<input name="formkey" class="global_form_input input_param"
+					type="text" value="" placeholder="参数名" />
+			</div>
+			<div>
+				<input name="formvalue" class="global_form_input input_param"
+					type="text" value="" placeholder="参数值" />
+			</div>
+			<div>
+				<select name="formtype" class="global_form_select select_param_type">
+					<option value="TEXT">TEXT</option>
+					<option value="FILE">FILE</option>
+				</select>
+			</div>
+			<div class="icon">
+				<div class="icon_item">
+					<a class="icon_reset" title="重置" href="javascript:void(0);">
+						<img src="/static/img/icon/reset.jpg" />
+					</a>
+					<a class="icon_add" title="增加" href="javascript:void(0);">
+						<img src="/static/img/icon/add.jpg" />
+					</a>
+					<a class="icon_delete_formkey" title="移除"
+						href="javascript:void(0);">
+						<img src="/static/img/icon/delete.jpg" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="div_raw">
+		<div class="global_content_area">
+			<textarea id="input_raw" class="global_form_input text_raw"
+				placeholder=""></textarea>
 		</div>
 	</div>
 	<hr class="split" />

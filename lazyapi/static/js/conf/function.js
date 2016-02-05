@@ -41,7 +41,7 @@ form_data_items = {
 		empty : 0,
 		type : "input",
 		name : "configdsn",
-		pass : "数据源连接串，如：server=myserver;database=mydb;user=admin;password=123456",
+		pass : "数据源连接串，如：server=myserver;database=mydb;user=admin;password=123456;charset=utf8",
 		fail : "请输入数据源连接串"
 	},
 }

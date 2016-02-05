@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+.global_content_level>div {
+	float: left;
+	margin-right: 30px;
+}
+
+.input_smtp {
+	width: 300px;
+}
+
+.input_smtp_short {
+	width: 50px;
+}
+
+.input_maillist {
+	width: 750px;
+}
+
+#div_mail_update {
+	cursor: pointer;
+}
+
+#div_loading {
+	display: none;
+}
+
+#div_loading img {
+	margin: 7px 0px 0px 30px;
+}

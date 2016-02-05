@@ -6,11 +6,28 @@
 }
 
 .input_url {
-	width: 500px;
+	width: 660px;
 }
 
 .select_send_type {
-	width: 130px;
+	width: 250px;
+}
+
+.select_content_type {
+	width: 240px;
+}
+
+#div_formdata {
+	display: none;
+}
+
+#div_raw {
+	display: none;
+}
+
+.text_raw {
+	width: 660px;
+	height: 180px;
 }
 
 #div_reload {

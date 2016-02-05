@@ -41,9 +41,9 @@ public_format_header = function(data) {
 	return data.replaceAll("\n", "<br/>");
 }
 
-public_format_attribute = function(node) {
+public_format_attribute = function($node) {
 	var result = "";
-	$.each(node[0].attributes, function() {
+	$.each($node[0].attributes, function() {
 		result += " <span class=\"global_xml_attr\">" + this.name.toString().htmlspecials() + "</span>=" + "\"<span class=\"global_xml_value\">" + this.value.toString().htmlspecials() + "</span>\"";
 	});
 	return result;

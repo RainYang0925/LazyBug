@@ -78,24 +78,25 @@ abstract class Controller_Api_Base extends Controller_Base {
 	public function set_curl($type, $url, $param, $header, $cookie = '', $option = 0) {
 		$ch = curl_init ();
 		$cookie = $this->get_cookie ( $cookie );
+		
 		switch ($type) {
-			case "GET" :
-				curl_setopt ( $ch, CURLOPT_HTTPGET, true );
+			case 'GET' :
 				$param && $url .= '?' . $param;
 				break;
-			case "POST" :
+			case 'POST' :
 				curl_setopt ( $ch, CURLOPT_POST, true );
 				curl_setopt ( $ch, CURLOPT_POSTFIELDS, $param );
 				break;
-			case "PUT" :
+			case 'PUT' :
 				curl_setopt ( $ch, CURLOPT_CUSTOMREQUEST, "PUT" );
 				curl_setopt ( $ch, CURLOPT_POSTFIELDS, $param );
 				break;
-			case "DELETE" :
+			case 'DELETE' :
 				curl_setopt ( $ch, CURLOPT_CUSTOMREQUEST, "DELETE" );
 				curl_setopt ( $ch, CURLOPT_POSTFIELDS, $param );
 				break;
 		}
+		
 		curl_setopt ( $ch, CURLOPT_TIMEOUT, 60 );
 		curl_setopt ( $ch, CURLOPT_URL, $url );
 		curl_setopt ( $ch, CURLOPT_HTTPHEADER, $header );

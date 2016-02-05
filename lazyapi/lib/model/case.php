@@ -8,7 +8,8 @@ class Model_Case extends Mod_Model_Relation {
 			'moduleid' => 'module_id',
 			'casename' => 'name',
 			'caselevel' => 'level',
-			'sendtype' => 'type',
+			'sendtype' => 'stype',
+			'contenttype' => 'ctype',
 			'requestparam' => 'param',
 			'responseheader' => 'header',
 			'testexpectation' => 'expectation' 

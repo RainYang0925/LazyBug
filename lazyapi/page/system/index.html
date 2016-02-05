@@ -1,0 +1,53 @@
+<div class="global_content_div">
+	<div class="global_content_title">
+		<span>邮件通知:</span>
+	</div>
+	<div class="global_content_level">
+		<div>
+			<input id="input_smtpserver" name="smtpserver"
+				class="global_form_input input_smtp" type="text"
+				value="<?php echo htmlspecialchars($this->get_data('smtp_server')); ?>"
+				placeholder="SMTP服务器地址" maxlength="100" />
+		</div>
+		<div>
+			<input id="input_smtpport" name="smtpport"
+				class="global_form_input input_smtp_short" type="text"
+				value="<?php echo htmlspecialchars($this->get_data('smtp_port')); ?>"
+				placeholder="端口号" maxlength="10" />
+		</div>
+	</div>
+	<div class="global_content_level">
+		<div>
+			<input id="input_smtpuser" name="smtpuser"
+				class="global_form_input input_smtp" type="text"
+				value="<?php echo htmlspecialchars($this->get_data('smtp_user')); ?>"
+				placeholder="SMTP用户帐号" maxlength="50" />
+		</div>
+	</div>
+	<div class="global_content_level">
+		<div>
+			<input id="input_smtppassword" name="smtppassword"
+				class="global_form_input input_smtp" type="password"
+				value="<?php echo htmlspecialchars($this->get_data('smtp_password')); ?>"
+				placeholder="SMTP用户密码" maxlength="50" />
+		</div>
+	</div>
+	<div class="global_content_level">
+		<div>
+			<input id="input_maillist" name="maillist"
+				class="global_form_input input_maillist" type="text"
+				value="<?php echo htmlspecialchars($this->get_data('mail_list')); ?>"
+				placeholder="任务通知邮箱列表，多个邮箱之间用英文逗号分隔" />
+		</div>
+	</div>
+	<div class="global_content_level">
+		<div id="div_mail_update">
+			<img src="/static/img/system/save.jpg" />
+		</div>
+		<div id="div_loading">
+			<a href="javascript:void(0);">
+				<img src="/static/img/icon/loading.gif" />
+			</a>
+		</div>
+	</div>
+</div>

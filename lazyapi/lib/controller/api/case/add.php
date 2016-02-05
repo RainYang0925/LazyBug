@@ -3,7 +3,7 @@ class Controller_Api_Case_Add extends Controller_Api_Case_Base {
 
 	public function act() {
 		// 添加用例
-		if (! $this->check_param ( 'itemid, moduleid, casename, sendtype' )) {
+		if (! $this->check_param ( 'itemid, moduleid, casename, sendtype, contenttype' )) {
 			V ( 'Json.Base' )->init ( Const_Code::CASE_PARAM_ERROR, '用例传递参数错误' );
 			return;
 		}

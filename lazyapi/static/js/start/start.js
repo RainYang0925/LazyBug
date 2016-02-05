@@ -5,8 +5,24 @@ $(document).ready(function() {
 	$("#div_menu_start").removeClass("global_menu_disable").addClass("global_menu_enable");
 
 	$("#input_data").val("data");
+	$("#select_sendtype").val("GET");
+	$("#select_contenttype").val("application/x-www-form-urlencoded");
 	global_form_clear(form_case_items);
 	reload();
+
+	$("#select_sendtype").change(function() {
+		if ($(this).val() === "GET") {
+			$("#select_contenttype").val("application/x-www-form-urlencoded");
+			$("#select_contenttype").attr("disabled", "disabled").addClass("global_input_disable");
+		} else {
+			$("#select_contenttype").removeAttr("disabled").removeClass("global_input_disable");
+		}
+		switch_form($("#select_contenttype").val());
+	});
+
+	$("#select_contenttype").change(function() {
+		switch_form($(this).val());
+	});
 
 	$(".icon").parent().hover(function() {
 		$(this).find(".icon_item").stop().fadeIn(100);
@@ -31,8 +47,15 @@ $(document).ready(function() {
 		$parent.after($new_node);
 	});
 
-	$(".icon_delete_itemkey").click(function() {
-		if ($("input[name=itemkey]").length > 1) {
+	$(".icon_delete_encodekey").click(function() {
+		if ($("input[name=encodekey]").length > 1) {
+			var $parent = $(this).parent().parent().parent();
+			$parent.remove();
+		}
+	});
+
+	$(".icon_delete_formkey").click(function() {
+		if ($("input[name=formkey]").length > 1) {
 			var $parent = $(this).parent().parent().parent();
 			$parent.remove();
 		}
@@ -66,10 +89,11 @@ $(document).ready(function() {
 			return;
 		}
 		var send_type = $("#select_sendtype").val().trim();
+		var content_type = $("#select_contenttype").val().trim();
 		var item_url = $("#input_itemurl").val().trim();
 		var item_name = $("#input_itemname").val().trim();
 		var case_name = $("#input_casename").val().trim();
-		request_case_save(item_name, case_name, send_type, item_url);
+		request_case_save(item_name, case_name, send_type, content_type, item_url);
 	});
 
 	$("#a_send").click(function() {
@@ -83,8 +107,9 @@ $(document).ready(function() {
 		}
 		global_form_reset(form_api_items);
 		var send_type = $("#select_sendtype").val().trim();
+		var content_type = $("#select_contenttype").val().trim();
 		var item_url = $("#input_itemurl").val().trim();
-		request_case_request(send_type, item_url);
+		request_case_request(send_type, content_type, item_url);
 	});
 
 	$("#div_data").click(function() {

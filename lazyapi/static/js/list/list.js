@@ -280,9 +280,24 @@ $(document).ready(function() {
 		$("#input_edit_case_id").val($parent.find("input[name=caseid]").val().trim());
 		$("#input_casename").val($parent.find("input[name=casename]").val().trim());
 		$("#select_sendtype").val($parent.find("input[name=sendtype]").val().trim());
+		$("#select_contenttype").val($parent.find("input[name=contenttype]").val().trim());
 		$("#input_requestparam").val($parent.find("input[name=requestparam]").val().trim());
 		$("#input_responseheader").val($parent.find("textarea[name=responseheader]").val().trim());
+		if ($("#select_sendtype").val() === "GET") {
+			$("#select_contenttype").attr("disabled", "disabled").addClass("global_input_disable");
+		} else {
+			$("#select_contenttype").removeAttr("disabled").removeClass("global_input_disable");
+		}
 		global_board_show("case", 1, 1);
+	});
+
+	$("#select_sendtype").change(function() {
+		if ($(this).val() === "GET") {
+			$("#select_contenttype").val("application/x-www-form-urlencoded");
+			$("#select_contenttype").attr("disabled", "disabled").addClass("global_input_disable");
+		} else {
+			$("#select_contenttype").removeAttr("disabled").removeClass("global_input_disable");
+		}
 	});
 
 	$(".edit_case_close").click(function() {
@@ -303,12 +318,13 @@ $(document).ready(function() {
 		var case_id = $("#input_edit_case_id").val().trim();
 		var case_name = $("#input_casename").val().trim();
 		var send_type = $("#select_sendtype").val().trim();
+		var content_type = $("#select_contenttype").val().trim();
 		var request_param = $("#input_requestparam").val().trim();
 		var response_header = $("#input_responseheader").val().trim();
 		if (flag) {
-			request_case_add(item_id, module_id, case_name, send_type, request_param, response_header);
+			request_case_add(item_id, module_id, case_name, send_type, content_type, request_param, response_header);
 		} else {
-			request_case_update(case_id, case_name, send_type, request_param, response_header);
+			request_case_update(case_id, case_name, send_type, content_type, request_param, response_header);
 		}
 	});
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-10-13 04:25:57
+-- Generation Time: 2016-02-05 09:10:15
 -- 服务器版本： 5.6.25
 -- PHP Version: 5.6.11
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `lazybug_api`
@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS `lb_api_case` (
   `module_id` int(10) NOT NULL DEFAULT '0',
   `name` varchar(30) NOT NULL,
   `level` tinyint(1) NOT NULL DEFAULT '3',
-  `type` varchar(10) NOT NULL DEFAULT 'GET',
+  `stype` varchar(10) NOT NULL DEFAULT 'GET',
+  `ctype` varchar(35) NOT NULL DEFAULT 'application/x-www-form-urlencoded',
   `param` text,
   `header` text,
   `expectation` text,
@@ -154,6 +155,27 @@ CREATE TABLE IF NOT EXISTS `lb_api_step` (
   `value` text,
   `sequence` int(10) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `lb_api_system`
+--
+
+CREATE TABLE IF NOT EXISTS `lb_api_system` (
+  `smtp_server` varchar(100) DEFAULT NULL,
+  `smtp_port` int(10) DEFAULT NULL,
+  `smtp_user` varchar(50) DEFAULT NULL,
+  `smtp_password` varchar(50) DEFAULT NULL,
+  `mail_list` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `lb_api_system`
+--
+
+INSERT INTO `lb_api_system` (`smtp_server`, `smtp_port`, `smtp_user`, `smtp_password`, `mail_list`) VALUES
+(NULL, 25, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

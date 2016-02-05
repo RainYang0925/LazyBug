@@ -81,4 +81,8 @@ class Const_Code {
 	const USER_PARAM_ERROR = '990021';
 	const USER_FORMAT_ERROR = '990022';
 	const USER_CHECK_ERROR = '990023';
+	
+	// 系统状态码
+	const UPDATE_SYSTEM_FAIL = 'XS0001';
+	const SYSTEM_PARAM_ERROR = 'XS0021';
 }

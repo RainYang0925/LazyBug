@@ -11,7 +11,12 @@ reload_succ = function(item_data, case_data) {
 	$("#input_itemname").val(item_data.name);
 	$("#input_itemurl").val(item_data.url);
 	$("#input_casename").val(case_data.name);
-	$("#select_sendtype").val(case_data.type);
+	$("#select_sendtype").val(case_data.stype);
+	$("#select_contenttype").val(case_data.ctype);
+	if (case_data.stype !== "GET") {
+		$("#select_contenttype").removeAttr("disabled").removeClass("global_input_disable");
+	}
+	switch_form(case_data.ctype);
 	reset_param(case_data.param);
 	reset_header(case_data.header);
 	setTimeout(function() {
@@ -26,21 +31,44 @@ reload_fail = function() {
 }
 
 reset_param = function(params) {
-	params = params.split("&");
-	if (params && params.length > 0) {
-		var $parent = $("input[name=itemkey]").parent().parent();
-		$.each(params, function() {
-			var param = this.split("=");
-			if (param && param.length === 2) {
+	var send_type = $("#select_sendtype").val();
+	var content_type = $("#select_contenttype").val();
+	if (content_type === "application/x-www-form-urlencoded") {
+		var $parent = $("input[name=encodekey]").parent().parent();
+		try {
+			$.each($.parseJSON(params), function(key, value) {
 				var $new_node = $parent.clone(true);
-				$new_node.find("input[name=itemkey]").val(decodeURIComponent(param[0]));
-				$new_node.find("input[name=itemvalue]").val(decodeURIComponent(param[1]));
+				$new_node.find("input[name=encodekey]").val(key);
+				$new_node.find("input[name=encodevalue]").val(value);
 				$parent.before($new_node);
-			}
-		});
-		if ($("input[name=itemkey]").length > 1) {
+			});
+		} catch (e) {
+
+		}
+		if ($("input[name=encodekey]").length > 1) {
 			$parent.remove();
 		}
+	} else if (content_type === "multipart/form-data") {
+		var $parent = $("input[name=formkey]").parent().parent();
+		try {
+			$.each($.parseJSON(params), function(key, value) {
+				var $new_node = $parent.clone(true);
+				if (value.substr(0, 1) === "@") {
+					$new_node.find("select").val("FILE");
+					value = value.substr(1);
+				}
+				$new_node.find("input[name=formkey]").val(key);
+				$new_node.find("input[name=formvalue]").val(value);
+				$parent.before($new_node);
+			});
+		} catch (e) {
+
+		}
+		if ($("input[name=formkey]").length > 1) {
+			$parent.remove();
+		}
+	} else {
+		$("#input_raw").val(params);
 	}
 }
 
@@ -49,11 +77,11 @@ reset_header = function(headers) {
 	try {
 		$.each($.parseJSON(headers), function(key, value) {
 			var $new_node = $parent.clone(true);
-			$new_node.find("input[name=headerkey]").val(key);
-			$new_node.find("input[name=headervalue]").val(value);
 			if (typeof (value) === "number") {
 				$new_node.find("select").val("NUM");
 			}
+			$new_node.find("input[name=headerkey]").val(key);
+			$new_node.find("input[name=headervalue]").val(value);
 			$parent.before($new_node);
 		});
 	} catch (e) {

@@ -24,25 +24,40 @@
 				<input id="input_edit_case_module_id" type="hidden" value="" />
 				<input id="input_edit_case_id" type="hidden" value="" />
 			</div>
+		</div>
+		<div class="global_content_level">
 			<div>
 				<select id="select_sendtype" name="sendtype"
-					class="global_form_select select_type">
+					class="global_form_select select_send_type">
 					<option value="GET">GET</option>
 					<option value="POST">POST</option>
 					<option value="PUT">PUT</option>
 					<option value="DELETE">DELETE</option>
 				</select>
 			</div>
+			<div>
+				<select id="select_contenttype" name="contenttype"
+					class="global_form_select select_content_type">
+					<option value="application/x-www-form-urlencoded">x-www-form-urlencoded</option>
+					<option value="application/json">json</option>
+					<option value="application/xml">xml</option>
+					<option value="application/javascript">javascript</option>
+					<option value="multipart/form-data">form-data</option>
+					<option value="text/plain">text</option>
+					<option value="text/xml">xml (text)</option>
+					<option value="text/html">html (text)</option>
+				</select>
+			</div>
 		</div>
 		<div class="global_content_area">
 			<textarea id="input_requestparam" name="requestparam"
 				class="global_form_input text_case"
-				placeholder="接口参数，如：username=admin&password=123456"></textarea>
+				placeholder="接口参数，如：{&quot;key1&quot;:&quot;value1;&quot;key2&quot;:&quot;value2&quot;}"></textarea>
 		</div>
 		<div class="global_content_area">
 			<textarea id="input_responseheader" name="responseheader"
 				class="global_form_input text_case"
-				placeholder="请求头，如：{&quot;result&quot;:&quot;success&quot;}"></textarea>
+				placeholder="请求头，如：{&quot;head1&quot;:&quot;value1;&quot;head2&quot;:&quot;value2&quot;}"></textarea>
 		</div>
 		<div class="global_content_level global_board_button">
 			<a href="javascript:void(0);">

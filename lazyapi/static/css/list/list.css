@@ -98,17 +98,21 @@ td {
 
 #div_case {
 	width: 700px;
-	height: 520px;
+	height: 580px;
 	display: none;
-	margin: -260px 0px 0px -350px;
+	margin: -290px 0px 0px -350px;
 }
 
 .input_case {
-	width: 300px;
+	width: 520px;
 }
 
-.select_type {
+.select_send_type {
 	width: 130px;
+}
+
+.select_content_type {
+	width: 350px;
 }
 
 .text_case {

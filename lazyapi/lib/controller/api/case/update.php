@@ -3,7 +3,7 @@ class Controller_Api_Case_Update extends Controller_Api_Case_Base {
 
 	public function act() {
 		// 更新用例
-		if (! $this->check_param ( 'caseid, casename, sendtype' )) {
+		if (! $this->check_param ( 'caseid, casename, sendtype, contenttype' )) {
 			V ( 'Json.Base' )->init ( Const_Code::CASE_PARAM_ERROR, '用例传递参数错误' );
 			return;
 		}

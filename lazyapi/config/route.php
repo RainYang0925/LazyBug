@@ -64,6 +64,8 @@ return array (
 		'Api.User.Password' => '/api/user/password',
 		'Api.User.Delete' => '/api/user/delete',
 		
+		'Api.System.Mail' => '/api/system/mail',
+		
 		'Api.Server.List' => '/api/server/list',
 		'Api.Server.Clear' => '/api/server/clear',
 		'Api.Server.Task' => '/api/server/task',
@@ -74,6 +76,7 @@ return array (
 		'Api.Server.Check' => '/api/server/check',
 		'Api.Server.Store' => '/api/server/store',
 		'Api.Server.History' => '/api/server/history',
+		'Api.Server.Notice' => '/api/server/notice',
 		'Api.Server.Remove' => '/api/server/remove',
 		
 		'Public.Login' => '/login',
@@ -83,6 +86,7 @@ return array (
 		'Public.Browser' => '/browser',
 		'Public.404' => '/404',
 		'Public.Auth' => '/auth',
+		'Public.Database' => '/database',
 		
 		'Start.Index' => '(/start)?',
 		'List.Index' => '/list',
@@ -91,5 +95,6 @@ return array (
 		'Report.Index' => '/report',
 		'User.Index' => '/user',
 		'Conf.Index' => '/conf',
-		'Home.Index' => '/home' 
+		'Home.Index' => '/home',
+		'System.Index' => '/system' 
 );

@@ -39,6 +39,12 @@ form_case_items = {
 		name : "sendtype",
 		def : "GET"
 	},
+	type : {
+		empty : 0,
+		type : "select",
+		name : "contenttype",
+		def : "application/x-www-form-urlencoded"
+	},
 	param : {
 		empty : 1,
 		type : "input",
@@ -286,7 +292,7 @@ request_item_delete = function(item_id) {
 	});
 }
 
-request_case_add = function(item_id, module_id, case_name, send_type, request_param, response_header) {
+request_case_add = function(item_id, module_id, case_name, send_type, content_type, request_param, response_header) {
 	$.ajax({
 		url : "/index.php/api/case/add",
 		type : "post",
@@ -296,6 +302,7 @@ request_case_add = function(item_id, module_id, case_name, send_type, request_pa
 			moduleid : module_id,
 			casename : case_name,
 			sendtype : send_type,
+			contenttype : content_type,
 			requestparam : request_param,
 			responseheader : response_header
 		},
@@ -319,6 +326,7 @@ request_case_add = function(item_id, module_id, case_name, send_type, request_pa
 			$new_case.find("input[name=caseid]").val(case_id);
 			$new_case.find("input[name=casename]").val(case_name);
 			$new_case.find("input[name=sendtype]").val(send_type);
+			$new_case.find("input[name=contenttype]").val(content_type);
 			$new_case.find("input[name=requestparam]").val(request_param);
 			$new_case.find("input[name=caselevel]").val(3);
 			$new_case.find("textarea[name=responseheader]").val(response_header);
@@ -353,7 +361,7 @@ request_case_level = function(case_id, case_level) {
 	});
 }
 
-request_case_update = function(case_id, case_name, send_type, request_param, response_header) {
+request_case_update = function(case_id, case_name, send_type, content_type, request_param, response_header) {
 	$.ajax({
 		url : "/index.php/api/case/update",
 		type : "post",
@@ -362,6 +370,7 @@ request_case_update = function(case_id, case_name, send_type, request_param, res
 			caseid : case_id,
 			casename : case_name,
 			sendtype : send_type,
+			contenttype : content_type,
 			requestparam : request_param,
 			responseheader : response_header
 		},
@@ -373,6 +382,7 @@ request_case_update = function(case_id, case_name, send_type, request_param, res
 			}
 			$("#tr_case_" + case_id).find("input[name=casename]").val(case_name);
 			$("#tr_case_" + case_id).find("input[name=sendtype]").val(send_type);
+			$("#tr_case_" + case_id).find("input[name=contenttype]").val(content_type);
 			$("#tr_case_" + case_id).find("input[name=requestparam]").val(request_param);
 			$("#tr_case_" + case_id).find("textarea[name=responseheader]").val(response_header);
 			$("#tr_case_" + case_id).find("td[class=td_case_id]").attr("title", case_name).find("span").text("Case-" + case_id + "  :  " + case_name);
@@ -506,7 +516,8 @@ load_case_list = function($parent) {
 				$new_case.find(".level_icon").attr("title", "").attr("src", "/static/img/list/level_" + obj.level + ".jpg");
 				$new_case.find("input[name=caseid]").val(obj.id);
 				$new_case.find("input[name=casename]").val(obj.name);
-				$new_case.find("input[name=sendtype]").val(obj.type);
+				$new_case.find("input[name=sendtype]").val(obj.stype);
+				$new_case.find("input[name=contenttype]").val(obj.ctype);
 				$new_case.find("input[name=requestparam]").val(obj.param);
 				$new_case.find("input[name=caselevel]").val(obj.level);
 				$new_case.find("textarea[name=responseheader]").val(obj.header);
