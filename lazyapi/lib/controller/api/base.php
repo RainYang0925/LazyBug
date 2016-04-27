@@ -105,6 +105,8 @@ abstract class Controller_Api_Base extends Controller_Base {
 		curl_setopt ( $ch, CURLOPT_HEADER, $option );
 		curl_setopt ( $ch, CURLOPT_COOKIEFILE, $cookie );
 		curl_setopt ( $ch, CURLOPT_COOKIEJAR, $cookie );
+		curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, FALSE );
+		curl_setopt ( $ch, CURLOPT_SSL_VERIFYHOST, FALSE );
 		$response = curl_exec ( $ch );
 		$return = $option ? json_encode ( array_merge ( $this->get_header ( $response ), array (
 				'code' => curl_getinfo ( $ch, CURLINFO_HTTP_CODE ),
