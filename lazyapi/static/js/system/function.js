@@ -30,7 +30,7 @@ form_mail_items = {
 	}
 }
 
-request_mail_update = function(smtp_server, smtp_port, smtp_user, smtp_password, mail_list) {
+request_mail_update = function(smtp_server, smtp_port, smtp_user, smtp_password, smtp_ssl, smtp_default_port, mail_list) {
 	$.ajax({
 		url : "/index.php/api/system/mail",
 		type : "post",
@@ -40,6 +40,8 @@ request_mail_update = function(smtp_server, smtp_port, smtp_user, smtp_password,
 			smtpport : smtp_port,
 			smtpuser : smtp_user,
 			smtppassword : smtp_password,
+			smtpssl : smtp_ssl,
+			smtpdefaultport : smtp_default_port,
 			maillist : mail_list,
 		},
 		success : function(data) {

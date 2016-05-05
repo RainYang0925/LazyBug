@@ -18,38 +18,46 @@
 			<div>
 				<input id="input_checkname" name="checkname"
 					class="global_form_input input_check" type="text" value=""
-					placeholder="步骤名称，如：检查用户状态" maxlength="25" />
-				<input id="input_check_step_id" type="hidden" value="" />
-				<input id="input_add_check_flag" type="hidden" value="0" />
-				<input id="input_checkcommand" type="hidden" value="" />
+					placeholder="步骤名称，如：检查用户状态" maxlength="25" autocomplete="off" />
+				<input id="input_check_step_id" type="hidden" value=""
+					autocomplete="off" />
+				<input id="input_add_check_flag" type="hidden" value="0"
+					autocomplete="off" />
+				<input id="input_checkcommand" type="hidden" value=""
+					autocomplete="off" />
 			</div>
 		</div>
 		<div class="global_content_level">
 			<div>
 				<input id="checkbox_checkall" name="checkall" class="checkbox_check"
-					type="checkbox">
+					type="checkbox" autocomplete="off">
 				<span>完整匹配</span>
 			</div>
 			<div>
 				<input id="checkbox_checkbegin" name="checkbegin"
-					class="checkbox_check" type="checkbox">
+					class="checkbox_check" type="checkbox" autocomplete="off">
 				<span>前段匹配</span>
 			</div>
 			<div>
 				<input id="checkbox_checkend" name="checkend" class="checkbox_check"
-					type="checkbox">
+					type="checkbox" autocomplete="off">
 				<span>后段匹配</span>
 			</div>
 			<div>
 				<input id="checkbox_checkreg" name="checkreg" class="checkbox_check"
-					type="checkbox">
-				<span>正则表达式</span>
+					type="checkbox" autocomplete="off">
+				<span>正则</span>
+			</div>
+			<div>
+				<input id="checkbox_opposite" name="opposite" class="checkbox_check"
+					type="checkbox" autocomplete="off">
+				<span>取反</span>
 			</div>
 		</div>
 		<div class="global_content_area">
 			<textarea id="input_checkvalue" name="checkvalue"
 				class="global_form_input text_check"
-				placeholder="校验内容，如：&quot;status&quot;:1"></textarea>
+				placeholder="校验内容，如：&quot;status&quot;:1" autocomplete="off"></textarea>
 		</div>
 		<div class="global_content_level global_board_button">
 			<a href="javascript:void(0);">

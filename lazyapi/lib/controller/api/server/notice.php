@@ -27,7 +27,7 @@ class Controller_Api_Server_Notice extends Controller_Api_Server_Base {
 			}
 			try {
 				$smtp = new Extension_Smtp ();
-				$smtp->setServer ( $system_info ['smtp_server'], $system_info ['smtp_user'], $system_info ['smtp_password'], $system_info ['smtp_port'] );
+				$smtp->setServer ( $system_info ['smtp_server'], $system_info ['smtp_user'], $system_info ['smtp_password'], $system_info ['smtp_port'], $system_info ['smtp_ssl'] ? true : false );
 				$smtp->setFrom ( 'LazyBug' );
 				$smtp->setReceiver ( $mail );
 				$smtp->setMail ( $title, $content );

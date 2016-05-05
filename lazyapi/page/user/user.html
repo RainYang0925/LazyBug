@@ -17,18 +17,20 @@
 		<div class="global_content_level">
 			<input id="input_username" name="username"
 				class="global_form_input input_user" type="text" value=""
-				placeholder="用户名，如：guest" maxlength="20" />
-			<input id="input_add_user_flag" type="hidden" value="" />
-			<input id="input_edit_user_id" type="hidden" value="" />
+				placeholder="用户名，如：guest" maxlength="20" autocomplete="off" />
+			<input id="input_add_user_flag" type="hidden" value=""
+				autocomplete="off" />
+			<input id="input_edit_user_id" type="hidden" value=""
+				autocomplete="off" />
 		</div>
 		<div class="global_content_level">
 			<input id="input_userpassword" name="userpassword"
 				class="global_form_input input_user" type="text" value=""
-				placeholder="用户密码，如：password" maxlength="20" />
+				placeholder="用户密码，如：password" maxlength="20" autocomplete="off" />
 		</div>
 		<div class="global_content_level">
 			<select id="select_userrole" name="userrole"
-				class="global_form_select select_role">
+				class="global_form_select select_role" autocomplete="off">
 				<option value="normal">普通用户</option>
 				<option value="editor">测试维护</option>
 				<option value="admin">系统管理员</option>
@@ -101,7 +103,8 @@
 	<div class="global_board_content">
 		<div class="global_content_level global_board_notice">
 			<span>用户移除后不能恢复，是否确认？</span>
-			<input id="input_delete_user_id" type="hidden" value="" />
+			<input id="input_delete_user_id" type="hidden" value=""
+				autocomplete="off" />
 		</div>
 		<div class="global_content_level global_board_button">
 			<a href="javascript:void(0);">

@@ -8,7 +8,8 @@ $(document).ready(function() {
 	$("#div_sortable").sortable({
 		change : function(event, ui) {
 			change_status(0);
-		}
+		},
+		cancel : ".result_line"
 	});
 	reload();
 

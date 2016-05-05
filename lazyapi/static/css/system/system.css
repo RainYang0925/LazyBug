@@ -13,6 +13,11 @@
 	width: 50px;
 }
 
+.checkbox_smtp {
+	height: 12px;
+	margin: 8px 5px 0px 0px;
+}
+
 .input_maillist {
 	width: 750px;
 }

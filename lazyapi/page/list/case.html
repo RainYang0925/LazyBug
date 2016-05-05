@@ -18,17 +18,21 @@
 			<div>
 				<input id="input_casename" name="casename"
 					class="global_form_input input_case" type="text" value=""
-					placeholder="用例名称，如：使用正确帐号登录" maxlength="25" />
-				<input id="input_add_case_flag" type="hidden" value="" />
-				<input id="input_edit_case_item_id" type="hidden" value="" />
-				<input id="input_edit_case_module_id" type="hidden" value="" />
-				<input id="input_edit_case_id" type="hidden" value="" />
+					placeholder="用例名称，如：使用正确帐号登录" maxlength="25" autocomplete="off" />
+				<input id="input_add_case_flag" type="hidden" value=""
+					autocomplete="off" />
+				<input id="input_edit_case_item_id" type="hidden" value=""
+					autocomplete="off" />
+				<input id="input_edit_case_module_id" type="hidden" value=""
+					autocomplete="off" />
+				<input id="input_edit_case_id" type="hidden" value=""
+					autocomplete="off" />
 			</div>
 		</div>
 		<div class="global_content_level">
 			<div>
 				<select id="select_sendtype" name="sendtype"
-					class="global_form_select select_send_type">
+					class="global_form_select select_send_type" autocomplete="off">
 					<option value="GET">GET</option>
 					<option value="POST">POST</option>
 					<option value="PUT">PUT</option>
@@ -37,7 +41,7 @@
 			</div>
 			<div>
 				<select id="select_contenttype" name="contenttype"
-					class="global_form_select select_content_type">
+					class="global_form_select select_content_type" autocomplete="off">
 					<option value="application/x-www-form-urlencoded">x-www-form-urlencoded</option>
 					<option value="application/json">json</option>
 					<option value="application/xml">xml</option>
@@ -52,12 +56,14 @@
 		<div class="global_content_area">
 			<textarea id="input_requestparam" name="requestparam"
 				class="global_form_input text_case"
-				placeholder="接口参数，如：{&quot;key1&quot;:&quot;value1;&quot;key2&quot;:&quot;value2&quot;}"></textarea>
+				placeholder="接口参数，如：{&quot;key1&quot;:&quot;value1;&quot;key2&quot;:&quot;value2&quot;}"
+				autocomplete="off"></textarea>
 		</div>
 		<div class="global_content_area">
 			<textarea id="input_responseheader" name="responseheader"
 				class="global_form_input text_case"
-				placeholder="请求头，如：{&quot;head1&quot;:&quot;value1;&quot;head2&quot;:&quot;value2&quot;}"></textarea>
+				placeholder="请求头，如：{&quot;head1&quot;:&quot;value1;&quot;head2&quot;:&quot;value2&quot;}"
+				autocomplete="off"></textarea>
 		</div>
 		<div class="global_content_level global_board_button">
 			<a href="javascript:void(0);">
@@ -126,7 +132,8 @@
 	<div class="global_board_content">
 		<div class="global_content_level global_board_notice">
 			<span>用例移除后不能恢复，是否确认？</span>
-			<input id="input_delete_case_id" type="hidden" value="" />
+			<input id="input_delete_case_id" type="hidden" value=""
+				autocomplete="off" />
 		</div>
 		<div class="global_content_level global_board_button">
 			<a href="javascript:void(0);">

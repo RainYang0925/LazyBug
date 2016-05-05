@@ -4,10 +4,6 @@ $(document).ready(function() {
 
 	$("#div_menu_start").removeClass("global_menu_disable").addClass("global_menu_enable");
 
-	$("#input_data").val("data");
-	$("#select_sendtype").val("GET");
-	$("#select_contenttype").val("application/x-www-form-urlencoded");
-	global_form_clear(form_case_items);
 	reload();
 
 	$("#select_sendtype").change(function() {

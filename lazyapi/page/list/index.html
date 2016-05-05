@@ -13,8 +13,8 @@
 				<div class="module_detail">
 					<div class="module_name">
 						<span></span>
-						<input name="moduleid" type="hidden" value="" />
-						<input name="itemnum" type="hidden" value="" />
+						<input name="moduleid" type="hidden" value="" autocomplete="off" />
+						<input name="itemnum" type="hidden" value="" autocomplete="off" />
 					</div>
 					<div class="module_count">
 						<span>共有</span>
@@ -41,10 +41,11 @@
 				<div class="module_detail module_selected">
 					<div class="module_name">
 						<span>全部模块</span>
-						<input name="moduleid" type="hidden" value="0" />
+						<input name="moduleid" type="hidden" value="0" autocomplete="off" />
 						<input name="itemnum" type="hidden"
-							value="<?php echo $this->get_data('item_num'); ?>" />
-						<input name="modulename" type="hidden" value="" />
+							value="<?php echo $this->get_data('item_num'); ?>"
+							autocomplete="off" />
+						<input name="modulename" type="hidden" value="" autocomplete="off" />
 					</div>
 					<div class="module_count">
 						<span>共有</span>
@@ -94,9 +95,10 @@
 								</div>
 								<div>
 									<span></span>
-									<input name="itemid" type="hidden" value="" />
-									<input name="moduleid" type="hidden" value="" />
-									<input name="itemurl" type="hidden" value="" />
+									<input name="itemid" type="hidden" value="" autocomplete="off" />
+									<input name="moduleid" type="hidden" value=""
+										autocomplete="off" />
+									<input name="itemurl" type="hidden" value="" autocomplete="off" />
 								</div>
 							</div>
 						</td>
@@ -129,16 +131,22 @@
 										<div>
 											<img class="level_icon" title="D"
 												src="/static/img/list/level_4.jpg" />
-											<input name="caselevel" type="hidden" value="4" />
+											<input name="caselevel" type="hidden" value="4"
+												autocomplete="off" />
 										</div>
 										<div>
 											<span></span>
-											<input name="caseid" type="hidden" value="" />
-											<input name="casename" type="hidden" value="" />
-											<input name="sendtype" type="hidden" value="" />
-											<input name="contenttype" type="hidden" value="" />
-											<input name="requestparam" type="hidden" value="" />
-											<textarea name="responseheader"></textarea>
+											<input name="caseid" type="hidden" value=""
+												autocomplete="off" />
+											<input name="casename" type="hidden" value=""
+												autocomplete="off" />
+											<input name="sendtype" type="hidden" value=""
+												autocomplete="off" />
+											<input name="contenttype" type="hidden" value=""
+												autocomplete="off" />
+											<input name="requestparam" type="hidden" value=""
+												autocomplete="off" />
+											<textarea name="responseheader" autocomplete="off"></textarea>
 										</div>
 									</td>
 									<td class="td_case_opt">
@@ -159,6 +167,9 @@
 												<img title="序列" src="/static/img/list/case_sort_disable.png" />
 											</div>
 											<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+											<div class="case_copy">
+												<img title="复制" src="/static/img/list/case_copy_disable.png" />
+											</div>
 											<div class="case_remove">
 												<img title="移除"
 													src="/static/img/list/case_remove_disable.png" />
@@ -183,8 +194,10 @@
 											<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
 											<span class="span_case_add">+</span>
 											<?php } ?>
-											<input name="itemid" type="hidden" value="" />
-											<input name="moduleid" type="hidden" value="" />
+											<input name="itemid" type="hidden" value=""
+												autocomplete="off" />
+											<input name="moduleid" type="hidden" value=""
+												autocomplete="off" />
 										</div>
 									</td>
 								</tr>

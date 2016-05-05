@@ -17,26 +17,28 @@
 		<div class="global_content_level">
 			<input id="input_taskname" name="taskname"
 				class="global_form_input input_task" type="text" value=""
-				placeholder="任务名称，如：用户接口每日回归" maxlength="20" />
-			<input id="input_add_task_flag" type="hidden" value="" />
-			<input id="input_edit_task_id" type="hidden" value="" />
+				placeholder="任务名称，如：用户接口每日回归" maxlength="20" autocomplete="off" />
+			<input id="input_add_task_flag" type="hidden" value=""
+				autocomplete="off" />
+			<input id="input_edit_task_id" type="hidden" value=""
+				autocomplete="off" />
 		</div>
 		<div class="global_content_level">
 			<select id="select_taskpackage" name="taskpackage"
-				class="global_form_select select_package">
+				class="global_form_select select_package" autocomplete="off">
 				<option value="0">预设配置</option>
 			</select>
 		</div>
 		<div class="global_content_level">
 			<select id="select_taskmodule" name="taskmodule"
-				class="global_form_select select_module">
+				class="global_form_select select_module" autocomplete="off">
 				<option value="0">全部模块</option>
 			</select>
 		</div>
 		<div class="global_content_level">
 			<div>
 				<select id="select_tasklevel" name="tasklevel"
-					class="global_form_select select_level">
+					class="global_form_select select_level" autocomplete="off">
 					<option value="1">A级</option>
 					<option value="2">B级+</option>
 					<option value="3">C级+</option>
@@ -47,14 +49,14 @@
 		<div class="global_content_level">
 			<div>
 				<select id="select_taskhour" name="taskhour"
-					class="global_form_select select_hour">
+					class="global_form_select select_hour" autocomplete="off">
 					<option value="/">无</option>
 					<?php $this->load('Public.Hour'); ?>
 				</select>
 			</div>
 			<div>
 				<select id="select_taskminute" name="taskminute"
-					class="global_form_select select_minute">
+					class="global_form_select select_minute" autocomplete="off">
 					<option value="/">无</option>
 					<?php $this->load('Public.Minute'); ?>
 				</select>
@@ -127,7 +129,8 @@
 	<div class="global_board_content">
 		<div class="global_content_level global_board_notice">
 			<span>任务移除后不能恢复，是否确认？</span>
-			<input id="input_delete_task_id" type="hidden" value="" />
+			<input id="input_delete_task_id" type="hidden" value=""
+				autocomplete="off" />
 		</div>
 		<div class="global_content_level global_board_button">
 			<a href="javascript:void(0);">

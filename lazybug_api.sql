@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-02-05 09:10:15
+-- Generation Time: 2016-05-05 10:55:46
 -- 服务器版本： 5.6.25
 -- PHP Version: 5.6.11
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `lazybug_api`
@@ -167,6 +167,8 @@ CREATE TABLE IF NOT EXISTS `lb_api_system` (
   `smtp_port` int(10) DEFAULT NULL,
   `smtp_user` varchar(50) DEFAULT NULL,
   `smtp_password` varchar(50) DEFAULT NULL,
+  `smtp_ssl` tinyint(1) DEFAULT '0',
+  `smtp_default_port` tinyint(1) DEFAULT '1',
   `mail_list` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -174,8 +176,8 @@ CREATE TABLE IF NOT EXISTS `lb_api_system` (
 -- 转存表中的数据 `lb_api_system`
 --
 
-INSERT INTO `lb_api_system` (`smtp_server`, `smtp_port`, `smtp_user`, `smtp_password`, `mail_list`) VALUES
-(NULL, 25, NULL, NULL, NULL);
+INSERT INTO `lb_api_system` (`smtp_server`, `smtp_port`, `smtp_user`, `smtp_password`, `smtp_ssl`, `smtp_default_port`, `mail_list`) VALUES
+('', NULL, '', '', 0, 1, '');
 
 -- --------------------------------------------------------
 

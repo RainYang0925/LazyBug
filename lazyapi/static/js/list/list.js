@@ -352,6 +352,32 @@ $(document).ready(function() {
 		window.location.href = "/index.php/sort?id=" + case_id;
 	});
 
+	$(".case_copy").hover(function() {
+		$(this).find("img").attr("src", "/static/img/list/case_copy_enable.png");
+	}, function() {
+		$(this).find("img").attr("src", "/static/img/list/case_copy_disable.png");
+	});
+
+	$(".case_copy").click(function() {
+		global_form_reset(form_case_items);
+		var $parent = $(this).parent().parent().parent();
+		$("#input_add_case_flag").val(1);
+		$("#input_edit_case_item_id").val($parent.parent().find(".case_add").find("input[name=itemid]").val().trim());
+		$("#input_edit_case_module_id").val($parent.parent().find(".case_add").find("input[name=moduleid]").val().trim());
+		$("#input_edit_case_id").val("");
+		$("#input_casename").val("");
+		$("#select_sendtype").val($parent.find("input[name=sendtype]").val().trim());
+		$("#select_contenttype").val($parent.find("input[name=contenttype]").val().trim());
+		$("#input_requestparam").val($parent.find("input[name=requestparam]").val().trim());
+		$("#input_responseheader").val($parent.find("textarea[name=responseheader]").val().trim());
+		if ($("#select_sendtype").val() === "GET") {
+			$("#select_contenttype").attr("disabled", "disabled").addClass("global_input_disable");
+		} else {
+			$("#select_contenttype").removeAttr("disabled").removeClass("global_input_disable");
+		}
+		global_board_show("case", 1, 1);
+	});
+
 	$(".case_remove").hover(function() {
 		$(this).find("img").attr("src", "/static/img/list/case_remove_enable.png");
 	}, function() {

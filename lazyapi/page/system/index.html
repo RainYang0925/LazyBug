@@ -7,13 +7,31 @@
 			<input id="input_smtpserver" name="smtpserver"
 				class="global_form_input input_smtp" type="text"
 				value="<?php echo htmlspecialchars($this->get_data('smtp_server')); ?>"
-				placeholder="SMTP服务器地址" maxlength="100" />
+				placeholder="SMTP服务器地址" maxlength="100" autocomplete="off" />
 		</div>
 		<div>
 			<input id="input_smtpport" name="smtpport"
 				class="global_form_input input_smtp_short" type="text"
 				value="<?php echo htmlspecialchars($this->get_data('smtp_port')); ?>"
-				placeholder="端口号" maxlength="10" />
+				placeholder="端口号" maxlength="10" autocomplete="off"
+			<?php echo $this->get_data('smtp_default_port') ?
+			'disabled="disabled"' : ''; ?>/>
+		</div>
+	</div>
+	<div class="global_content_level">
+		<div>
+			<input id="checkbox_smtpssl" name="smtpssl" class="checkbox_smtp"
+				type="checkbox" autocomplete="off"
+			<?php echo $this->get_data('smtp_ssl') ? 'checked="checked"' : ''; ?>
+			>
+			<span>使用SSL连接</span>
+		</div>
+		<div>
+			<input id="checkbox_smtpdefaultport" name="smtpdefaultport"
+				class="checkbox_smtp" type="checkbox" autocomplete="off"
+			<?php echo $this->get_data('smtp_default_port') ? 'checked="checked"'
+			: ''; ?>>
+			<span>使用默认端口</span>
 		</div>
 	</div>
 	<div class="global_content_level">
@@ -21,7 +39,7 @@
 			<input id="input_smtpuser" name="smtpuser"
 				class="global_form_input input_smtp" type="text"
 				value="<?php echo htmlspecialchars($this->get_data('smtp_user')); ?>"
-				placeholder="SMTP用户帐号" maxlength="50" />
+				placeholder="SMTP用户帐号" maxlength="50" autocomplete="off" />
 		</div>
 	</div>
 	<div class="global_content_level">
@@ -29,7 +47,7 @@
 			<input id="input_smtppassword" name="smtppassword"
 				class="global_form_input input_smtp" type="password"
 				value="<?php echo htmlspecialchars($this->get_data('smtp_password')); ?>"
-				placeholder="SMTP用户密码" maxlength="50" />
+				placeholder="SMTP用户密码" maxlength="50" autocomplete="off" />
 		</div>
 	</div>
 	<div class="global_content_level">
@@ -37,7 +55,7 @@
 			<input id="input_maillist" name="maillist"
 				class="global_form_input input_maillist" type="text"
 				value="<?php echo htmlspecialchars($this->get_data('mail_list')); ?>"
-				placeholder="任务通知邮箱列表，多个邮箱之间用英文逗号分隔" />
+				placeholder="任务通知邮箱列表，多个邮箱之间用英文逗号分隔" autocomplete="off" />
 		</div>
 	</div>
 	<div class="global_content_level">

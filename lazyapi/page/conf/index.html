@@ -13,11 +13,10 @@
 					</div>
 					<div class="package_name">
 						<span></span>
-						<input name="packageid" type="hidden" value="0" />
+						<input name="packageid" type="hidden" value="0" autocomplete="off" />
 					</div>
 					<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
 					<div class="package_option">
-
 						<div class="package_edit">
 							<img title="编辑" src="/static/img/conf/package_edit_disable.png" />
 						</div>
@@ -34,8 +33,9 @@
 						</div>
 						<div>
 							<span>参数</span>
-							<input name="type" type="hidden" value="param" />
-							<input name="confignum" type="hidden" value="0" />
+							<input name="type" type="hidden" value="param" autocomplete="off" />
+							<input name="confignum" type="hidden" value="0"
+								autocomplete="off" />
 						</div>
 					</div>
 					<div class="package_data package_branch">
@@ -44,8 +44,9 @@
 						</div>
 						<div>
 							<span>数据源</span>
-							<input name="type" type="hidden" value="data" />
-							<input name="confignum" type="hidden" value="0" />
+							<input name="type" type="hidden" value="data" autocomplete="off" />
+							<input name="confignum" type="hidden" value="0"
+								autocomplete="off" />
 						</div>
 					</div>
 				</div>
@@ -57,7 +58,7 @@
 					</div>
 					<div class="package_name">
 						<span>预设配置</span>
-						<input name="packageid" type="hidden" value="0" />
+						<input name="packageid" type="hidden" value="0" autocomplete="off" />
 					</div>
 					<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
 					<div class="package_option">
@@ -74,9 +75,10 @@
 						</div>
 						<div>
 							<span>参数</span>
-							<input name="type" type="hidden" value="param" />
+							<input name="type" type="hidden" value="param" autocomplete="off" />
 							<input name="confignum" type="hidden"
-								value="<?php echo  $this->get_data('param_num'); ?>" />
+								value="<?php echo  $this->get_data('param_num'); ?>"
+								autocomplete="off" />
 						</div>
 					</div>
 					<div class="package_data package_branch">
@@ -85,9 +87,10 @@
 						</div>
 						<div>
 							<span>数据源</span>
-							<input name="type" type="hidden" value="data" />
+							<input name="type" type="hidden" value="data" autocomplete="off" />
 							<input name="confignum" type="hidden"
-								value="<?php echo  $this->get_data('data_num'); ?>" />
+								value="<?php echo  $this->get_data('data_num'); ?>"
+								autocomplete="off" />
 						</div>
 					</div>
 				</div>
@@ -118,7 +121,7 @@
 					<tr class="config_tmp config_line">
 						<td class="td_config_keyword">
 							<span></span>
-							<input name="configid" type="hidden" value="" />
+							<input name="configid" type="hidden" value="" autocomplete="off" />
 						</td>
 						<td class="td_config_value">
 							<span></span>

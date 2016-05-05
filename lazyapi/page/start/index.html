@@ -8,7 +8,8 @@
 		<div>
 			<input id="input_itemurl" name="itemurl"
 				class="global_form_input input_url" type="text" value=""
-				placeholder="接口请求地址，如：http://www.lazybug.com/api/demo" />
+				placeholder="接口请求地址，如：http://www.lazybug.com/api/demo"
+				autocomplete="off" />
 		</div>
 		<div>
 			<img id="img_loading" src="/static/img/icon/loading.gif" />
@@ -18,13 +19,14 @@
 			</a>
 			<?php } ?>
 			<input id="input_reload_id" type="hidden"
-				value="<?php echo $this->get_data('reload_id'); ?>" />
+				value="<?php echo $this->get_data('reload_id'); ?>"
+				autocomplete="off" />
 		</div>
 	</div>
 	<div class="global_content_level">
 		<div>
 			<select id="select_sendtype" name="sendtype"
-				class="global_form_select select_send_type">
+				class="global_form_select select_send_type" autocomplete="off">
 				<option value="GET">GET</option>
 				<option value="POST">POST</option>
 				<option value="PUT">PUT</option>
@@ -34,7 +36,7 @@
 		<div>
 			<select id="select_contenttype" name="contenttype"
 				class="global_form_select select_content_type global_input_disable"
-				disabled="disabled">
+				disabled="disabled" autocomplete="off">
 				<option value="application/x-www-form-urlencoded">x-www-form-urlencoded</option>
 				<option value="application/json">json</option>
 				<option value="application/xml">xml</option>
@@ -55,11 +57,11 @@
 		<div class="global_content_level">
 			<div>
 				<input name="encodekey" class="global_form_input input_param"
-					type="text" value="" placeholder="参数名" />
+					type="text" value="" placeholder="参数名" autocomplete="off" />
 			</div>
 			<div>
 				<input name="encodevalue" class="global_form_input input_param"
-					type="text" value="" placeholder="参数值" />
+					type="text" value="" placeholder="参数值" autocomplete="off" />
 			</div>
 			<div class="icon">
 				<div class="icon_item">
@@ -81,14 +83,15 @@
 		<div class="global_content_level">
 			<div>
 				<input name="formkey" class="global_form_input input_param"
-					type="text" value="" placeholder="参数名" />
+					type="text" value="" placeholder="参数名" autocomplete="off" />
 			</div>
 			<div>
 				<input name="formvalue" class="global_form_input input_param"
-					type="text" value="" placeholder="参数值" />
+					type="text" value="" placeholder="参数值" autocomplete="off" />
 			</div>
 			<div>
-				<select name="formtype" class="global_form_select select_param_type">
+				<select name="formtype" class="global_form_select select_param_type"
+					autocomplete="off">
 					<option value="TEXT">TEXT</option>
 					<option value="FILE">FILE</option>
 				</select>
@@ -112,22 +115,22 @@
 	<div id="div_raw">
 		<div class="global_content_area">
 			<textarea id="input_raw" class="global_form_input text_raw"
-				placeholder=""></textarea>
+				placeholder="" autocomplete="off"></textarea>
 		</div>
 	</div>
 	<hr class="split" />
 	<div class="global_content_level">
 		<div>
 			<input name="headerkey" class="global_form_input input_param"
-				type="text" value="" placeholder="请求头 " />
+				type="text" value="" placeholder="请求头 " autocomplete="off" />
 		</div>
 		<div>
 			<input name="headervalue" class="global_form_input input_param"
-				type="text" value="" placeholder="头信息" />
+				type="text" value="" placeholder="头信息" autocomplete="off" />
 		</div>
 		<div>
 			<select name="headertype"
-				class="global_form_select select_param_type">
+				class="global_form_select select_param_type" autocomplete="off">
 				<option value="TEXT">TEXT</option>
 				<option value="NUM">NUM</option>
 			</select>
@@ -182,7 +185,7 @@
 		<div style="clear: both"></div>
 		<div class="result_border">
 			<div class="result_data">
-				<input id="input_data" type="text" value="data">
+				<input id="input_data" type="text" value="data" autocomplete="off">
 				<span id="span_data"></span>
 				<span id="span_header"></span>
 			</div>

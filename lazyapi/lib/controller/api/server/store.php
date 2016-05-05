@@ -3,10 +3,13 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 
 	public function act() {
 		// 存储查询
+		$package_id = ( int ) Util_Server_Request::get_param ( 'packageid', 'post' );
+		$extend = trim ( Util_Server_Request::get_param ( 'extend', 'post' ) );
 		$command = trim ( Util_Server_Request::get_param ( 'command', 'post' ) );
 		$value = trim ( Util_Server_Request::get_param ( 'value', 'post' ) );
 		
 		$response = "";
+		$value = $this->replace_param ( $value, $package_id, $extend );
 		
 		foreach ( explode ( '|', $command ) as $command ) {
 			$command = trim ( strtolower ( $command ) );
@@ -79,7 +82,7 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 				$result = mysql_query ( $sql, $mysql );
 				if ($result) {
 					$row = mysql_fetch_row ( $result );
-					return implode ( ',', $row );
+					return $row ? implode ( ',', $row ) : '';
 				}
 			} catch ( Exception $e ) {
 				return $e;
@@ -99,7 +102,7 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 				$result = $mysqli->query ( $sql );
 				if ($result) {
 					$row = $result->fetch_row ();
-					return implode ( ',', $row );
+					return $row ? implode ( ',', $row ) : '';
 				}
 			} catch ( Exception $e ) {
 				return $e;
@@ -120,7 +123,7 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 				$result = $pdo->query ( $sql );
 				if ($result) {
 					$row = $result->fetch ();
-					return implode ( ',', $row );
+					return $row ? implode ( ',', $row ) : '';
 				}
 			} catch ( Exception $e ) {
 				return $e;
@@ -144,7 +147,7 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 				$result = sqlsrv_query ( $sqlsrv, $sql );
 				if ($result) {
 					$row = sqlsrv_fetch_array ( $result, SQLSRV_FETCH_ASSOC );
-					return implode ( ',', $row );
+					return $row ? implode ( ',', $row ) : '';
 				}
 			} catch ( Exception $e ) {
 				return $e;
@@ -165,7 +168,7 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 				$result = $pdo->query ( $sql );
 				if ($result) {
 					$row = $result->fetch ();
-					return implode ( ',', $row );
+					return $row ? implode ( ',', $row ) : '';
 				}
 			} catch ( Exception $e ) {
 				return $e;
@@ -186,7 +189,7 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 					oci_execute ( $result, OCI_DEFAULT );
 					if ($result) {
 						$row = oci_fetch_row ( $result );
-						return implode ( ',', $row );
+						return $row ? implode ( ',', $row ) : '';
 					}
 				}
 			} catch ( Exception $e ) {

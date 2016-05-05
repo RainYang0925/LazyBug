@@ -7,7 +7,7 @@ class Controller_Api_Server_Check extends Controller_Api_Server_Base {
 		$command = trim ( Util_Server_Request::get_param ( 'command', 'post' ) );
 		$value = trim ( Util_Server_Request::get_param ( 'value', 'post' ) );
 		
-		$flag_include = $flag_begin = $flag_end = $flag_reg = 0;
+		$flag_include = $flag_begin = $flag_end = $flag_reg = $flag_opposite = 0;
 		$match = $value;
 		
 		foreach ( explode ( '|', $command ) as $command ) {
@@ -25,6 +25,9 @@ class Controller_Api_Server_Check extends Controller_Api_Server_Base {
 				case 'end' :
 					$flag_end = 1;
 					break;
+				case 'opposite' :
+					$flag_opposite = 1;
+					break;
 				default :
 			}
 		}
@@ -32,7 +35,11 @@ class Controller_Api_Server_Check extends Controller_Api_Server_Base {
 		$match = $flag_reg ? $match : preg_quote ( $match );
 		$match = ($flag_begin ? '/^' : '/') . $match;
 		$match = $match . ($flag_end ? '$/' : '/');
-		$response = @preg_match ( $match, $result ) ? 'PASS' : 'FAIL';
+		if ($flag_opposite) {
+			$response = @preg_match ( $match, $result ) ? 'FAIL' : 'PASS';
+		} else {
+			$response = @preg_match ( $match, $result ) ? 'PASS' : 'FAIL';
+		}
 		$this->add_result ( $response );
 		
 		echo $response;

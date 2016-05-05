@@ -9,13 +9,14 @@
 			<?php echo htmlspecialchars($this->get_data('task_runtime')); ?>
 		</span>
 		<input id="input_reload_id" type="hidden"
-			value="<?php echo $this->get_data('history_id'); ?>" />
+			value="<?php echo $this->get_data('history_id'); ?>"
+			autocomplete="off" />
 	</div>
 	<div class="global_content_area result_tmp result_line">
 		<div class="result_item_line">
 			<div class="item_name">
 				<span></span>
-				<input name="itemid" type="hidden" value="" />
+				<input name="itemid" type="hidden" value="" autocomplete="off" />
 			</div>
 			<div class="item_result"></div>
 		</div>
@@ -26,7 +27,7 @@
 				</div>
 				<div class="case_name">
 					<span></span>
-					<input name="caseid" type="hidden" value="" />
+					<input name="caseid" type="hidden" value="" autocomplete="off" />
 				</div>
 				<div class="case_result"></div>
 			</div>
@@ -39,7 +40,7 @@
 			</div>
 			<div class="step_name">
 				<span></span>
-				<input name="resultid" type="hidden" value="" />
+				<input name="resultid" type="hidden" value="" autocomplete="off" />
 			</div>
 			<div class="step_result"></div>
 		</div>

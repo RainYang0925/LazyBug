@@ -22,6 +22,10 @@ form_check_items = {
 		type : "checkbox",
 		name : "checkreg",
 	},
+	opposite : {
+		type : "checkbox",
+		name : "opposite",
+	},
 	value : {
 		empty : 0,
 		type : "input",
@@ -320,9 +324,9 @@ run_step = function(current, package_id, result) {
 			dataType : "text",
 			data : {
 				temp : 1,
-				extend : result,
 				callid : step_value,
-				packageid : package_id
+				packageid : package_id,
+				extend : result
 			},
 			success : function(data) {
 				result = data;
@@ -345,9 +349,10 @@ run_step = function(current, package_id, result) {
 			dataType : "text",
 			data : {
 				temp : 1,
+				packageid : package_id,
+				extend : result,
 				command : step_command,
-				value : step_value,
-				packageid : package_id
+				value : step_value
 			},
 			success : function(data) {
 				result = data;
@@ -380,6 +385,9 @@ get_check_option = function() {
 	if ($("#checkbox_checkreg").prop("checked")) {
 		command += " | reg";
 	}
+	if ($("#checkbox_opposite").prop("checked")) {
+		command += " | opposite";
+	}
 	return command;
 }
 
@@ -392,6 +400,7 @@ set_check_option = function() {
 	$("#checkbox_checkbegin").prop("checked", command.indexOf("begin") === -1 ? false : true);
 	$("#checkbox_checkend").prop("checked", command.indexOf("end") === -1 ? false : true);
 	$("#checkbox_checkreg").prop("checked", command.indexOf("reg") === -1 ? false : true);
+	$("#checkbox_opposite").prop("checked", command.indexOf("opposite") === -1 ? false : true);
 }
 
 add_result = function($parent, data) {
