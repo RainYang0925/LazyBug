@@ -281,7 +281,7 @@ load_task_list = function(page, size, history_size) {
 				$new_task.find(".task_name").find("span").text(obj.name);
 				$new_task.find(".print_time").text(print_time);
 				$new_task.find(".print_package").text(print_package);
-				if (obj.hang) {
+				if (obj.hang === "1") {
 					$new_task.addClass("task_locked");
 					$new_task.find(".task_hang").find("img").attr("src", "/static/img/run/task_locked_disable.png");
 					$new_task.find(".task_hang").find("img").attr("title", "启用");
