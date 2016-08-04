@@ -220,7 +220,7 @@ load_item_list = function(module_id) {
 		data : {
 			moduleid : module_id,
 			page : 0,
-			size : 0,
+			size : 999999,
 		},
 		success : function(data) {
 			$.each(data, function(index, obj) {
