@@ -84,9 +84,9 @@ load_step_list = function($parent) {
 				}
 				var $new_result_step = $parent.next(".item_case_step_line").find(".result_step_tmp").clone(true);
 				$new_result_step.removeClass("result_step_tmp");
-				if (obj.step_type == "检查点") {
+				if (obj.step_type === "检查点") {
 					$new_result_step.find(".step_icon").find("img").attr("src", "/static/img/report/step_check.png");
-				} else if (obj.step_type == "存储查询") {
+				} else if (obj.step_type === "存储查询") {
 					$new_result_step.find(".step_icon").find("img").attr("src", "/static/img/report/step_store.png");
 				} else {
 					$new_result_step.find(".step_icon").find("img").attr("src", "/static/img/report/step_call.png");

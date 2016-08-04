@@ -139,7 +139,7 @@ get_json = function($keys, $values, $types) {
 		var $key = $($keys.get(i));
 		var $value = $($values.get(i));
 		var key = $key.val().trim();
-		var value = $value.val().trim().replace(new RegExp("\"", "gm"), "\\\"");
+		var value = $value.val().trim();
 		$key.removeClass("global_input_error");
 		$value.removeClass("global_input_error");
 		if (!key) {
@@ -147,13 +147,13 @@ get_json = function($keys, $values, $types) {
 		}
 		try {
 			if ($types === null) {
-				eval("obj." + key + "=\"" + value + "\";");
+				obj[key] = value;
 			} else if ($($types.get(i)).val().trim() === "NUM") {
-				eval("obj." + key + "=" + parseInt(value) + ";");
+				obj[key] = parseInt(value);
 			} else if ($($types.get(i)).val().trim() === "FILE") {
-				eval("obj." + key + "=\"@" + value + "\";");
+				obj[key] = "@" + value;
 			} else {
-				eval("obj." + key + "=\"" + value + "\";");
+				obj[key] = value;
 			}
 		} catch (e) {
 			$key.addClass("global_input_error");

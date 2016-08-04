@@ -412,7 +412,7 @@ add_result = function($parent, data) {
 }
 
 get_option = function(key, value) {
-	if (key != "") {
+	if (key !== "") {
 		return "<option value=\"" + key + "\">" + value + "</option>";
 	}
 	return "<option value=\"" + key + "\" disabled=\"disabled\" selected=\"selected\">" + value + "</option>";
@@ -421,7 +421,7 @@ get_option = function(key, value) {
 change_status = function(status) {
 	if (status) {
 		$("#div_save").hide();
-		if (status == -1) {
+		if (status === -1) {
 			$("#div_saved").hide();
 			$("#div_run").hide();
 			$("#div_clear").hide();
