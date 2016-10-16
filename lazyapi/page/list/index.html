@@ -1,14 +1,46 @@
+<?php $this->load('List.Space'); ?>
 <?php $this->load('List.Module'); ?>
 <?php $this->load('List.Item'); ?>
 <?php $this->load('List.Case'); ?>
 <?php $this->load('List.Level'); ?>
 <div class="global_content_div">
 	<div class="global_content_area">
+		<div id="div_space_info">
+			<div id="div_space_left">
+				<span>项目空间:</span>
+				<span id="span_space_name">
+					<?php echo $this->get_data('current_space_name'); ?>
+				</span>
+				<input id="current_space" type="hidden"
+					value="<?php echo $this->get_data('current_space_id'); ?>"
+					autocomplete="off" />
+			</div>
+			<div id="div_space_right">
+				<div id="div_space_switch">
+					<div>
+						<img title="切换空间" src="/static/img/list/space_switch_disable.png" />
+					</div>
+					<div>
+						<span>切换空间</span>
+					</div>
+				</div>
+				<?php if ( $_COOKIE['userrole'] !== 'normal' ) { ?>
+				<div id="div_space_manage">
+					<div>
+						<img title="空间管理" src="/static/img/list/space_manage_disable.png" />
+					</div>
+					<div>
+						<span>空间管理</span>
+					</div>
+				</div>
+				<?php } ?>
+			</div>
+		</div>
 		<div id="div_list_left">
 			<div class="module_head">
 				<span>模块</span>
 			</div>
-			<div class="module_tmp module_line">
+			<div class="module_tmp module_reload module_line">
 				<div class="module_tag"></div>
 				<div class="module_detail">
 					<div class="module_name">
@@ -35,7 +67,7 @@
 					<?php } ?>
 				</div>
 			</div>
-			<div class="module_fixed module_line">
+			<div class="module_all module_line">
 				<div
 					class="module_tag module_tag_1 module_tag_open module_tag_selected"></div>
 				<div class="module_detail module_selected">
@@ -98,6 +130,7 @@
 									<input name="itemid" type="hidden" value="" autocomplete="off" />
 									<input name="moduleid" type="hidden" value=""
 										autocomplete="off" />
+									<input name="spaceid" type="hidden" value="" autocomplete="off" />
 									<input name="itemurl" type="hidden" value="" autocomplete="off" />
 								</div>
 							</div>
@@ -197,6 +230,8 @@
 											<input name="itemid" type="hidden" value=""
 												autocomplete="off" />
 											<input name="moduleid" type="hidden" value=""
+												autocomplete="off" />
+											<input name="spaceid" type="hidden" value=""
 												autocomplete="off" />
 										</div>
 									</td>

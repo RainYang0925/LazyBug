@@ -132,7 +132,7 @@ global_form_reset = function(items) {
 			if (item.type === "input") {
 				global_input_show(item.name, 1, item.pass);
 			} else if (item.type === "select") {
-				global_select_show(item.name, 1, item.pass);
+				global_select_show(item.name, 1);
 			}
 		}
 	});

@@ -50,14 +50,18 @@
 }
 
 #div_case {
-	width: 460px;
-	height: 300px;
+	width: 600px;
+	height: 360px;
 	display: none;
-	margin: -150px 0px 0px -230px;
+	margin: -180px 0px 0px -300px;
+}
+
+.select_case {
+	width: 442px;
 }
 
 .input_case {
-	width: 280px;
+	width: 420px;
 }
 
 #div_case_notice {

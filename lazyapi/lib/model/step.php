@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 步骤模型
+ */
 class Model_Step extends Mod_Model_Relation {
 
 	protected $table_name = 'step';
@@ -8,6 +13,7 @@ class Model_Step extends Mod_Model_Relation {
 			'stepname' => 'name',
 			'steptype' => 'type',
 			'stepcommand' => 'command',
+			'stepfliter' => 'fliter',
 			'stepvalue' => 'value',
 			'stepsequence' => 'sequence' 
 	);

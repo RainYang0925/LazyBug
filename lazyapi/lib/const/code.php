@@ -10,6 +10,14 @@ class Const_Code {
 	const LOGIN_FAIL = '100001';
 	const LOGIN_PARAM_ERROR = '100021';
 	
+	// 空间状态码
+	const ADD_SPACE_FAIL = '110001';
+	const UPDATE_SPACE_FAIL = '110002';
+	const DELETE_SPACE_FAIL = '110003';
+	const ADD_SPACE_EXISTS = '110011';
+	const UPDATE_SPACE_EXISTS = '110012';
+	const SPACE_PARAM_ERROR = '110021';
+	
 	// 模块状态码
 	const ADD_MODULE_FAIL = '200001';
 	const UPDATE_MODULE_FAIL = '200002';

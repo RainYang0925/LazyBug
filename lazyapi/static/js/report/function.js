@@ -46,12 +46,72 @@ request_result_content = function($parent) {
 	$.ajax({
 		url : "/index.php/api/result/content",
 		type : "post",
-		dataType : "text",
+		dataType : "json",
 		data : {
 			resultid : result_id
 		},
 		success : function(data) {
-			$parent.next(".item_case_detail_line").find("span").text(data);
+			if (data.type === "接口调用") {
+				var $new_item_case_detail_content = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_content.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_content.find(".item_case_detail_title").find("span").text("● 运行结果");
+				$new_item_case_detail_content.find(".item_case_detail_text").find("span").text(data.content);
+				$new_item_case_detail_content.css("background-color", "#def5dc");
+				$parent.find(".step_result").append($new_item_case_detail_content);
+				$new_item_case_detail_content.show();
+				var $new_item_case_detail_value1 = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_value1.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_value1.find(".item_case_detail_title").find("span").text("● 请求地址");
+				$new_item_case_detail_value1.find(".item_case_detail_text").find("span").text(data.value1);
+				$parent.find(".step_result").append($new_item_case_detail_value1);
+				$new_item_case_detail_value1.show();
+				var $new_item_case_detail_value2 = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_value2.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_value2.find(".item_case_detail_title").find("span").text("● 请求参数");
+				$new_item_case_detail_value2.find(".item_case_detail_text").find("span").text(data.value2);
+				$parent.find(".step_result").append($new_item_case_detail_value2);
+				$new_item_case_detail_value2.show();
+				var $new_item_case_detail_value3 = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_value3.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_value3.find(".item_case_detail_title").find("span").text("● 自定义请求头");
+				$new_item_case_detail_value3.find(".item_case_detail_text").find("span").text(data.value3);
+				$parent.find(".step_result").append($new_item_case_detail_value3);
+				$new_item_case_detail_value3.show();
+			} else if (data.type === "存储查询") {
+				var $new_item_case_detail_content = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_content.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_content.find(".item_case_detail_title").find("span").text("● 运行结果");
+				$new_item_case_detail_content.find(".item_case_detail_text").find("span").text(data.content);
+				$new_item_case_detail_content.css("background-color", "#def5dc");
+				$parent.find(".step_result").append($new_item_case_detail_content);
+				$new_item_case_detail_content.show();
+				var $new_item_case_detail_value1 = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_value1.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_value1.find(".item_case_detail_title").find("span").text("● 查询语句");
+				$new_item_case_detail_value1.find(".item_case_detail_text").find("span").text(data.value1);
+				$parent.find(".step_result").append($new_item_case_detail_value1);
+				$new_item_case_detail_value1.show();
+			} else if (data.type === "检查点") {
+				var $new_item_case_detail_content = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_content.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_content.find(".item_case_detail_title").find("span").text("● 运行结果");
+				$new_item_case_detail_content.find(".item_case_detail_text").find("span").text(data.content);
+				$new_item_case_detail_content.css("background-color", "#def5dc");
+				$parent.find(".step_result").append($new_item_case_detail_content);
+				$new_item_case_detail_content.show();
+				var $new_item_case_detail_value1 = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_value1.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_value1.find(".item_case_detail_title").find("span").text("● 原始文本");
+				$new_item_case_detail_value1.find(".item_case_detail_text").find("span").text(data.value1);
+				$parent.find(".step_result").append($new_item_case_detail_value1);
+				$new_item_case_detail_value1.show();
+				var $new_item_case_detail_value2 = $(".item_case_detail_tmp").clone(true);
+				$new_item_case_detail_value2.removeClass("item_case_detail_tmp");
+				$new_item_case_detail_value2.find(".item_case_detail_title").find("span").text("● 目标匹配值");
+				$new_item_case_detail_value2.find(".item_case_detail_text").find("span").text(data.value2);
+				$parent.find(".step_result").append($new_item_case_detail_value2);
+				$new_item_case_detail_value2.show();
+			}
 		},
 		error : function(data) {
 		}

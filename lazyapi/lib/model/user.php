@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 用户模型
+ */
 class Model_User extends Mod_Model_Relation {
 
 	protected $table_name = 'user';

@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 运行页面视图
+ */
 class View_Html_Run_Index extends View_Html_Base {
 
 	protected $title = '运行';

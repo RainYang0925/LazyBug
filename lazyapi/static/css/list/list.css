@@ -30,6 +30,17 @@ td {
 	white-space: nowrap;
 }
 
+#div_space {
+	width: 600px;
+	height: 240px;
+	display: none;
+	margin: -120px 0px 0px -300px;
+}
+
+.select_space {
+	width: 440px;
+}
+
 #div_module {
 	width: 540px;
 	height: 240px;
@@ -164,6 +175,43 @@ td {
 	margin: -120px 0px 0px -220px;
 }
 
+#div_space_info {
+	height: 50px;
+	background-color: #ebf0ed;
+	border-bottom: solid 1px #c5c5c5;
+	line-height: 50px;
+}
+
+#div_space_info span {
+	padding: 10px;
+	font-size: 16px;
+}
+
+#div_space_left {
+	float: left;
+}
+
+#div_space_right {
+	float: right;
+}
+
+#div_space_right>div {
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+#div_space_right div {
+	float: left;
+}
+
+#div_space_right img {
+	margin-top: 18px;
+}
+
+.space_opt_on {
+	color: #22aabe;
+}
+
 #div_list_left {
 	width: 300px;
 	min-height: 500px;
@@ -175,7 +223,7 @@ td {
 	width: 299px;
 	background-color: #eff5eb;
 	border-bottom: solid 1px #c5c5c5;
-	line-height: 60px;
+	line-height: 40px;
 	cursor: pointer;
 }
 
@@ -312,10 +360,10 @@ td {
 }
 
 .table_head {
-	height: 60px;
-	background-color: #ebf0ed;
+	height: 40px;
+	background-color: #eff5eb;
 	border-bottom: solid 1px #c5c5c5;
-	line-height: 60px;
+	line-height: 40px;
 }
 
 .table_head span {

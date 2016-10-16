@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 开始页面视图
+ */
 class View_Html_Start_Index extends View_Html_Base {
 
 	protected $title = '开始';

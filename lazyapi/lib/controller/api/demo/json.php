@@ -8,9 +8,9 @@ class Controller_Api_Demo_Json extends Controller_Api_Base {
 				'Age' => 18,
 				'Address' => 'ShangHai. CHINA.',
 				'Friends' => array (
-						'Kevin',
-						'John',
-						'Lily' 
+						'China' => 'XiaoMing',
+						'Amarica' => 'John',
+						'Japan' => 'Conan' 
 				) 
 		) );
 	}

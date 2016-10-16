@@ -6,7 +6,7 @@ return array (
 				
 				'master' => array (
 						'host' => '127.0.0.1',
-						'dbname' => 'lazybug_api',
+						'dbname' => 'lazybug',
 						'user' => 'root',
 						'password' => '',
 						'charset' => 'utf8' 

@@ -1,4 +1,7 @@
 <?php
+
+namespace Lazybug\Framework;
+
 // +------------------------------------------------------------
 // | Driver PDOStatement
 // +------------------------------------------------------------
@@ -6,7 +9,7 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-class Driver_Db_Pdostatement extends PDOStatement {
+class Driver_Db_Pdostatement extends \PDOStatement {
 
 	/**
 	 * 构造函数

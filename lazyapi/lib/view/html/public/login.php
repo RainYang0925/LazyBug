@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 登录页面视图
+ */
 class View_Html_Public_Login extends View_Html_Public_Base {
 
 	protected $title = '用户登录';

@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 测试结果模型
+ */
 class Model_Result extends Mod_Model_Relation {
 
 	protected $table_name = 'result';
@@ -11,6 +16,11 @@ class Model_Result extends Mod_Model_Relation {
 			'steptype' => 'step_type',
 			'resultname' => 'name',
 			'resultcontent' => 'content',
+			'resultvalue1' => 'value_1',
+			'resultvalue2' => 'value_2',
+			'resultvalue3' => 'value_3',
+			'resultvalue4' => 'value_4',
+			'resultvalue5' => 'value_5',
 			'resultpass' => 'pass' 
 	);
 

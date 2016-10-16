@@ -6,6 +6,10 @@ form_check_items = {
 		pass : "步骤名称，如：检查用户状态",
 		fail : "请输入步骤名称"
 	},
+	fliter : {
+		type : "input",
+		name : "checkfliter",
+	},
 	all : {
 		type : "checkbox",
 		name : "checkall",
@@ -121,6 +125,7 @@ request_step_info = function(case_id) {
 				$new_step.find(".step_type").find("img").attr("src", "/static/img/sort/step_" + img_name + ".png");
 				$new_step.find(".step_type").find("span").text(obj.type);
 				$new_step.find("input[name=stepcommand]").val(obj.command);
+				$new_step.find("input[name=stepfliter]").val(obj.fliter);
 				$new_step.find("input[name=stepvalue]").val(obj.value);
 				$new_step.find(".step_name").find("span").text(obj.name);
 				$new_step.show();
@@ -151,8 +156,9 @@ request_step_save = function(case_id) {
 				var step_name = $(this).find(".step_name").find("span").text();
 				var step_type = $(this).find(".step_type").find("span").text();
 				var step_command = $(this).find("input[name=stepcommand]").val();
+				var step_fliter = $(this).find("input[name=stepfliter]").val();
 				var step_value = $(this).find("input[name=stepvalue]").val();
-				request_step_add(case_id, step_name, step_type, step_command, step_value, i + 1);
+				request_step_add(case_id, step_name, step_type, step_command, step_fliter, step_value, i + 1);
 			});
 			change_status(1);
 		},
@@ -162,7 +168,7 @@ request_step_save = function(case_id) {
 	});
 }
 
-request_step_add = function(case_id, step_name, step_type, step_command, step_value, step_sequence) {
+request_step_add = function(case_id, step_name, step_type, step_command, step_fliter, step_value, step_sequence) {
 	$.ajax({
 		url : "/index.php/api/step/add",
 		type : "post",
@@ -172,6 +178,7 @@ request_step_add = function(case_id, step_name, step_type, step_command, step_va
 			stepname : step_name,
 			steptype : step_type,
 			stepcommand : step_command,
+			stepfliter : step_fliter,
 			stepvalue : step_value,
 			stepsequence : step_sequence
 		},
@@ -184,7 +191,7 @@ request_step_add = function(case_id, step_name, step_type, step_command, step_va
 	});
 }
 
-load_module_list = function() {
+load_module_list = function(space_id) {
 	$("#select_callmodule").empty();
 	$("#select_callitem").empty();
 	$("#select_callcase").empty();
@@ -194,7 +201,9 @@ load_module_list = function() {
 		url : "/index.php/api/module/list",
 		type : "post",
 		dataType : "json",
-		data : {},
+		data : {
+			spaceid : space_id
+		},
 		success : function(data) {
 			$.each(data, function(index, obj) {
 				if (!obj.id) {
@@ -209,7 +218,7 @@ load_module_list = function() {
 	});
 }
 
-load_item_list = function(module_id) {
+load_item_list = function(space_id, module_id) {
 	$("#select_callitem").empty();
 	$("#select_callcase").empty();
 	$("#select_callitem").append(get_option("", "请选择一个接口..."));
@@ -218,6 +227,7 @@ load_item_list = function(module_id) {
 		type : "post",
 		dataType : "json",
 		data : {
+			spaceid : space_id,
 			moduleid : module_id,
 			page : 0,
 			size : 999999,
@@ -282,7 +292,7 @@ load_package_list = function() {
 	});
 }
 
-run_step = function(current, package_id, result) {
+run_step = function(current, package_id, guid, result) {
 	var $step_list = $(".step_line:not(.step_tmp)");
 	if (current >= $step_list.length) {
 		change_status(1);
@@ -291,6 +301,7 @@ run_step = function(current, package_id, result) {
 	var $step = $step_list.eq(current);
 	var step_type = $step.find(".step_type").find("span").text();
 	var step_command = $step.find("input[name=stepcommand]").val();
+	var step_fliter = $step.find("input[name=stepfliter]").val();
 	var step_value = $step.find("input[name=stepvalue]").val();
 	$step.find(".run_sign").show();
 	if (step_type === "检查点") {
@@ -300,20 +311,22 @@ run_step = function(current, package_id, result) {
 			dataType : "text",
 			data : {
 				temp : 1,
+				guid : guid,
 				result : result,
 				command : step_command,
+				fliter : step_fliter,
 				value : step_value
 			},
 			success : function(data) {
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, package_id, result);
+					run_step(current + 1, package_id, guid, result);
 				});
 			},
 			error : function(data) {
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, package_id, result);
+					run_step(current + 1, package_id, guid, result);
 				});
 			}
 		});
@@ -324,6 +337,7 @@ run_step = function(current, package_id, result) {
 			dataType : "text",
 			data : {
 				temp : 1,
+				guid : guid,
 				callid : step_value,
 				packageid : package_id,
 				extend : result
@@ -332,13 +346,13 @@ run_step = function(current, package_id, result) {
 				result = data;
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, package_id, result);
+					run_step(current + 1, package_id, guid, result);
 				});
 			},
 			error : function(data) {
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, package_id, result);
+					run_step(current + 1, package_id, guid, result);
 				});
 			}
 		});
@@ -349,6 +363,7 @@ run_step = function(current, package_id, result) {
 			dataType : "text",
 			data : {
 				temp : 1,
+				guid : guid,
 				packageid : package_id,
 				extend : result,
 				command : step_command,
@@ -358,13 +373,13 @@ run_step = function(current, package_id, result) {
 				result = data;
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, package_id, result);
+					run_step(current + 1, package_id, guid, result);
 				});
 			},
 			error : function(data) {
 				$step.find(".run_sign").delay(1000).hide(0, function() {
 					add_result($step, data);
-					run_step(current + 1, package_id, result);
+					run_step(current + 1, package_id, guid, result);
 				});
 			}
 		});

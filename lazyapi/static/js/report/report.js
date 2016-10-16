@@ -25,14 +25,10 @@ $(document).ready(function() {
 	});
 
 	$(".result_step_line").click(function() {
-		var $next = $(this).next(".item_case_detail_line");
-		if ($next.length) {
-			$next.toggle();
+		var $result = $(this).find(".step_result").find(".item_case_detail_line");
+		if ($result.length) {
+			$result.toggle();
 		} else {
-			var $new_item_case_detail = $(".item_case_detail_tmp").clone(true);
-			$new_item_case_detail.removeClass("item_case_detail_tmp");
-			$(this).after($new_item_case_detail);
-			$new_item_case_detail.show();
 			request_result_content($(this));
 		}
 	});

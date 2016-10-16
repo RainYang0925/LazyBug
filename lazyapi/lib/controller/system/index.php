@@ -1,9 +1,13 @@
 <?php
+use Lazybug\Framework as LF;
+
+/**
+ * Controller 系统首页
+ */
 class Controller_System_Index extends Controller_System_Base {
 
 	public function act() {
-		// 系统首页
-		$system_info = M ( 'System' )->select ()->fetch ();
+		$system_info = LF\M ( 'System' )->select ()->fetch ();
 		
 		if ($system_info ['smtp_default_port']) {
 			if ($system_info ['smtp_ssl']) {
@@ -13,7 +17,7 @@ class Controller_System_Index extends Controller_System_Base {
 			}
 		}
 		
-		$view = V ( 'Html.System.Index' );
+		$view = LF\V ( 'Html.System.Index' );
 		$view->add_data ( 'mail_list', $system_info ['mail_list'] );
 		$view->add_data ( 'smtp_server', $system_info ['smtp_server'] );
 		$view->add_data ( 'smtp_port', $system_info ['smtp_port'] );

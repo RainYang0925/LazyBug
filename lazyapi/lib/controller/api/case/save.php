@@ -1,35 +1,40 @@
 <?php
+use Lazybug\Framework as LF;
+use Lazybug\Framework\Util_Server_Request as Request;
+
+/**
+ * Controller 保存接口
+ */
 class Controller_Api_Case_Save extends Controller_Api_Case_Base {
 
 	public function act() {
-		// 保存用例
-		if (! $this->check_param ( 'itemname, casename, itemurl, sendtype, contenttype' )) {
-			V ( 'Json.Base' )->init ( Const_Code::CASE_PARAM_ERROR, '用例传递参数错误' );
+		if (! $this->check_param ( 'spaceid, itemname, casename, itemurl, sendtype, contenttype' )) {
+			LF\V ( 'Json.Base' )->init ( Const_Code::CASE_PARAM_ERROR, '用例传递参数错误' );
 			return;
 		}
 		
-		$item_name = trim ( Util_Server_Request::get_param ( 'itemname', 'post' ) );
-		$case_name = trim ( Util_Server_Request::get_param ( 'casename', 'post' ) );
+		$space_id = ( int ) Request::get_param ( 'spaceid', 'post' );
+		$item_name = trim ( Request::get_param ( 'itemname', 'post' ) );
+		$case_name = trim ( Request::get_param ( 'casename', 'post' ) );
 		
-		$item_id = ( int ) M ( 'Item' )->check_name_exists ( $item_name );
+		$item_id = ( int ) LF\M ( 'Item' )->check_name_exists ( $space_id, $item_name );
 		
 		if ($item_id) {
 			$this->update_item ( $item_id, $item_name, $case_name );
 		} else {
-			$this->new_item ( $item_name, $case_name );
+			$this->new_item ( $space_id, $item_name, $case_name );
 		}
 	}
 
 	private function update_item($item_id, $item_name, $case_name) {
-		// 更新接口
-		$result = M ( 'Item' )->where ( 'id=' . $item_id )->update ();
+		$result = LF\M ( 'Item' )->where ( 'id=' . $item_id )->update ();
 		
 		if (is_null ( $result )) {
-			V ( 'Json.Base' )->init ( Const_Code::UPDATE_ITEM_FAIL, '接口更新失败' );
+			LF\V ( 'Json.Base' )->init ( Const_Code::UPDATE_ITEM_FAIL, '接口更新失败' );
 			return;
 		}
 		
-		$case_id = ( int ) M ( 'Case' )->check_name_exists ( $item_id, $case_name );
+		$case_id = ( int ) LF\M ( 'Case' )->check_name_exists ( $item_id, $case_name );
 		
 		if ($case_id) {
 			$this->update_case ( $case_id );
@@ -38,13 +43,12 @@ class Controller_Api_Case_Save extends Controller_Api_Case_Base {
 		}
 	}
 
-	private function new_item($item_name, $case_name) {
-		// 创建接口
-		M ( 'Item' )->insert ();
-		$item_id = ( int ) M ( 'Item' )->check_name_exists ( $item_name );
+	private function new_item($space_id, $item_name, $case_name) {
+		LF\M ( 'Item' )->insert ();
+		$item_id = ( int ) LF\M ( 'Item' )->check_name_exists ( $space_id, $item_name );
 		
 		if (! $item_id) {
-			V ( 'Json.Base' )->init ( Const_Code::ADD_ITEM_FAIL, '接口添加失败' );
+			LF\V ( 'Json.Base' )->init ( Const_Code::ADD_ITEM_FAIL, '接口添加失败' );
 			return;
 		}
 		
@@ -52,27 +56,25 @@ class Controller_Api_Case_Save extends Controller_Api_Case_Base {
 	}
 
 	private function update_case($case_id) {
-		// 更新用例
-		$result = M ( 'Case' )->where ( 'id=' . $case_id )->update ();
+		$result = LF\M ( 'Case' )->where ( 'id=' . $case_id )->update ();
 		
 		if (is_null ( $result )) {
-			V ( 'Json.Base' )->init ( Const_Code::UPDATE_CASE_FAIL, '用例更新失败' );
+			LF\V ( 'Json.Base' )->init ( Const_Code::UPDATE_CASE_FAIL, '用例更新失败' );
 			return;
 		}
 		
-		V ( 'Json.Base' )->init ( Const_Code::SUCCESS, '用例保存成功' );
+		LF\V ( 'Json.Base' )->init ( Const_Code::SUCCESS, '用例保存成功' );
 	}
 
 	private function new_case($item_id, $item_name, $case_name) {
-		// 创建用例
-		$item = M ( 'Item' )->get_by_id ( $item_id );
+		$item = LF\M ( 'Item' )->get_by_id ( $item_id );
 		$_POST ['moduleid'] = ( int ) $item ['module_id'];
 		$_POST ['itemid'] = $item_id;
-		M ( 'Case' )->insert ();
-		$case_id = ( int ) M ( 'Case' )->check_name_exists ( $item_id, $case_name );
+		LF\M ( 'Case' )->insert ();
+		$case_id = ( int ) LF\M ( 'Case' )->check_name_exists ( $item_id, $case_name );
 		
 		if (! $case_id) {
-			V ( 'Json.Base' )->init ( Const_Code::ADD_CASE_FAIL, '用例添加失败' );
+			LF\V ( 'Json.Base' )->init ( Const_Code::ADD_CASE_FAIL, '用例添加失败' );
 			return;
 		}
 		
@@ -82,8 +84,8 @@ class Controller_Api_Case_Save extends Controller_Api_Case_Base {
 		$_POST ['stepcommand'] = 'self';
 		$_POST ['stepvalue'] = $case_id;
 		$_POST ['stepsequence'] = 1;
-		M ( 'Step' )->insert ();
+		LF\M ( 'Step' )->insert ();
 		
-		V ( 'Json.Base' )->init ( Const_Code::SUCCESS, '用例保存成功' );
+		LF\V ( 'Json.Base' )->init ( Const_Code::SUCCESS, '用例保存成功' );
 	}
 }

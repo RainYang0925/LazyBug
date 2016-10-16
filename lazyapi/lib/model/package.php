@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 配置包模型
+ */
 class Model_Package extends Mod_Model_Relation {
 
 	protected $table_name = 'package';

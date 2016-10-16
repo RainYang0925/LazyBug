@@ -1,13 +1,18 @@
 <?php
+use Lazybug\Framework as LF;
+use Lazybug\Framework\Util_Server_Request as Request;
+
+/**
+ * Controller 任务通知
+ */
 class Controller_Api_Server_Notice extends Controller_Api_Server_Base {
 
 	public function act() {
-		// 任务通知
-		$history_id = ( int ) Util_Server_Request::get_param ( 'id', 'post' );
-		$host = trim ( Util_Server_Request::get_param ( 'host', 'post' ) );
+		$history_id = ( int ) Request::get_param ( 'id', 'post' );
+		$host = trim ( Request::get_param ( 'host', 'post' ) );
 		
-		$system_info = M ( 'System' )->select ()->fetch ();
-		$history_info = M ( 'History' )->get_by_id ( $history_id );
+		$system_info = LF\M ( 'System' )->select ()->fetch ();
+		$history_info = LF\M ( 'History' )->get_by_id ( $history_id );
 		
 		$pass_num = ( int ) $history_info ['pass'];
 		$fail_num = ( int ) $history_info ['fail'];
@@ -27,8 +32,8 @@ class Controller_Api_Server_Notice extends Controller_Api_Server_Base {
 			}
 			try {
 				$smtp = new Extension_Smtp ();
-				$smtp->setServer ( $system_info ['smtp_server'], $system_info ['smtp_user'], $system_info ['smtp_password'], $system_info ['smtp_port'], $system_info ['smtp_ssl'] ? true : false );
-				$smtp->setFrom ( 'LazyBug' );
+				$smtp->setServer ( $system_info ['smtp_server'], $system_info ['smtp_user'], $system_info ['smtp_password'], $system_info ['smtp_port'], $system_info ['smtp_ssl'] ? TRUE : FALSE );
+				$smtp->setFrom ( $system_info ['smtp_user'] );
 				$smtp->setReceiver ( $mail );
 				$smtp->setMail ( $title, $content );
 				$smtp->sendMail ();

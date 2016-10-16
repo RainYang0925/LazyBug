@@ -1,14 +1,22 @@
 <?php
+use Lazybug\Framework as LF;
+use Lazybug\Framework\Util_Server_Request as Request;
+
+/**
+ * Controller 检查点
+ */
 class Controller_Api_Server_Check extends Controller_Api_Server_Base {
 
 	public function act() {
-		// 检查点
-		$result = trim ( Util_Server_Request::get_param ( 'result', 'post' ) );
-		$command = trim ( Util_Server_Request::get_param ( 'command', 'post' ) );
-		$value = trim ( Util_Server_Request::get_param ( 'value', 'post' ) );
+		$result = trim ( Request::get_param ( 'result', 'post' ) );
+		$command = trim ( Request::get_param ( 'command', 'post' ) );
+		$fliter = trim ( Request::get_param ( 'fliter', 'post' ) );
+		$value = trim ( Request::get_param ( 'value', 'post' ) );
 		
+		$result = $fliter ? $this->replace_fliter ( $fliter, 0, $result ) : $result;
 		$flag_include = $flag_begin = $flag_end = $flag_reg = $flag_opposite = 0;
-		$match = $value;
+		$extra_info ['source'] = $result;
+		$extra_info ['target'] = $match = $value;
 		
 		foreach ( explode ( '|', $command ) as $command ) {
 			$command = trim ( strtolower ( $command ) );
@@ -35,20 +43,21 @@ class Controller_Api_Server_Check extends Controller_Api_Server_Base {
 		$match = $flag_reg ? $match : preg_quote ( $match );
 		$match = ($flag_begin ? '/^' : '/') . $match;
 		$match = $match . ($flag_end ? '$/' : '/');
+		
 		if ($flag_opposite) {
 			$response = @preg_match ( $match, $result ) ? 'FAIL' : 'PASS';
 		} else {
 			$response = @preg_match ( $match, $result ) ? 'PASS' : 'FAIL';
 		}
-		$this->add_result ( $response );
+		
+		$this->add_result ( $response, $extra_info );
 		
 		echo $response;
 	}
 
-	private function add_result($content) {
-		// 创建测试结果
-		$temp = ( int ) Util_Server_Request::get_param ( 'temp', 'post' );
-		$history_id = ( int ) Util_Server_Request::get_param ( 'historyid', 'post' );
+	private function add_result($content, $addition) {
+		$temp = ( int ) Request::get_param ( 'temp', 'post' );
+		$history_id = ( int ) Request::get_param ( 'historyid', 'post' );
 		
 		if ($temp) {
 			return;
@@ -56,14 +65,16 @@ class Controller_Api_Server_Check extends Controller_Api_Server_Base {
 		
 		if ($content == 'FAIL') {
 			$_POST ['resultpass'] = 0;
-			M ( 'History' )->increase_fail ( $history_id );
+			LF\M ( 'History' )->increase_fail ( $history_id );
 		} else {
-			M ( 'History' )->increase_pass ( $history_id );
+			LF\M ( 'History' )->increase_pass ( $history_id );
 		}
 		
 		$_POST ['stepid'] = 1;
 		$_POST ['steptype'] = '检查点';
 		$_POST ['resultcontent'] = $content;
-		M ( 'Result' )->insert ();
+		$_POST ['resultvalue1'] = $addition ['source'];
+		$_POST ['resultvalue2'] = $addition ['target'];
+		LF\M ( 'Result' )->insert ();
 	}
 }

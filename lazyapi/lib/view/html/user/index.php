@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 用户页面视图
+ */
 class View_Html_User_Index extends View_Html_Base {
 
 	protected $title = '用户';

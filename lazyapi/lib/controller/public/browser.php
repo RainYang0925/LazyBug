@@ -1,9 +1,13 @@
 <?php
+use Lazybug\Framework as LF;
+
+/**
+ * Controller 非支持浏览器页面
+ */
 class Controller_Public_Browser extends Controller_Public_Base {
 
 	public function act() {
-		// 非支持浏览器页面
-		$view = V ( 'Html.Public.Browser' );
+		$view = LF\V ( 'Html.Public.Browser' );
 		$view->init ( 'Public.Browser' );
 	}
 }

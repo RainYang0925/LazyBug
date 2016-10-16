@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_View_Html;
+
+/**
+ * View Html视图基类
+ */
 class View_Html_Base extends Mod_View_Html {
 
 	public function __construct() {

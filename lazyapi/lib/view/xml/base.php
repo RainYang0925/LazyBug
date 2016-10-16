@@ -1,11 +1,17 @@
 <?php
+use Lazybug\Framework\Mod_View_Xml;
+use Lazybug\Framework\Util_Server_Response as Response;
+
+/**
+ * View Xml视图基类
+ */
 class View_Xml_Base extends Mod_View_Xml {
 
 	private $dom = NULL;
 
 	public function __construct() {
 		parent::__construct ();
-		Util_Server_Response::set_header ( "Content-type", "text/xml" );
+		Response::set_header ( "Content-type", "text/xml" );
 		$this->dom = $this->get_dom ();
 	}
 

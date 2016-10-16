@@ -4,9 +4,57 @@ $(document).ready(function() {
 
 	$("#div_menu_list").removeClass("global_menu_disable").addClass("global_menu_enable");
 
+	space_id = parseInt($("#current_space").val().trim());
+
 	load_module_list();
 	load_item_list(0, 1, 10);
 	public_page_load(1);
+
+	$("#div_space_switch").hover(function() {
+		$(this).find("img").attr("src", "/static/img/list/space_switch_enable.png");
+		$(this).find("span").addClass("space_opt_on");
+	}, function() {
+		$(this).find("img").attr("src", "/static/img/list/space_switch_disable.png");
+		$(this).find("span").removeClass("space_opt_on");
+	});
+
+	$("#div_space_switch").click(function() {
+		global_form_reset(form_space_items);
+		global_form_clear(form_space_items);
+		global_board_show("space", 1, 0);
+		load_space_list();
+	});
+
+	$(".switch_space_close").click(function() {
+		global_board_show("space", 0, 0);
+	});
+
+	$(".switch_space_cancel").click(function() {
+		global_board_show("space", 0, 0);
+	});
+
+	$("#img_switch_space_ok").click(function() {
+		if (!global_form_check(form_space_items)) {
+			return;
+		}
+		space_id = parseInt($("#select_projectspace").val());
+		$("#current_space").val(space_id);
+		$("#span_space_name").text($("#select_projectspace").find("option:selected").text());
+		global_board_show("space", 0, 0);
+		public_space_recall(space_id);
+	});
+
+	$("#div_space_manage").hover(function() {
+		$(this).find("img").attr("src", "/static/img/list/space_manage_enable.png");
+		$(this).find("span").addClass("space_opt_on");
+	}, function() {
+		$(this).find("img").attr("src", "/static/img/list/space_manage_disable.png");
+		$(this).find("span").removeClass("space_opt_on");
+	});
+
+	$("#div_space_manage").click(function() {
+		window.location.href = "/index.php/space";
+	});
 
 	$(".module_line").hover(function() {
 		$(this).find(".module_tag").addClass("module_tag_selected");
@@ -106,7 +154,7 @@ $(document).ready(function() {
 
 	$("#img_delete_module_ok").click(function() {
 		var module_id = $("#input_delete_module_id").val().trim();
-		$(".module_fixed").click();
+		$(".module_all").click();
 		request_module_delete(module_id);
 	});
 
@@ -337,7 +385,7 @@ $(document).ready(function() {
 	$(".case_load").click(function() {
 		var $parent = $(this).parent().parent().parent();
 		var case_id = $parent.find("input[name=caseid]").val().trim();
-		window.location.href = "/index.php/start?reload=" + case_id;
+		window.open("/index.php/start?reload=" + case_id);
 	});
 
 	$(".case_sort").hover(function() {
@@ -349,7 +397,7 @@ $(document).ready(function() {
 	$(".case_sort").click(function() {
 		var $parent = $(this).parent().parent().parent()
 		var case_id = $parent.find("input[name=caseid]").val().trim();
-		window.location.href = "/index.php/sort?id=" + case_id;
+		window.open("/index.php/sort?id=" + case_id);
 	});
 
 	$(".case_copy").hover(function() {

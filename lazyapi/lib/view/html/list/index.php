@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 浏览页面视图
+ */
 class View_Html_List_Index extends View_Html_Base {
 
 	protected $title = '浏览';

@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 记录页面视图
+ */
 class View_Html_Report_Index extends View_Html_Base {
 
 	protected $title = '记录';

@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 系统设置页面视图
+ */
 class View_Html_System_Index extends View_Html_Base {
 
 	protected $title = '系统设置';

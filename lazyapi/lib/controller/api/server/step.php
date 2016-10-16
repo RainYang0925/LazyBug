@@ -1,20 +1,25 @@
 <?php
+use Lazybug\Framework as LF;
+use Lazybug\Framework\Util_Server_Request as Request;
+
+/**
+ * Controller 获取任务步骤
+ */
 class Controller_Api_Server_Step extends Controller_Api_Server_Base {
 
 	public function act() {
-		// 获取任务步骤
-		$case_id = ( int ) Util_Server_Request::get_param ( 'caseid', 'post' );
+		$case_id = ( int ) Request::get_param ( 'caseid', 'post' );
 		
-		$case = M ( 'Case' )->get_by_id ( $case_id );
+		$case = LF\M ( 'Case' )->get_by_id ( $case_id );
 		
 		if (! $case) {
-			V ( 'Xml.Base' )->init ( 'step', array () );
+			LF\V ( 'Xml.Base' )->init ( 'step', array () );
 			return;
 		}
 		
 		$_POST ['resultname'] = $case ['name'];
-		M ( 'Result' )->insert ();
+		LF\M ( 'Result' )->insert ();
 		
-		V ( 'Xml.Base' )->init ( 'step', M ( 'Step' )->get_by_case ( $case_id ) );
+		LF\V ( 'Xml.Base' )->init ( 'step', LF\M ( 'Step' )->get_by_case ( $case_id ) );
 	}
 }

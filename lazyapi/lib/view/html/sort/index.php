@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 序列页面视图
+ */
 class View_Html_Sort_Index extends View_Html_Base {
 
 	protected $title = '序列';

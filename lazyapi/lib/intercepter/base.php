@@ -1,4 +1,12 @@
 <?php
+use Lazybug\Framework as LF;
+use Lazybug\Framework\Lb_Intercepter;
+use Lazybug\Framework\Util_Server_Request;
+use Lazybug\Framework\Util_Client_Cookie;
+
+/**
+ * Intercepter 拦截器基类
+ */
 abstract class Intercepter_Base extends Lb_Intercepter {
 
 	protected function check_cookie() {
@@ -7,7 +15,7 @@ abstract class Intercepter_Base extends Lb_Intercepter {
 		$user_role = Util_Server_Request::get_cookie ( 'userrole' );
 		$time = Util_Server_Request::get_cookie ( 'time' );
 		$secstr = Util_Server_Request::get_cookie ( 'secstr' );
-		$seckey = lb_read_system ( 'seckey' );
+		$seckey = LF\lb_read_system ( 'seckey' );
 		return $secstr === md5 ( $user_id . '$' . $user_name . '$' . $user_role . '$' . $time . '$' . $seckey );
 	}
 

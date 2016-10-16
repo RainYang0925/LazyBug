@@ -51,6 +51,7 @@ $(document).ready(function() {
 		var step_type = $parent.find(".step_type").find("span").text().trim();
 		var step_name = $parent.find(".step_name").find("span").text().trim();
 		var step_command = $parent.find(".step_type").find("input[name=stepcommand]").val().trim();
+		var step_fliter = $parent.find(".step_type").find("input[name=stepfliter]").val().trim();
 		var step_value = $parent.find(".step_type").find("input[name=stepvalue]").val().trim();
 		switch (step_type) {
 		case "检查点":
@@ -59,17 +60,19 @@ $(document).ready(function() {
 			$("#input_add_check_flag").val(0);
 			$("#input_checkname").val(step_name);
 			$("#input_checkcommand").val(step_command);
+			$("#input_checkfliter").val(step_fliter);
 			$("#input_checkvalue").val(step_value);
 			set_check_option();
 			global_board_show("check", 1, 0);
 			break;
 		case "接口调用":
+			var space_id = parseInt($("#input_space_id").val());
 			global_form_reset(form_call_items);
 			$("#input_call_step_id").val(step_id);
 			$("#input_add_call_flag").val(0);
 			$("#input_callname").val(step_name);
 			global_board_show("call", 1, 0);
-			load_module_list();
+			load_module_list(space_id);
 			break;
 		case "存储查询":
 			global_form_reset(form_store_items);
@@ -141,6 +144,7 @@ $(document).ready(function() {
 		var flag = parseInt($("#input_add_check_flag").val().trim());
 		var check_name = $("#input_checkname").val().trim();
 		var check_command = $("#input_checkcommand").val().trim();
+		var check_fliter = $("#input_checkfliter").val().trim();
 		var check_value = $("#input_checkvalue").val().trim();
 		if (flag) {
 			var $new_step = $(".step_tmp").clone(true);
@@ -148,6 +152,7 @@ $(document).ready(function() {
 			$new_step.find(".step_type").find("img").attr("src", "/static/img/sort/step_check.png");
 			$new_step.find(".step_type").find("span").text("检查点");
 			$new_step.find("input[name=stepcommand]").val(check_command);
+			$new_step.find("input[name=stepfliter]").val(check_fliter);
 			$new_step.find("input[name=stepvalue]").val(check_value);
 			$new_step.find(".step_name").find("span").text(check_name);
 			$new_step.show();
@@ -156,6 +161,7 @@ $(document).ready(function() {
 			global_board_show("check", 0, 0);
 		} else {
 			$("#" + step_id).find("input[name=stepcommand]").val(check_command);
+			$("#" + step_id).find("input[name=stepfliter]").val(check_fliter);
 			$("#" + step_id).find("input[name=stepvalue]").val(check_value);
 			$("#" + step_id).find(".step_name").find("span").text(check_name);
 			change_status(0);
@@ -167,15 +173,17 @@ $(document).ready(function() {
 		event.stopPropagation();
 		global_form_reset(form_call_items);
 		global_form_clear(form_call_items);
+		var space_id = parseInt($("#input_space_id").val());
 		var $parent = $(this).parent().parent().parent().parent().parent();
 		$("#input_call_step_id").val($parent.attr("id"));
 		$("#input_add_call_flag").val(1);
 		global_board_show("call", 1, 0);
-		load_module_list();
+		load_module_list(space_id);
 	});
 
 	$("#select_callmodule").change(function() {
-		load_item_list($(this).val().trim());
+		var space_id = parseInt($("#input_space_id").val());
+		load_item_list(space_id, $(this).val().trim());
 	});
 
 	$("#select_callitem").change(function() {
@@ -275,11 +283,12 @@ $(document).ready(function() {
 	});
 
 	$("#img_edit_option_ok").click(function() {
+		var guid = new Date().getTime() + "-" + parseInt(10 * Math.random()) + parseInt(10 * Math.random()) + parseInt(10 * Math.random());
 		var package_id = parseInt($("#select_optionpackage").val());
 		$(".result_line:not(.result_tmp)").remove();
 		change_status(-1);
 		global_board_show("option", 0, 0);
-		run_step(0, package_id, "");
+		run_step(0, package_id, guid, "");
 	});
 
 	$(".icon_delete").click(function() {

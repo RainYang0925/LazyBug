@@ -1,11 +1,16 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 历史模型
+ */
 class Model_History extends Mod_Model_Relation {
 
 	protected $table_name = 'history';
 
 	protected $fields = array (
 			'taskid' => 'task_id',
-			'historysymbol' => 'symbol',
+			'guid' => 'guid',
 			'historyruntime' => 'runtime',
 			'historypass' => 'pass',
 			'historyfail' => 'fail' 
@@ -34,9 +39,9 @@ class Model_History extends Mod_Model_Relation {
 		return $this->select ()->where ( $where )->fetch ();
 	}
 
-	public function get_by_symbol($symbol) {
+	public function get_by_guid($guid) {
 		$where = array (
-				'symbol' => $symbol,
+				'guid' => $guid,
 				'status' => 1 
 		);
 		return $this->select ()->where ( $where )->fetch ();

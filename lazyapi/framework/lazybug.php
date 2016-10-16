@@ -2,12 +2,14 @@
 // +------------------------------------------------------------
 // | LazyBug PHP Framework
 // +------------------------------------------------------------
-// | Version : Beta 0.3.19
+// | Version : 1.0.2
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
 require 'common/setting/path.php';
 require 'common/setting/file.php';
+spl_autoload_register ( '\Lazybug\Framework\lb_load_from_app' );
+spl_autoload_register ( '\Lazybug\Framework\lb_load_from_system' );
 
-LB::get_instance ()->run ();
+\Lazybug\Framework\LB::get_instance ()->run ();
 ?>

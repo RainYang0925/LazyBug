@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 	$("#div_menu_start").removeClass("global_menu_disable").addClass("global_menu_enable");
 
+	load_space_list();
 	reload();
 
 	$("#select_sendtype").change(function() {
@@ -87,9 +88,10 @@ $(document).ready(function() {
 		var send_type = $("#select_sendtype").val().trim();
 		var content_type = $("#select_contenttype").val().trim();
 		var item_url = $("#input_itemurl").val().trim();
+		var space_id = $("#select_projectspace").val().trim();
 		var item_name = $("#input_itemname").val().trim();
 		var case_name = $("#input_casename").val().trim();
-		request_case_save(item_name, case_name, send_type, content_type, item_url);
+		request_case_save(space_id, item_name, case_name, send_type, content_type, item_url);
 	});
 
 	$("#a_send").click(function() {

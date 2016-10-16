@@ -9,6 +9,12 @@ form_api_items = {
 }
 
 form_case_items = {
+	projectspace : {
+		empty : 0,
+		type : "select",
+		name : "projectspace",
+		def : ""
+	},
 	itemname : {
 		empty : 0,
 		type : "input",
@@ -67,12 +73,13 @@ request_case_info = function(case_id) {
 	});
 }
 
-request_case_save = function(item_name, case_name, send_type, content_type, item_url) {
+request_case_save = function(space_id, item_name, case_name, send_type, content_type, item_url) {
 	$.ajax({
 		url : "/index.php/api/case/save",
 		type : "post",
 		dataType : "json",
 		data : {
+			spaceid : space_id,
 			itemname : item_name,
 			casename : case_name,
 			sendtype : send_type,
@@ -115,6 +122,36 @@ request_case_request = function(send_type, content_type, item_url) {
 			change_status(1);
 		}
 	});
+}
+
+load_space_list = function() {
+	$("#select_projectspace").empty();
+	$("#select_projectspace").append(get_option("", "请选择项目空间..."));
+	$("#select_projectspace").append(get_option("0", "默认空间"));
+	$.ajax({
+		url : "/index.php/api/space/list",
+		type : "post",
+		dataType : "json",
+		data : {},
+		success : function(data) {
+			$.each(data, function(index, obj) {
+				if (!obj.id) {
+					return;
+				}
+				$("#select_projectspace").append(get_option(obj.id, obj.name));
+			});
+		},
+		error : function(data) {
+
+		}
+	});
+}
+
+get_option = function(key, value) {
+	if (key !== "") {
+		return "<option value=\"" + key + "\">" + value + "</option>";
+	}
+	return "<option value=\"" + key + "\" disabled=\"disabled\" selected=\"selected\">" + value + "</option>";
 }
 
 get_params = function() {

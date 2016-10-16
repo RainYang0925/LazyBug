@@ -1,34 +1,39 @@
 <?php
+use Lazybug\Framework\Util_Server_Request as Request;
+
+/**
+ * Controller 请求用例执行
+ */
 class Controller_Api_Case_Request extends Controller_Api_Case_Base {
 
 	public function act() {
-		// 请求用例执行
-		$send_type = trim ( Util_Server_Request::get_param ( 'sendtype', 'post' ) );
-		$content_type = trim ( Util_Server_Request::get_param ( 'contenttype', 'post' ) );
-		$item_url = trim ( Util_Server_Request::get_param ( 'itemurl', 'post' ) );
-		$request_param = trim ( Util_Server_Request::get_param ( 'requestparam', 'post' ) );
-		$request_header = trim ( Util_Server_Request::get_param ( 'requestheader', 'post' ) );
-		$request_cookie = trim ( Util_Server_Request::get_param ( 'requestcookie', 'post' ) );
+		$send_type = trim ( Request::get_param ( 'sendtype', 'post' ) );
+		$content_type = trim ( Request::get_param ( 'contenttype', 'post' ) );
+		$item_url = trim ( Request::get_param ( 'itemurl', 'post' ) );
+		$request_param = trim ( Request::get_param ( 'requestparam', 'post' ) );
+		$request_header = trim ( Request::get_param ( 'requestheader', 'post' ) );
+		$request_cookie = trim ( Request::get_param ( 'requestcookie', 'post' ) );
 		
 		if ($content_type === 'application/x-www-form-urlencoded') {
-			$request_param = json_decode ( $request_param, true );
+			$request_param = json_decode ( $request_param, TRUE );
 			if (is_null ( $request_param ) || ! is_array ( $request_param )) {
 				$request_param = '';
 			} else {
 				$param_array = array ();
 				foreach ( $request_param as $key => $value ) {
+					$value = is_array ( $value ) ? json_encode ( $value ) : $value;
 					$param_array [] = urlencode ( $key ) . '=' . urlencode ( $value );
 				}
 				$request_param = implode ( $param_array, '&' );
 			}
 		} else if ($content_type === 'multipart/form-data') {
-			$request_param = json_decode ( $request_param, true );
+			$request_param = json_decode ( $request_param, TRUE );
 			if (is_null ( $request_param ) || ! is_array ( $request_param )) {
 				$request_param = array ();
 			}
 		}
 		
-		$request_header = json_decode ( $request_header, true );
+		$request_header = json_decode ( $request_header, TRUE );
 		if (is_null ( $request_header ) || ! is_array ( $request_header )) {
 			$request_header = array ();
 		}

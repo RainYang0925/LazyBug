@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 设置页面视图
+ */
 class View_Html_Conf_Index extends View_Html_Base {
 
 	protected $title = '设置';

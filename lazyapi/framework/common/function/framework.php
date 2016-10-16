@@ -1,4 +1,7 @@
 <?php
+
+namespace Lazybug\Framework;
+
 // +------------------------------------------------------------
 // | Call 系统类调用
 // +------------------------------------------------------------
@@ -16,7 +19,7 @@
 function lb_call_router($router) {
 	// 路由器组件存在时执行调度
 	if (lb_require_file ( _LIB_PATH, 'Mod.Router.' . $router )) {
-		$router_class = 'Mod_Router_' . lb_convert_quote_to_class ( $router );
+		$router_class = '\Lazybug\Framework\Mod_Router_' . lb_convert_quote_to_class ( $router );
 		$router = new $router_class ();
 		return $router->dispatch ();
 	}
@@ -29,9 +32,15 @@ function lb_call_router($router) {
  * @return type $interrupt 返回结果
  */
 function lb_call_intercepter($intercepter) {
+	// 命名空间处理
+	$intercepter = lb_parse_classname ( $intercepter );
+	$real_path = $intercepter ['classname'];
+	if (lb_read_system ( 'namespace_path' )) {
+		$real_path = preg_replace ( '/\\\\/', '.', preg_replace ( '/^\\\\/', '', $intercepter ['namespace'] ) ) . $real_path;
+	}
 	// 拦截器组件存在时执行中断
-	if (lb_require_lib ( 'Intercepter.' . $intercepter )) {
-		$intercepter_class = 'Intercepter_' . lb_convert_quote_to_class ( $intercepter );
+	if (lb_require_lib ( 'Intercepter.' . $real_path )) {
+		$intercepter_class = $intercepter ['namespace'] . 'Intercepter_' . lb_convert_quote_to_class ( $intercepter ['classname'] );
 		$intercepter = new $intercepter_class ();
 		return $intercepter->interrupt ();
 	}
@@ -44,9 +53,15 @@ function lb_call_intercepter($intercepter) {
  * @return type $act 返回结果
  */
 function lb_call_controller($controller) {
+	// 命名空间处理
+	$controller = lb_parse_classname ( $controller );
+	$real_path = $controller ['classname'];
+	if (lb_read_system ( 'namespace_path' )) {
+		$real_path = preg_replace ( '/\\\\/', '.', preg_replace ( '/^\\\\/', '', $controller ['namespace'] ) ) . $real_path;
+	}
 	// 控制器存在时执行操作
-	if (lb_require_lib ( 'Controller.' . $controller )) {
-		$controller_class = 'Controller_' . lb_convert_quote_to_class ( $controller );
+	if (lb_require_lib ( 'Controller.' . $real_path )) {
+		$controller_class = $controller ['namespace'] . 'Controller_' . lb_convert_quote_to_class ( $controller ['classname'] );
 		$controller = new $controller_class ();
 		return $controller->act ();
 	}
@@ -73,7 +88,7 @@ function lb_load_database($name) {
 	// 连接数据库并返回
 	$db_index = explode ( '.', $name );
 	if (lb_require_file ( _LIB_PATH, 'Driver.Db.' . $db_index [0] )) {
-		$db_class = 'Driver_Db_' . ucfirst ( strtolower ( $db_index [0] ) );
+		$db_class = '\Lazybug\Framework\Driver_Db_' . ucfirst ( strtolower ( $db_index [0] ) );
 		$db = new $db_class ();
 		return $db->connect ( $db_conf ['host'], $db_conf ['dbname'], $db_conf ['user'], $db_conf ['password'], $db_conf ['charset'] );
 	}

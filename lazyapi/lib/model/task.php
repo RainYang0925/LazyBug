@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 任务模型
+ */
 class Model_Task extends Mod_Model_Relation {
 
 	protected $table_name = 'task';
@@ -6,7 +11,7 @@ class Model_Task extends Mod_Model_Relation {
 	protected $fields = array (
 			'taskname' => 'name',
 			'taskpackage' => 'package_id',
-			'taskmodule' => 'module_id',
+			'taskspace' => 'space_id',
 			'tasklevel' => 'level',
 			'taskruntime' => 'runtime',
 			'taskhang' => 'hang' 

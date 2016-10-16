@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 授权检查页面视图
+ */
 class View_Html_Public_Auth extends View_Html_Public_Base {
 
 	protected $title = '授权限制';

@@ -1,0 +1,53 @@
+<?php $this->load('Space.Space'); ?>
+<div class="global_content_div">
+	<div class="global_content_title">
+		<span>项目空间管理</span>
+	</div>
+	<div class="global_content_area">
+		<div class="global_content_area space_tmp space_line">
+			<div class="space_name">
+				<div>
+					<img src="/static/img/space/space.png" />
+				</div>
+				<div>
+					<span></span>
+					<input name="spaceid" type="hidden" value="" autocomplete="off" />
+				</div>
+			</div>
+			<div class="space_option">
+				<div class="space_edit">
+					<img title="编辑" src="/static/img/space/space_edit_disable.png" />
+				</div>
+				<div class="space_remove">
+					<img title="移除" src="/static/img/space/space_remove_disable.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="global_content_area">
+		<div class="global_content_area space_line">
+			<div class="space_name">
+				<div>
+					<img src="/static/img/space/space.png" />
+				</div>
+				<div>
+					<span>默认空间 (不能修改)</span>
+					<input name="spaceid" type="hidden" value="0" autocomplete="off" />
+				</div>
+			</div>
+			<div class="space_option">
+				<div class="space_add">
+					<img title="添加" src="/static/img/space/space_add_disable.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="div_space_loading">
+		<div>
+			<img src="/static/img/icon/loading.gif" />
+		</div>
+		<div>
+			<span id="span_space_text">正在载入空间数据</span>
+		</div>
+	</div>
+</div>

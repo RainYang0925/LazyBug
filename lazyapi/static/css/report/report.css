@@ -110,17 +110,20 @@
 }
 
 .result_step_line {
-	height: 30px;
-	margin: 0px 15px 0px 15px;
+	margin: 0px 5px 0px 5px;
 	line-height: 30px;
 	overflow: hidden;
 }
 
-.result_step_line>div {
+.step_head {
+	height: 30px;
+}
+
+.step_head>div {
 	float: left;
 }
 
-.result_step_line img {
+.step_head img {
 	margin: 7px 15px 0px 0px;
 }
 

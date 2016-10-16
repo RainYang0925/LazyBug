@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 系统配置模型
+ */
 class Model_System extends Mod_Model_Relation {
 
 	protected $table_name = 'system';

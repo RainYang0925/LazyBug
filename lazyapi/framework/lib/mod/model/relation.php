@@ -1,4 +1,7 @@
 <?php
+
+namespace Lazybug\Framework;
+
 // +------------------------------------------------------------
 // | Model 关系模型
 // +------------------------------------------------------------
@@ -108,7 +111,10 @@ class Mod_Model_Relation extends Lb_Model {
 	 * @return string $select 选择语句
 	 */
 	private function select_mapping($params) {
-		return implode ( ',', $params );
+		foreach ( $params as $value ) {
+			$exp [] = '`' . $value . '`';
+		}
+		return implode ( ',', $exp );
 	}
 
 	/**
@@ -135,7 +141,7 @@ class Mod_Model_Relation extends Lb_Model {
 	 */
 	private function update_mapping($params) {
 		foreach ( $params as $key => $value ) {
-			$exp [] = $key . ' = :' . $key;
+			$exp [] = '`' . $key . '` = :' . $key;
 			$this->params [':' . $key] = $value;
 		}
 		return implode ( ',', $exp );
@@ -156,10 +162,10 @@ class Mod_Model_Relation extends Lb_Model {
 			} else if ($key === '_complex') {
 				$exp [] = '(' . $this->where_mapping ( $value ) . ')';
 			} else if (is_array ( $value )) {
-				$exp [] = $key . ' ' . $value [0] . ' :' . $key;
+				$exp [] = '`' . $key . '` ' . $value [0] . ' :' . $key;
 				$this->params [':' . $key] = $value [1];
 			} else {
-				$exp [] = $key . ' = :' . $key;
+				$exp [] = '`' . $key . '` = :' . $key;
 				$this->params [':' . $key] = $value;
 			}
 		}
@@ -178,7 +184,7 @@ class Mod_Model_Relation extends Lb_Model {
 			if (is_numeric ( $key )) {
 				$exp [] = $value;
 			} else {
-				$exp [] = $key . ' ' . $value;
+				$exp [] = '`' . $key . '` ' . $value;
 			}
 		}
 		return implode ( ',', $exp );

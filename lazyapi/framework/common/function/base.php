@@ -1,4 +1,33 @@
 <?php
+
+namespace Lazybug\Framework;
+
+// +------------------------------------------------------------
+// | Parse 文本解析
+// +------------------------------------------------------------
+// | 解析完整类名
+// +------------------------------------------------------------
+// | Author : yuanhang.chen@gmail.com
+// +------------------------------------------------------------
+
+/**
+ * 完整类名解析为类和命名空间
+ *
+ * @param string $classname 类名称
+ * @return array $component 组成部分
+ */
+function lb_parse_classname($classname) {
+	$namespace = '';
+	if (strripos ( $classname, '\\' ) > 0) {
+		$namespace = substr ( $classname, 0, strripos ( $classname, '\\' ) + 1 );
+		$classname = substr ( $classname, strripos ( $classname, '\\' ) + 1 );
+	}
+	return array (
+			'namespace' => $namespace,
+			'classname' => $classname 
+	);
+}
+
 // +------------------------------------------------------------
 // | Convert 格式转换
 // +------------------------------------------------------------

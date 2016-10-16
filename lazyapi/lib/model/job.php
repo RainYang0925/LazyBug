@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 作业模型
+ */
 class Model_Job extends Mod_Model_Relation {
 
 	protected $table_name = 'job';

@@ -1,11 +1,18 @@
 <?php
 return array (
+		
 		'Api.Demo.Cookie' => '/demo/cookie',
 		'Api.Demo.Json' => '/demo/json',
 		'Api.Demo.Xml' => '/demo/xml',
 		'Api.Demo.Get' => '/demo/get',
 		
 		'Api.Public.Login' => '/api/login',
+		
+		'Api.Space.List' => '/api/space/list',
+		'Api.Space.Add' => '/api/space/add',
+		'Api.Space.Cookie' => '/api/space/cookie',
+		'Api.Space.Update' => '/api/space/update',
+		'Api.Space.Delete' => '/api/space/delete',
 		
 		'Api.Module.List' => '/api/module/list',
 		'Api.Module.Count' => '/api/module/count',
@@ -87,9 +94,11 @@ return array (
 		'Public.404' => '/404',
 		'Public.Auth' => '/auth',
 		'Public.Database' => '/database',
+		'Public.Module' => '/module',
 		
 		'Start.Index' => '(/start)?',
 		'List.Index' => '/list',
+		'Space.Index' => '/space',
 		'Sort.Index' => '/sort',
 		'Run.Index' => '/run',
 		'Report.Index' => '/report',

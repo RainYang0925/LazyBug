@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 个人资料页面视图
+ */
 class View_Html_Home_Index extends View_Html_Base {
 
 	protected $title = '个人资料';

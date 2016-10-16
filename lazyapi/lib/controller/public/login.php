@@ -1,16 +1,26 @@
 <?php
+use Lazybug\Framework as LF;
+use Lazybug\Framework\Util_Server_Response as Response;
+
+/**
+ * Controller 登录页面
+ */
 class Controller_Public_Login extends Controller_Public_Base {
 
 	public function act() {
-		// 登录页面
 		try {
-			M ( 'User' );
+			$user = LF\M ( 'User' );
 		} catch ( Exception $e ) {
-			Util_Server_Response::set_header_location ( '/index.php/database' );
+			Response::set_header_location ( '/index.php/database' );
 			exit ();
 		}
 		
-		$view = V ( 'Html.Public.Login' );
+		if (! function_exists ( 'curl_init' )) {
+			Response::set_header_location ( '/index.php/module?name=php-curl' );
+			exit ();
+		}
+		
+		$view = LF\V ( 'Html.Public.Login' );
 		$view->init ( 'Public.Login' );
 	}
 }

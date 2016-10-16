@@ -10,6 +10,8 @@
 		</span>
 		<input id="input_reload_id" type="hidden"
 			value="<?php echo $this->get_data('case_id'); ?>" autocomplete="off" />
+		<input id="input_space_id" type="hidden"
+			value="<?php echo $this->get_data('space_id'); ?>" autocomplete="off" />
 	</div>
 	<div id="div_sortable">
 		<div id="div_step_0" class="global_content_area step_line">
@@ -31,6 +33,8 @@
 						<?php echo $this->get_data('item_name') . ' '.$this->get_data('case_name'); ?>
 					</span>
 					<input name="stepcommand" type="hidden" value="self"
+						autocomplete="off" />
+					<input name="stepfliter" type="hidden" value="self"
 						autocomplete="off" />
 					<input name="stepvalue" type="hidden"
 						value="<?php echo $this->get_data('case_id'); ?>"
@@ -103,6 +107,7 @@
 						<span></span>
 						<input name="stepcommand" type="hidden" value=""
 							autocomplete="off" />
+						<input name="stepfliter" type="hidden" value="" autocomplete="off" />
 						<input name="stepvalue" type="hidden" value="" autocomplete="off" />
 					</div>
 				</div>

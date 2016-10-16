@@ -1,4 +1,7 @@
 <?php
+
+namespace Lazybug\Framework;
+
 // +------------------------------------------------------------
 // | Driver MySQL驱动
 // +------------------------------------------------------------
@@ -29,8 +32,8 @@ class Driver_Db_Mysql implements Driver_Db_Interface {
 	 */
 	public function connect($host = 'localhost', $dbname = 'default', $user = 'root', $password = '', $charset = 'utf8') {
 		$this->mysql_connect = new Driver_Db_Pdo ( 'mysql:host=' . $host . ';dbname=' . $dbname, $user, $password );
-		$this->mysql_connect->setAttribute ( PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE );
-		$this->mysql_connect->setAttribute ( PDO::ATTR_EMULATE_PREPARES, FALSE );
+		$this->mysql_connect->setAttribute ( \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE );
+		$this->mysql_connect->setAttribute ( \PDO::ATTR_EMULATE_PREPARES, FALSE );
 		$this->mysql_connect->query ( 'set names ' . $charset );
 		return $this;
 	}

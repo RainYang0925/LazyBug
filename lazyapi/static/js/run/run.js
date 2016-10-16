@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 	load_task_list(1, 10, 3);
 	load_package_list();
-	load_module_list();
+	load_space_list();
 	public_page_load(1);
 	setTimeout("sync_task_status()", 5000);
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
 		$("#input_edit_task_id").val($parent.find("input[name=taskid]").val().trim());
 		$("#input_taskname").val($parent.find("div[class=task_name]").find("span").text().trim());
 		$("#select_taskpackage").val($parent.find("input[name=packageid]").val().trim());
-		$("#select_taskmodule").val($parent.find("input[name=moduleid]").val().trim());
+		$("#select_taskspace").val($parent.find("input[name=spaceid]").val().trim());
 		$("#select_tasklevel").val($parent.find("input[name=tasklevel]").val().trim());
 		if (task_runtime.length === 2) {
 			$("#select_taskhour").val(task_runtime[0]);
@@ -85,15 +85,15 @@ $(document).ready(function() {
 		var task_id = $("#input_edit_task_id").val().trim();
 		var task_name = $("#input_taskname").val().trim();
 		var task_package = $("#select_taskpackage").val().trim();
-		var task_module = $("#select_taskmodule").val().trim();
+		var task_space = $("#select_taskspace").val().trim();
 		var task_level = $("#select_tasklevel").val().trim();
 		var task_runtime = $("#select_taskhour").val().trim() + "-" + $("#select_taskminute").val().trim();
 		var print_package = $("#select_taskpackage").find("option:selected").text().trim();
 		var print_time = task_runtime.replace("-", "时 - ") + "分";
 		if (flag) {
-			request_task_add(task_name, task_package, task_module, task_level, task_runtime, print_time, print_package);
+			request_task_add(task_name, task_package, task_space, task_level, task_runtime, print_time, print_package);
 		} else {
-			request_task_update(task_id, task_name, task_package, task_module, task_level, task_runtime, print_time, print_package);
+			request_task_update(task_id, task_name, task_package, task_space, task_level, task_runtime, print_time, print_package);
 		}
 	});
 

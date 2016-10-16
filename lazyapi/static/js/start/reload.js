@@ -7,6 +7,7 @@ reload = function() {
 }
 
 reload_succ = function(item_data, case_data) {
+	$("#select_projectspace").val(item_data.space_id);
 	$("#input_itemname").attr("readonly", "true").addClass("global_input_disable");
 	$("#input_itemname").val(item_data.name);
 	$("#input_itemurl").val(item_data.url);

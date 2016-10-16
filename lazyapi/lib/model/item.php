@@ -1,16 +1,24 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 接口模型
+ */
 class Model_Item extends Mod_Model_Relation {
 
 	protected $table_name = 'item';
 
 	protected $fields = array (
+			'spaceid' => 'space_id',
 			'moduleid' => 'module_id',
 			'itemname' => 'name',
-			'itemurl' => 'url' 
+			'itemurl' => 'url',
+			'itemcomment' => 'comment' 
 	);
 
-	public function get_all($page, $size) {
+	public function get_by_space($space_id, $page, $size) {
 		$where = array (
+				'space_id' => $space_id,
 				'status' => 1 
 		);
 		if ($page && $size) {
@@ -40,16 +48,18 @@ class Model_Item extends Mod_Model_Relation {
 		return $this->select ()->where ( $where )->fetch ();
 	}
 
-	public function get_by_name($name) {
+	public function get_by_name($space_id, $name) {
 		$where = array (
+				'space_id' => $space_id,
 				'name' => $name,
 				'status' => 1 
 		);
 		return $this->select ()->where ( $where )->fetch ();
 	}
 
-	public function get_count() {
+	public function get_count_by_space($space_id) {
 		$where = array (
+				'space_id' => $space_id,
 				'status' => 1 
 		);
 		return $this->select ( 'count(id) as count' )->where ( $where )->fetch ();
@@ -69,8 +79,9 @@ class Model_Item extends Mod_Model_Relation {
 		return $this->select ( 'count(id) as count' )->where ( $where )->fetch ();
 	}
 
-	public function check_name_exists($name) {
+	public function check_name_exists($space_id, $name) {
 		$where = array (
+				'space_id' => $space_id,
 				'name' => $name,
 				'status' => 1 
 		);
@@ -80,10 +91,16 @@ class Model_Item extends Mod_Model_Relation {
 
 	public function check_name_update($id, $name) {
 		$where = array (
+				'id' => $id,
+				'status' => 1 
+		);
+		$row = $this->select ()->where ( $where )->fetch ();
+		$where = array (
 				'id' => array (
 						'<>',
 						$id 
 				),
+				'space_id' => $row ['space_id'],
 				'name' => $name,
 				'status' => 1 
 		);
@@ -113,6 +130,14 @@ class Model_Item extends Mod_Model_Relation {
 	public function remove($id) {
 		$where = array (
 				'id' => $id,
+				'status' => 1 
+		);
+		return $this->where ( $where )->update ( 'status=0' );
+	}
+
+	public function remove_by_space($space_id) {
+		$where = array (
+				'space_id' => $space_id,
 				'status' => 1 
 		);
 		return $this->where ( $where )->update ( 'status=0' );

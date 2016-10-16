@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 数据库检查页面视图
+ */
 class View_Html_Public_Database extends View_Html_Public_Base {
 
 	protected $title = '数据库连接失败';

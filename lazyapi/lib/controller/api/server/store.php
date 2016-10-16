@@ -1,15 +1,20 @@
 <?php
+use Lazybug\Framework as LF;
+use Lazybug\Framework\Util_Server_Request as Request;
+
+/**
+ * Controller 存储查询
+ */
 class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 
 	public function act() {
-		// 存储查询
-		$package_id = ( int ) Util_Server_Request::get_param ( 'packageid', 'post' );
-		$extend = trim ( Util_Server_Request::get_param ( 'extend', 'post' ) );
-		$command = trim ( Util_Server_Request::get_param ( 'command', 'post' ) );
-		$value = trim ( Util_Server_Request::get_param ( 'value', 'post' ) );
+		$package_id = ( int ) Request::get_param ( 'packageid', 'post' );
+		$extend = trim ( Request::get_param ( 'extend', 'post' ) );
+		$command = trim ( Request::get_param ( 'command', 'post' ) );
+		$value = trim ( Request::get_param ( 'value', 'post' ) );
 		
 		$response = "";
-		$value = $this->replace_param ( $value, $package_id, $extend );
+		$extra_info ['query'] = $value = $this->replace_param ( $value, $package_id, $extend );
 		
 		foreach ( explode ( '|', $command ) as $command ) {
 			$command = trim ( strtolower ( $command ) );
@@ -18,18 +23,17 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 			}
 		}
 		
-		$this->add_result ( $response );
+		$this->add_result ( $response, $extra_info );
 		
 		echo $response;
 	}
 
 	private function get_config($command, $value) {
-		// 获取配置项
-		$package_id = ( int ) Util_Server_Request::get_param ( 'packageid', 'post' );
+		$package_id = ( int ) Request::get_param ( 'packageid', 'post' );
 		
 		$config_keyword = explode ( ':', $command );
-		$config = M ( 'Conf' )->get_by_keyword ( $package_id, 'data', $config_keyword [1] );
-		$config_value = json_decode ( $config ['value'], true );
+		$config = LF\M ( 'Conf' )->get_by_keyword ( $package_id, 'data', $config_keyword [1] );
+		$config_value = json_decode ( $config ['value'], TRUE );
 		$options = array ();
 		
 		if (! $config_value || count ( $config_value ) !== 2) {
@@ -58,9 +62,8 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 		}
 	}
 
-	private function add_result($content) {
-		// 创建测试结果
-		$temp = ( int ) Util_Server_Request::get_param ( 'temp', 'post' );
+	private function add_result($content, $addition) {
+		$temp = ( int ) Request::get_param ( 'temp', 'post' );
 		
 		if ($temp) {
 			return;
@@ -69,11 +72,11 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 		$_POST ['stepid'] = 1;
 		$_POST ['steptype'] = '存储查询';
 		$_POST ['resultcontent'] = $content;
-		M ( 'Result' )->insert ();
+		$_POST ['resultvalue1'] = $addition ['query'];
+		LF\M ( 'Result' )->insert ();
 	}
 
 	private function connect_mysql($options, $sql) {
-		// MYSQL查询
 		if (isset ( $options ['server'] ) && isset ( $options ['user'] ) && isset ( $options ['password'] ) && isset ( $options ['database'] ) && isset ( $options ['charset'] )) {
 			try {
 				$mysql = mysql_connect ( $options ['server'], $options ['user'], $options ['password'] );
@@ -94,7 +97,6 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 	}
 
 	private function connect_mysqli($options, $sql) {
-		// MYSQL(MYSQLI)查询
 		if (isset ( $options ['server'] ) && isset ( $options ['user'] ) && isset ( $options ['password'] ) && isset ( $options ['database'] ) && isset ( $options ['charset'] )) {
 			try {
 				$mysqli = new mysqli ( $options ['server'], $options ['user'], $options ['password'], $options ['database'] );
@@ -114,7 +116,6 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 	}
 
 	private function connect_pdo_mysql($options, $sql) {
-		// MYSQL(PDO)查询
 		if (isset ( $options ['server'] ) && isset ( $options ['user'] ) && isset ( $options ['password'] ) && isset ( $options ['database'] ) && isset ( $options ['charset'] )) {
 			try {
 				$pdo = new Pdo ( 'mysql:host=' . $options ['server'] . ';dbname=' . $options ['database'], $options ['user'], $options ['password'] );
@@ -135,7 +136,6 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 	}
 
 	private function connect_sqlsrv($options, $sql) {
-		// SQLServer查询
 		if (isset ( $options ['server'] ) && isset ( $options ['user'] ) && isset ( $options ['password'] ) && isset ( $options ['database'] ) && isset ( $options ['charset'] )) {
 			try {
 				$sqlsrv = sqlsrv_connect ( $options ['server'], array (
@@ -159,7 +159,6 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 	}
 
 	private function connect_pdo_sqlsrv($options, $sql) {
-		// SQLServer(PDO)查询
 		if (isset ( $options ['server'] ) && isset ( $options ['user'] ) && isset ( $options ['password'] ) && isset ( $options ['database'] ) && isset ( $options ['charset'] )) {
 			try {
 				$pdo = new Pdo ( 'sqlsrv:server=' . $options ['server'] . ';database=' . $options ['database'], $options ['user'], $options ['password'] );
@@ -180,7 +179,6 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 	}
 
 	private function connect_oci_oracle($options, $sql) {
-		// ORACLE(OCI)查询
 		if (isset ( $options ['server'] ) && isset ( $options ['user'] ) && isset ( $options ['password'] ) && isset ( $options ['charset'] )) {
 			try {
 				$conn = oci_connect ( $options ['user'], $options ['password'], $options ['server'], $options ['charset'] );

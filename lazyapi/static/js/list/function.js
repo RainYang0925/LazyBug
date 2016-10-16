@@ -1,3 +1,12 @@
+form_space_items = {
+	space : {
+		empty : 0,
+		type : "select",
+		name : "projectspace",
+		def : ""
+	}
+}
+
 form_module_items = {
 	name : {
 		empty : 0,
@@ -73,6 +82,7 @@ request_module_count = function(module_id) {
 		type : "post",
 		dataType : "json",
 		data : {
+			spaceid : space_id,
 			moduleid : module_id
 		},
 		success : function(data) {
@@ -94,6 +104,7 @@ request_module_add = function(module_name) {
 		type : "post",
 		dataType : "json",
 		data : {
+			spaceid : space_id,
 			modulename : module_name
 		},
 		success : function(data) {
@@ -206,6 +217,7 @@ request_item_add = function(module_id, item_name, item_url) {
 		dataType : "json",
 		data : {
 			moduleid : module_id,
+			spaceid : space_id,
 			itemname : item_name,
 			itemurl : item_url
 		},
@@ -226,6 +238,7 @@ request_item_add = function(module_id, item_name, item_url) {
 			$new_item.removeClass("item_tmp").attr("id", "tr_item_" + item_id);
 			$new_item.find("input[name=itemid]").val(item_id);
 			$new_item.find("input[name=moduleid]").val(module_id);
+			$new_item.find("input[name=spaceid]").val(space_id);
 			$new_item.find("input[name=itemurl]").val(item_url);
 			$new_item.find("td[class=td_item_name]").attr("title", item_name).find("span").text(item_name);
 			$new_item.find(".item_drag").draggable({
@@ -300,6 +313,7 @@ request_case_add = function(item_id, module_id, case_name, send_type, content_ty
 		data : {
 			itemid : item_id,
 			moduleid : module_id,
+			spaceid : space_id,
 			casename : case_name,
 			sendtype : send_type,
 			contenttype : content_type,
@@ -416,12 +430,37 @@ request_case_delete = function(case_id) {
 	});
 }
 
+load_space_list = function() {
+	$("#select_projectspace").empty();
+	$("#select_projectspace").append(get_option("", "请选择项目空间..."));
+	$("#select_projectspace").append(get_option("0", "默认空间"));
+	$.ajax({
+		url : "/index.php/api/space/list",
+		type : "post",
+		dataType : "json",
+		data : {},
+		success : function(data) {
+			$.each(data, function(index, obj) {
+				if (!obj.id) {
+					return;
+				}
+				$("#select_projectspace").append(get_option(obj.id, obj.name));
+			});
+		},
+		error : function(data) {
+
+		}
+	});
+}
+
 load_module_list = function() {
 	$.ajax({
 		url : "/index.php/api/module/list",
 		type : "post",
 		dataType : "json",
-		data : {},
+		data : {
+			spaceid : space_id
+		},
 		success : function(data) {
 			$.each(data, function(index, obj) {
 				if (!obj.id) {
@@ -447,6 +486,20 @@ load_module_list = function() {
 
 		}
 	});
+	$.ajax({
+		url : "/index.php/api/space/cookie",
+		type : "post",
+		dataType : "json",
+		data : {
+			spaceid : space_id
+		},
+		success : function(data) {
+
+		},
+		error : function(data) {
+
+		}
+	});
 }
 
 load_item_list = function(module_id, page, size) {
@@ -455,6 +508,7 @@ load_item_list = function(module_id, page, size) {
 		type : "post",
 		dataType : "json",
 		data : {
+			spaceid : space_id,
 			moduleid : module_id,
 			page : page,
 			size : size
@@ -473,6 +527,7 @@ load_item_list = function(module_id, page, size) {
 				$new_item.removeClass("item_tmp").attr("id", "tr_item_" + obj.id);
 				$new_item.find("input[name=itemid]").val(obj.id);
 				$new_item.find("input[name=moduleid]").val(obj.module_id);
+				$new_item.find("input[name=spaceid]").val(obj.space_id);
 				$new_item.find("input[name=itemurl]").val(obj.url);
 				$new_item.find("td[class=td_item_name]").attr("title", obj.name).find("span").text(obj.name);
 				$new_item.find(".item_drag").draggable({
@@ -530,6 +585,25 @@ load_case_list = function($parent) {
 
 		}
 	});
+}
+
+get_option = function(key, value) {
+	if (key !== "") {
+		return "<option value=\"" + key + "\">" + value + "</option>";
+	}
+	return "<option value=\"" + key + "\" disabled=\"disabled\" selected=\"selected\">" + value + "</option>";
+}
+
+public_space_recall = function(space_id) {
+	$("#current_space").val(space_id);
+	$(".module_reload:not(.module_tmp)").remove();
+	$(".item_line:not(.item_tmp)").remove();
+	$(".item_case_line:not(.item_case_tmp)").remove();
+	$("#div_module_loading").show();
+	$("#tr_item_loading").show();
+	request_module_count(0);
+	load_module_list();
+	load_item_list(0, 1, 10);
 }
 
 public_page_recall = function(page) {

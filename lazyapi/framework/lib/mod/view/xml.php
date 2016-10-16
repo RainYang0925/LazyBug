@@ -1,4 +1,7 @@
 <?php
+
+namespace Lazybug\Framework;
+
 // +------------------------------------------------------------
 // | View XML视图
 // +------------------------------------------------------------
@@ -24,7 +27,7 @@ class Mod_View_XML extends Lb_View {
 	public function __construct($version = '1.0', $charset = 'utf-8') {
 		parent::__construct ();
 		Util_Server_Response::set_header ( "Content-type", "text/xml" );
-		$this->dom = new DomDocument ( $version, $charset );
+		$this->dom = new \DomDocument ( $version, $charset );
 	}
 
 	/**

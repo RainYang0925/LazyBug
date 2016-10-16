@@ -1,4 +1,7 @@
 <?php
+
+namespace Lazybug\Framework;
+
 // +------------------------------------------------------------
 // | Driver PDO
 // +------------------------------------------------------------
@@ -6,7 +9,7 @@
 // +------------------------------------------------------------
 // | Author : yuanhang.chen@gmail.com
 // +------------------------------------------------------------
-class Driver_Db_Pdo extends PDO {
+class Driver_Db_Pdo extends \PDO {
 
 	/**
 	 * 构造函数
@@ -19,10 +22,10 @@ class Driver_Db_Pdo extends PDO {
 	 */
 	public function __construct($dsn, $user, $password, $options = array()) {
 		parent::__construct ( $dsn, $user, $password, $options );
-		$this->setAttribute ( PDO::ATTR_TIMEOUT, 30 );
-		$this->setAttribute ( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC );
-		$this->setAttribute ( PDO::ATTR_STATEMENT_CLASS, array (
-				'Driver_Db_Pdostatement',
+		$this->setAttribute ( \PDO::ATTR_TIMEOUT, 30 );
+		$this->setAttribute ( \PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC );
+		$this->setAttribute ( \PDO::ATTR_STATEMENT_CLASS, array (
+				'\Lazybug\Framework\Driver_Db_Pdostatement',
 				array (
 						$this 
 				) 

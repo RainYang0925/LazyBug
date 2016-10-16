@@ -1,4 +1,9 @@
 <?php
+use Lazybug\Framework\Mod_Model_Relation;
+
+/**
+ * Model 用例模型
+ */
 class Model_Case extends Mod_Model_Relation {
 
 	protected $table_name = 'case';
@@ -6,6 +11,7 @@ class Model_Case extends Mod_Model_Relation {
 	protected $fields = array (
 			'itemid' => 'item_id',
 			'moduleid' => 'module_id',
+			'spaceid' => 'space_id',
 			'casename' => 'name',
 			'caselevel' => 'level',
 			'sendtype' => 'stype',
@@ -52,8 +58,9 @@ class Model_Case extends Mod_Model_Relation {
 		return $this->select ()->where ( $where )->fetch ();
 	}
 
-	public function get_count() {
+	public function get_count_by_space($space_id) {
 		$where = array (
+				'space_id' => $space_id,
 				'status' => 1 
 		);
 		return $this->select ( 'count(id) as count' )->where ( $where )->fetch ();
@@ -134,6 +141,14 @@ class Model_Case extends Mod_Model_Relation {
 	public function remove($id) {
 		$where = array (
 				'id' => $id,
+				'status' => 1 
+		);
+		return $this->where ( $where )->update ( 'status=0' );
+	}
+
+	public function remove_by_space($space_id) {
+		$where = array (
+				'space_id' => $space_id,
 				'status' => 1 
 		);
 		return $this->where ( $where )->update ( 'status=0' );

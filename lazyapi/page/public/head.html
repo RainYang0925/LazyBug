@@ -32,7 +32,7 @@
 	<div>
 		<a href="/index.php/home">
 			<span>
-				<?php echo Util_Server_Request::get_cookie ( 'username' ); ?>
+				<?php echo htmlspecialchars($_COOKIE['username']); ?>
 			</span>
 		</a>
 	</div>

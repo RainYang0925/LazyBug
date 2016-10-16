@@ -1,29 +1,35 @@
 <?php
+use Lazybug\Framework as LF;
+use Lazybug\Framework\Util_Server_Request as Request;
+
+/**
+ * Controller 添加接口
+ */
 class Controller_Api_Item_Add extends Controller_Api_Item_Base {
 
 	public function act() {
-		// 添加接口
-		if (! $this->check_param ( 'itemname, itemurl' )) {
-			V ( 'Json.Base' )->init ( Const_Code::ITEM_PARAM_ERROR, '接口传递参数错误' );
+		if (! $this->check_param ( 'moduleid, spaceid, itemname, itemurl' )) {
+			LF\V ( 'Json.Base' )->init ( Const_Code::ITEM_PARAM_ERROR, '接口传递参数错误' );
 			return;
 		}
 		
-		$item_name = trim ( Util_Server_Request::get_param ( 'itemname', 'post' ) );
+		$space_id = ( int ) Request::get_param ( 'spaceid', 'post' );
+		$item_name = trim ( Request::get_param ( 'itemname', 'post' ) );
 		
-		if (M ( 'Item' )->check_name_exists ( $item_name )) {
-			V ( 'Json.Base' )->init ( Const_Code::ADD_ITEM_EXISTS, '接口名称重复' );
+		if (LF\M ( 'Item' )->check_name_exists ( $space_id, $item_name )) {
+			LF\V ( 'Json.Base' )->init ( Const_Code::ADD_ITEM_EXISTS, '接口名称重复' );
 			return;
 		}
 		
-		M ( 'Item' )->insert ();
-		$item = M ( 'Item' )->get_by_name ( $item_name );
+		LF\M ( 'Item' )->insert ();
+		$item = LF\M ( 'Item' )->get_by_name ( $space_id, $item_name );
 		$item_id = ( int ) $item ['id'];
 		
 		if (! $item_id) {
-			V ( 'Json.Base' )->init ( Const_Code::ADD_ITEM_FAIL, '接口添加失败' );
+			LF\V ( 'Json.Base' )->init ( Const_Code::ADD_ITEM_FAIL, '接口添加失败' );
 			return;
 		}
 		
-		V ( 'Json.Base' )->init ( Const_Code::SUCCESS, $item_id );
+		LF\V ( 'Json.Base' )->init ( Const_Code::SUCCESS, $item_id );
 	}
 }

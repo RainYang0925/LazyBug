@@ -1,4 +1,7 @@
 <?php
+/**
+ * View 404页面视图
+ */
 class View_Html_Public_404 extends View_Html_Public_Base {
 
 	protected $title = '页面不存在';
