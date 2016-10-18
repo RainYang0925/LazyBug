@@ -70,11 +70,11 @@ abstract class Controller_Api_Base extends Controller_Base {
 		}
 		preg_match_all ( '/\$\{extractor:json:([^;]+);\}/', $subject, $matches );
 		if ($matches [1]) {
-			$json = @json_decode ( $extend );
+			$json = @json_decode ( $extend, true );
 			if (! is_null ( $json )) {
 				foreach ( array_unique ( $matches [1] ) as $match ) {
 					$value = '';
-					@eval ( '$value = $json->{"' . preg_replace ( '/\->/', '"}->{"', $match ) . '"};' );
+					@eval ( '$value = $json[\'' . preg_replace ( '/\->/', '\'][\'', $match ) . '\'];' );
 					$value = is_array ( $value ) ? implode ( ", ", $value ) : $value;
 					$replacement = $fliter ? str_replace ( '"', '\\"', $value ) : $value;
 					$subject = preg_replace ( '/\$\{extractor:json:' . preg_replace ( '/\//', '\/', preg_quote ( $match ) ) . ';\}/', $replacement, $subject );
