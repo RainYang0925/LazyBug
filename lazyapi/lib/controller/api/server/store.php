@@ -59,6 +59,8 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 			return $this->connect_pdo_sqlsrv ( $options, $value );
 		} else if ($config_value [0] === 'oracle_oci') {
 			return $this->connect_oci_oracle ( $options, $value );
+		} else if ($config_value [0] === 'mongo') {
+			return $this->connect_mongo ( $options, $value );
 		}
 	}
 
@@ -195,6 +197,52 @@ class Controller_Api_Server_Store extends Controller_Api_Server_Base {
 			}
 		} else {
 			return '系统错误: 连接串不正确，请检查是否包含server, user, password, charset参数。';
+		}
+		return '';
+	}
+
+	private function connect_mongo($options, $cmd) {
+		if (isset ( $options ['server'] ) && isset ( $options ['user'] ) && isset ( $options ['password'] ) && isset ( $options ['database'] )) {
+			try {
+				if ($options ['user'] === '') {
+					$conn = new Mongo ( $options ['server'] );
+				} else {
+					$conn = new Mongo ( 'mongodb://' . $options ['user'] . ':' . $options ['password'] . '@' . $options ['server'] );
+				}
+				$db = $conn->selectDB ( $options ['database'] );
+				if ($db) {
+					$condition = json_decode ( $cmd, true );
+					if ($condition && isset ( $condition ['collection'] )) {
+						$collection = $db->selectCollection ( $condition ['collection'] );
+						if ($collection && isset ( $condition ['opt'] )) {
+							if ($condition ['opt'] === 'find') {
+								if (isset ( $condition ['where'] ) && is_array ( $condition ['where'] )) {
+									return json_encode ( iterator_to_array ( $collection->find ( $condition ['where'] ) ) );
+								}
+							} else if ($condition ['opt'] === 'insert') {
+								if (isset ( $condition ['data'] ) && is_array ( $condition ['data'] )) {
+									return json_encode ( $collection->insert ( $condition ['data'] ) );
+								}
+							} else if ($condition ['opt'] === 'update') {
+								if (isset ( $condition ['where'] ) && is_array ( $condition ['where'] ) && isset ( $condition ['data'] ) && is_array ( $condition ['data'] )) {
+									return json_encode ( $collection->update ( $condition ['where'], $condition ['data'] ) );
+								}
+							} else if ($condition ['opt'] === 'remove') {
+								if (isset ( $condition ['where'] ) && is_array ( $condition ['where'] )) {
+									return json_encode ( $collection->remove ( $condition ['where'] ) );
+								}
+							}
+						}
+					} else {
+						$result = $db->execute ( $cmd );
+						return isset ( $result ['retval'] ) ? json_encode ( $result ['retval'] ) : json_encode ( $result );
+					}
+				}
+			} catch ( Exception $e ) {
+				return $e;
+			}
+		} else {
+			return '系统错误: 连接串不正确，请检查是否包含server, user, password, database。';
 		}
 		return '';
 	}
