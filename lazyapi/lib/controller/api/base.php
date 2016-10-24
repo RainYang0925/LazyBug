@@ -94,6 +94,20 @@ abstract class Controller_Api_Base extends Controller_Base {
 				}
 			}
 		}
+		preg_match_all ( '/\$\{extractor:regexp:(([^;]+):(\d+):(\d+));\}/', $subject, $matches );
+		if ($matches [1]) {
+			foreach ( array_unique ( $matches [1] ) as $index => $match ) {
+				preg_match_all ( '/' . $matches [2] [$index] . '/', $extend, $regexp_matches );
+				if ($regexp_matches [0]) {
+					$value = '';
+					@$value = $regexp_matches [$matches [3] [$index]] [(( int ) $matches [4] [$index] - 1)];
+					$replacement = $fliter ? str_replace ( '"', '\\"', $value ) : $value;
+				} else {
+					$replacement = '';
+				}
+				$subject = preg_replace ( '/\$\{extractor:regexp:' . preg_replace ( '/\//', '\/', preg_quote ( $match ) ) . ';\}/', $replacement, $subject );
+			}
+		}
 		return $subject;
 	}
 
