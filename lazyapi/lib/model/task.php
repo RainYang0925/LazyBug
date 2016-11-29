@@ -12,6 +12,7 @@ class Model_Task extends Mod_Model_Relation {
 			'taskname' => 'name',
 			'taskpackage' => 'package_id',
 			'taskspace' => 'space_id',
+			'taskmodule' => 'module_id',
 			'tasklevel' => 'level',
 			'taskruntime' => 'runtime',
 			'taskhang' => 'hang' 

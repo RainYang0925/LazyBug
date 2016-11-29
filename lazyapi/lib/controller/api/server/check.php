@@ -8,15 +8,15 @@ use Lazybug\Framework\Util_Server_Request as Request;
 class Controller_Api_Server_Check extends Controller_Api_Server_Base {
 
 	public function act() {
+		$package_id = ( int ) Request::get_param ( 'packageid', 'post' );
 		$result = trim ( Request::get_param ( 'result', 'post' ) );
 		$command = trim ( Request::get_param ( 'command', 'post' ) );
 		$fliter = trim ( Request::get_param ( 'fliter', 'post' ) );
 		$value = trim ( Request::get_param ( 'value', 'post' ) );
 		
-		$result = $fliter ? $this->replace_fliter ( $fliter, 0, $result ) : $result;
 		$flag_include = $flag_begin = $flag_end = $flag_reg = $flag_opposite = 0;
-		$extra_info ['source'] = $result;
-		$extra_info ['target'] = $match = $value;
+		$extra_info ['source'] = $result = $fliter ? $this->replace_fliter ( $fliter, 0, $result ) : $result;
+		$extra_info ['target'] = $match = $value = $this->replace_var ( $value, $package_id, $result );
 		
 		foreach ( explode ( '|', $command ) as $command ) {
 			$command = trim ( strtolower ( $command ) );

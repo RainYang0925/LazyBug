@@ -18,6 +18,12 @@ form_task_items = {
 		name : "taskspace",
 		def : "0"
 	},
+	module : {
+		empty : 0,
+		type : "select",
+		name : "taskmodule",
+		def : "0"
+	},
 	level : {
 		empty : 0,
 		type : "select",
@@ -76,7 +82,7 @@ request_task_list = function(page, size, history_size) {
 	});
 }
 
-request_task_add = function(task_name, task_package, task_space, task_level, task_runtime, print_time, print_package) {
+request_task_add = function(task_name, task_package, task_space, task_module, task_level, task_runtime, print_time, print_package) {
 	$.ajax({
 		url : "/index.php/api/task/add",
 		type : "post",
@@ -85,6 +91,7 @@ request_task_add = function(task_name, task_package, task_space, task_level, tas
 			taskname : task_name,
 			taskpackage : task_package,
 			taskspace : task_space,
+			taskmodule : task_module,
 			tasklevel : task_level,
 			taskruntime : task_runtime
 		},
@@ -104,6 +111,7 @@ request_task_add = function(task_name, task_package, task_space, task_level, tas
 			$new_task.find("input[name=taskid]").val(task_id);
 			$new_task.find("input[name=packageid]").val(task_package);
 			$new_task.find("input[name=spaceid]").val(task_space);
+			$new_task.find("input[name=moduleid]").val(task_module);
 			$new_task.find("input[name=tasklevel]").val(task_level);
 			$new_task.find("input[name=taskruntime]").val(task_runtime);
 			$new_task.find("input[name=taskhang]").val(0);
@@ -146,7 +154,7 @@ request_task_hang = function(task_id, task_hang) {
 	});
 }
 
-request_task_update = function(task_id, task_name, task_package, task_space, task_level, task_runtime, print_time, print_package) {
+request_task_update = function(task_id, task_name, task_package, task_space, task_module, task_level, task_runtime, print_time, print_package) {
 	$.ajax({
 		url : "/index.php/api/task/update",
 		type : "post",
@@ -156,6 +164,7 @@ request_task_update = function(task_id, task_name, task_package, task_space, tas
 			taskname : task_name,
 			taskpackage : task_package,
 			taskspace : task_space,
+			taskmodule : task_module,
 			tasklevel : task_level,
 			taskruntime : task_runtime
 		},
@@ -167,6 +176,7 @@ request_task_update = function(task_id, task_name, task_package, task_space, tas
 			}
 			$("#div_task_" + task_id).find("input[name=packageid]").val(task_package);
 			$("#div_task_" + task_id).find("input[name=spaceid]").val(task_space);
+			$("#div_task_" + task_id).find("input[name=moduleid]").val(task_module);
 			$("#div_task_" + task_id).find("input[name=tasklevel]").val(task_level);
 			$("#div_task_" + task_id).find("input[name=taskruntime]").val(task_runtime);
 			$("#div_task_" + task_id).find(".task_name").find("span").text(task_name);
@@ -275,6 +285,7 @@ load_task_list = function(page, size, history_size) {
 				$new_task.find("input[name=taskid]").val(obj.id);
 				$new_task.find("input[name=packageid]").val(obj.package_id);
 				$new_task.find("input[name=spaceid]").val(obj.space_id);
+				$new_task.find("input[name=moduleid]").val(obj.module_id);
 				$new_task.find("input[name=tasklevel]").val(obj.level);
 				$new_task.find("input[name=taskruntime]").val(obj.runtime);
 				$new_task.find("input[name=taskhang]").val(obj.hang);
@@ -354,6 +365,33 @@ load_space_list = function() {
 				}
 				$("#select_taskspace").append("<option value=\"" + obj.id + "\">" + obj.name + "</option>");
 			});
+		},
+		error : function(data) {
+
+		}
+	});
+}
+
+load_module_list = function(space_id, reload_id) {
+	$("#select_taskmodule").empty();
+	$("#select_taskmodule").append("<option value=\"0\">全部模块</option>");
+	$.ajax({
+		url : "/index.php/api/module/list",
+		type : "post",
+		dataType : "json",
+		data : {
+			spaceid : space_id
+		},
+		success : function(data) {
+			$.each(data, function(index, obj) {
+				if (!obj.id) {
+					return;
+				}
+				$("#select_taskmodule").append("<option value=\"" + obj.id + "\">" + obj.name + "</option>");
+			});
+			if (reload_id != null) {
+				$("#select_taskmodule").val(reload_id);
+			}
 		},
 		error : function(data) {
 

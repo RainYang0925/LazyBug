@@ -312,6 +312,7 @@ run_step = function(current, package_id, guid, result) {
 			data : {
 				temp : 1,
 				guid : guid,
+				packageid : package_id,
 				result : result,
 				command : step_command,
 				fliter : step_fliter,

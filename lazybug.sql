@@ -1,23 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- 主机: 127.0.0.1
--- 生成日期: 2016 年 10 月 16 日 15:16
--- 服务器版本: 5.5.27
--- PHP 版本: 5.4.7
+-- Host: 127.0.0.1
+-- Generation Time: 2016-11-29 14:32:56
+-- 服务器版本： 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库: `lazybug`
+-- Database: `lazybug`
 --
 
 -- --------------------------------------------------------
@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- 表的结构 `lazybug_case`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_case` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_case` (
+  `id` int(10) NOT NULL,
   `item_id` int(10) NOT NULL,
   `module_id` int(10) NOT NULL DEFAULT '0',
   `space_id` int(10) NOT NULL DEFAULT '0',
@@ -38,9 +38,8 @@ CREATE TABLE IF NOT EXISTS `lazybug_case` (
   `param` text,
   `header` text,
   `expectation` text,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -48,15 +47,14 @@ CREATE TABLE IF NOT EXISTS `lazybug_case` (
 -- 表的结构 `lazybug_config`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_config` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_config` (
+  `id` int(10) NOT NULL,
   `package_id` int(10) NOT NULL,
   `type` varchar(10) NOT NULL,
   `keyword` varchar(30) NOT NULL,
   `value` text,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -64,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `lazybug_config` (
 -- 表的结构 `lazybug_field`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_field` (
+CREATE TABLE `lazybug_field` (
   `item_id` int(10) NOT NULL,
   `param_name` text NOT NULL,
   `param_value` text
@@ -76,16 +74,24 @@ CREATE TABLE IF NOT EXISTS `lazybug_field` (
 -- 表的结构 `lazybug_history`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_history` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_history` (
+  `id` int(10) NOT NULL,
   `task_id` int(10) NOT NULL,
   `guid` varchar(20) NOT NULL,
   `runtime` datetime NOT NULL,
   `pass` int(10) NOT NULL DEFAULT '0',
   `fail` int(10) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `lazybug_history`
+--
+
+INSERT INTO `lazybug_history` (`id`, `task_id`, `guid`, `runtime`, `pass`, `fail`, `status`) VALUES
+(1, 1, '1-2016112921313313', '2016-11-29 21:31:33', 0, 0, 1),
+(2, 1, '1-2016112921313711', '2016-11-29 21:31:37', 0, 0, 1),
+(3, 2, '2-2016112921322016', '2016-11-29 21:32:20', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -93,16 +99,15 @@ CREATE TABLE IF NOT EXISTS `lazybug_history` (
 -- 表的结构 `lazybug_item`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_item` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_item` (
+  `id` int(10) NOT NULL,
   `module_id` int(10) NOT NULL DEFAULT '0',
   `space_id` int(10) NOT NULL DEFAULT '0',
   `name` varchar(30) NOT NULL,
   `url` text,
   `comment` text,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -110,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `lazybug_item` (
 -- 表的结构 `lazybug_job`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_job` (
+CREATE TABLE `lazybug_job` (
   `task_id` int(10) NOT NULL,
   `total` int(10) NOT NULL DEFAULT '0',
   `current` int(10) NOT NULL DEFAULT '0',
@@ -123,13 +128,12 @@ CREATE TABLE IF NOT EXISTS `lazybug_job` (
 -- 表的结构 `lazybug_module`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_module` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_module` (
+  `id` int(10) NOT NULL,
   `space_id` int(10) NOT NULL DEFAULT '0',
   `name` varchar(30) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -137,12 +141,11 @@ CREATE TABLE IF NOT EXISTS `lazybug_module` (
 -- 表的结构 `lazybug_package`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_package` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_package` (
+  `id` int(10) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -150,8 +153,8 @@ CREATE TABLE IF NOT EXISTS `lazybug_package` (
 -- 表的结构 `lazybug_result`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_result` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_result` (
+  `id` int(10) NOT NULL,
   `history_id` int(10) NOT NULL,
   `item_id` int(10) NOT NULL DEFAULT '0',
   `case_id` int(10) NOT NULL DEFAULT '0',
@@ -165,9 +168,8 @@ CREATE TABLE IF NOT EXISTS `lazybug_result` (
   `value_4` text,
   `value_5` text,
   `pass` tinyint(1) NOT NULL DEFAULT '1',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -175,12 +177,11 @@ CREATE TABLE IF NOT EXISTS `lazybug_result` (
 -- 表的结构 `lazybug_space`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_space` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_space` (
+  `id` int(10) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -188,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `lazybug_space` (
 -- 表的结构 `lazybug_step`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_step` (
+CREATE TABLE `lazybug_step` (
   `case_id` int(10) NOT NULL,
   `name` varchar(30) NOT NULL,
   `type` varchar(10) NOT NULL DEFAULT 'GET',
@@ -204,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `lazybug_step` (
 -- 表的结构 `lazybug_system`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_system` (
+CREATE TABLE `lazybug_system` (
   `smtp_server` varchar(100) DEFAULT NULL,
   `smtp_port` int(10) DEFAULT NULL,
   `smtp_user` varchar(50) DEFAULT NULL,
@@ -227,18 +228,18 @@ INSERT INTO `lazybug_system` (`smtp_server`, `smtp_port`, `smtp_user`, `smtp_pas
 -- 表的结构 `lazybug_task`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_task` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_task` (
+  `id` int(10) NOT NULL,
   `name` varchar(30) NOT NULL,
   `package_id` int(10) NOT NULL DEFAULT '0',
   `space_id` int(10) NOT NULL,
+  `module_id` int(10) NOT NULL,
   `level` tinyint(1) NOT NULL,
   `runtime` text NOT NULL,
   `hang` tinyint(1) NOT NULL DEFAULT '0',
   `lasttime` datetime NOT NULL DEFAULT '1900-01-01 00:00:00',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -246,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `lazybug_task` (
 -- 表的结构 `lazybug_temp`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_temp` (
+CREATE TABLE `lazybug_temp` (
   `key` varchar(20) NOT NULL,
   `case_id` int(10) DEFAULT '0',
   `name` varchar(20) NOT NULL,
@@ -260,14 +261,13 @@ CREATE TABLE IF NOT EXISTS `lazybug_temp` (
 -- 表的结构 `lazybug_user`
 --
 
-CREATE TABLE IF NOT EXISTS `lazybug_user` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lazybug_user` (
+  `id` int(10) NOT NULL,
   `name` varchar(30) NOT NULL,
   `passwd` varchar(32) NOT NULL,
   `role` varchar(30) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `lazybug_user`
@@ -276,6 +276,124 @@ CREATE TABLE IF NOT EXISTS `lazybug_user` (
 INSERT INTO `lazybug_user` (`id`, `name`, `passwd`, `role`, `status`) VALUES
 (1, 'admin', 'f6fdffe48c908deb0f4c3bd36c032e72', 'admin', 1);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `lazybug_case`
+--
+ALTER TABLE `lazybug_case`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_config`
+--
+ALTER TABLE `lazybug_config`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_history`
+--
+ALTER TABLE `lazybug_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_item`
+--
+ALTER TABLE `lazybug_item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_module`
+--
+ALTER TABLE `lazybug_module`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_package`
+--
+ALTER TABLE `lazybug_package`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_result`
+--
+ALTER TABLE `lazybug_result`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_space`
+--
+ALTER TABLE `lazybug_space`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_task`
+--
+ALTER TABLE `lazybug_task`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lazybug_user`
+--
+ALTER TABLE `lazybug_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 在导出的表使用AUTO_INCREMENT
+--
+
+--
+-- 使用表AUTO_INCREMENT `lazybug_case`
+--
+ALTER TABLE `lazybug_case`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `lazybug_config`
+--
+ALTER TABLE `lazybug_config`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `lazybug_history`
+--
+ALTER TABLE `lazybug_history`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- 使用表AUTO_INCREMENT `lazybug_item`
+--
+ALTER TABLE `lazybug_item`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `lazybug_module`
+--
+ALTER TABLE `lazybug_module`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `lazybug_package`
+--
+ALTER TABLE `lazybug_package`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `lazybug_result`
+--
+ALTER TABLE `lazybug_result`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `lazybug_space`
+--
+ALTER TABLE `lazybug_space`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `lazybug_task`
+--
+ALTER TABLE `lazybug_task`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- 使用表AUTO_INCREMENT `lazybug_user`
+--
+ALTER TABLE `lazybug_user`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

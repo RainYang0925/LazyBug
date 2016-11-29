@@ -85,6 +85,7 @@ return array (
 		'Api.Server.History' => '/api/server/history',
 		'Api.Server.Notice' => '/api/server/notice',
 		'Api.Server.Remove' => '/api/server/remove',
+		'Api.Server.Summary' => '/api/server/summary',
 		
 		'Public.Login' => '/login',
 		'Public.Logout' => '/logout',

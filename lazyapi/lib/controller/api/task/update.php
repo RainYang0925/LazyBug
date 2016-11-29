@@ -8,7 +8,7 @@ use Lazybug\Framework\Util_Server_Request as Request;
 class Controller_Api_Task_Update extends Controller_Api_Task_Base {
 
 	public function act() {
-		if (! $this->check_param ( 'taskid, taskname, taskpackage, taskspace, tasklevel, taskruntime' )) {
+		if (! $this->check_param ( 'taskid, taskname, taskpackage, taskspace, taskmodule, tasklevel, taskruntime' )) {
 			LF\V ( 'Json.Base' )->init ( Const_Code::TASK_PARAM_ERROR, '任务传递参数错误' );
 			return;
 		}

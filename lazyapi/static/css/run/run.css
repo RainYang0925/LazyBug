@@ -6,9 +6,9 @@
 
 #div_task {
 	width: 480px;
-	height: 480px;
+	height: 540px;
 	display: none;
-	margin: -240px 0px 0px -240px;
+	margin: -270px 0px 0px -240px;
 }
 
 .input_task {
@@ -20,6 +20,10 @@
 }
 
 .select_space {
+	width: 320px;
+}
+
+.select_module {
 	width: 320px;
 }
 

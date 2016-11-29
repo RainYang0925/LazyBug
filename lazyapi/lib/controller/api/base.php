@@ -123,6 +123,11 @@ abstract class Controller_Api_Base extends Controller_Base {
 		return $subject;
 	}
 
+	public function replace_var($subject, $package = 0, $extend = '', $fliter = FALSE) {
+		$subject = $this->set_system_param ( $subject, $package, $fliter );
+		return $subject;
+	}
+
 	public function get_header($response) {
 		$header = '';
 		while ( preg_match ( '/^HTTP\//', $response ) ) {
